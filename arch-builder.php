@@ -5,6 +5,9 @@
  * Description: Flexible WP archive pages.
  * Version: 0.1.0
  * Author: Marty Helmick
+ * License:     GPLv2
+ * Text Domain: arch-builder
+ * Domain Path: /languages
  */
 
  /**
@@ -86,8 +89,10 @@ final class Arch_Builder_Plugin {
 	 */
 	private function includes() {
 
-		if ( is_admin() )
-			require_once( $this->dir_path . 'includes/arch-edit-boxes.php' );
+		require_once( $this->dir_path . 'includes/post-types.php' );
+		require_once( $this->dir_path . 'includes/taxonomies.php' );
+		require_once( $this->dir_path . 'includes/metaboxes.php' );
+		require_once( $this->dir_path . 'includes/arch-edit-boxes.php' );
 	}
 
 	/**

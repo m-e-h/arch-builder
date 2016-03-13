@@ -1,24 +1,6 @@
 <?php
 /**
- * Plugin Name: Arch Builder
- * Plugin URI: https://github.com/m-e-h/arch-builder
- * Description: Flexible WP archive pages.
- * Version: 0.1.0
- * Author: Marty Helmick
- */
-
-
-/**
  * Quick Edit and Bulk edit taken from http://wpdreamer.com/2012/03/manage-wordpress-posts-using-bulk-edit-and-quick-edit
- * Now that you have your custom column, it's bulk/quick edit showtime!
- * The filters are 'bulk_edit_custom_box' and 'quick_edit_custom_box'. Both filters
- * pass the same 2 arguments: the $column_name (a string) and the $post_type (a string).
- *
- * Your data's form fields will obviously vary so customize at will. For this example,
- * we're using an input. Also take note of the css classes on the <fieldset> and <div>.
- * There are a few other options like 'inline-edit-col-left' and 'inline-edit-col-center'
- * for the fieldset and 'inline-edit-col' for the div. I recommend studying the WordPress
- * bulk and quick edit HTML to see the best way to layout your custom fields.
  */
 add_action( 'bulk_edit_custom_box', 'manage_wp_posts_be_qe_bulk_quick_edit_custom_box', 10, 2 );
 add_action( 'quick_edit_custom_box', 'manage_wp_posts_be_qe_bulk_quick_edit_custom_box', 10, 2 );
@@ -26,7 +8,7 @@ function manage_wp_posts_be_qe_bulk_quick_edit_custom_box( $column_name, $post_t
 
 	switch ( $post_type ) {
 
-		case 'post':
+		case 'article':
 
 			switch( $column_name ) {
 
@@ -56,44 +38,14 @@ function manage_wp_posts_be_qe_bulk_quick_edit_custom_box( $column_name, $post_t
 
 }
 
-/**
- * When you click 'Quick Edit', you may have noticed that your form fields are not populated.
- * WordPress adds one 'Quick Edit' row which moves around for each post so the information cannot
- * be pre-populated. It has to be populated with JavaScript on a per-post 'click Quick Edit' basis.
- *
- * WordPress has an inline edit post function that populates all of their default quick edit fields
- * so we want to hook into this function, in a sense, to make sure our JavaScript code is run when
- * needed. We will 'copy' the WP function, 'overwrite' the WP function so we're hooked in, 'call'
- * the original WP function (via our copy) so WordPress is not left hanging, and then run our code.
- *
- * Remember where we wrapped our column data in a <div> in Step 2? This is where it comes in handy,
- * allowing our Javascript to retrieve the data by the <div>'s element ID to populate our form field.
- * There are other methods to retrieve your data that involve AJAX but this route is the simplest.
- *
- * Don't forget to enqueue your script and make sure it's dependent on WordPress's 'inline-edit-post' file.
- * Since we'll be using the jQuery library, we need to make sure 'jquery' is loaded as well.
- *
- * I have provided several scenarios for where you've placed this code. Simply uncomment the scenario
- * you're using. For all scenarios, make sure your javascript file is in the same folder as your code.
- */
 add_action( 'admin_enqueue_scripts', 'manage_wp_posts_be_qe_enqueue_admin_scripts' );
 function manage_wp_posts_be_qe_enqueue_admin_scripts() {
 
-	// if code is in theme functions.php file
-	//wp_enqueue_script( 'manage-wp-posts-using-bulk-quick-edit', trailingslashit( get_bloginfo( 'stylesheet_directory' ) ) . 'bulk_quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
-
-	// if using code as plugin
-	wp_enqueue_script( 'manage-wp-posts-using-bulk-quick-edit', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'bulk_quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
+	wp_enqueue_script( 'manage-wp-posts-using-bulk-quick-edit', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'assets/js/bulk_quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
 
 }
 
 /**
- * Saving your 'Quick Edit' data is exactly like saving custom data
- * when editing a post, using the 'save_post' hook. With that said,
- * you may have already set this up. If you're not sure, and your
- * 'Quick Edit' data is not saving, odds are you need to hook into
- * the 'save_post' action.
- *
  * The 'save_post' action passes 2 arguments: the $post_id (an integer)
  * and the $post information (an object).
  */
@@ -141,10 +93,6 @@ function manage_wp_posts_be_qe_save_post( $post_id, $post ) {
 }
 
 /**
- * Saving the 'Bulk Edit' data is a little trickier because we have
- * to get JavaScript involved. WordPress saves their bulk edit data
- * via AJAX so, guess what, so do we.
- *
  * Your javascript will run an AJAX function to save your data.
  * This is the WordPress AJAX function that will handle and save your data.
  */
