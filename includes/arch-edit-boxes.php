@@ -2,13 +2,13 @@
 /**
  * Quick Edit and Bulk edit taken from http://wpdreamer.com/2012/03/manage-wordpress-posts-using-bulk-edit-and-quick-edit
  */
-add_action( 'bulk_edit_custom_box', 'manage_wp_posts_be_qe_bulk_quick_edit_custom_box', 10, 2 );
-add_action( 'quick_edit_custom_box', 'manage_wp_posts_be_qe_bulk_quick_edit_custom_box', 10, 2 );
-function manage_wp_posts_be_qe_bulk_quick_edit_custom_box( $column_name, $post_type ) {
+add_action( 'bulk_edit_custom_box', 'arch_be_qe_bulk_quick_edit_custom_box', 10, 2 );
+add_action( 'quick_edit_custom_box', 'arch_be_qe_bulk_quick_edit_custom_box', 10, 2 );
+function arch_be_qe_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	switch ( $post_type ) {
 
-		case 'article':
+		case 'deacon':
 
 			switch( $column_name ) {
 
@@ -38,19 +38,17 @@ function manage_wp_posts_be_qe_bulk_quick_edit_custom_box( $column_name, $post_t
 
 }
 
-add_action( 'admin_enqueue_scripts', 'manage_wp_posts_be_qe_enqueue_admin_scripts' );
-function manage_wp_posts_be_qe_enqueue_admin_scripts() {
-
-	wp_enqueue_script( 'manage-wp-posts-using-bulk-quick-edit', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'assets/js/bulk_quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
-
+add_action( 'admin_enqueue_scripts', 'arch_be_qe_enqueue_admin_scripts' );
+function arch_be_qe_enqueue_admin_scripts() {
+	wp_enqueue_script( 'arch-bulk-quick-edit', arch_builder_plugin()->js_uri . "bulk_quick_edit.js", array( 'jquery', 'inline-edit-post' ), '', true );
 }
 
 /**
  * The 'save_post' action passes 2 arguments: the $post_id (an integer)
  * and the $post information (an object).
  */
-add_action( 'save_post', 'manage_wp_posts_be_qe_save_post', 10, 2 );
-function manage_wp_posts_be_qe_save_post( $post_id, $post ) {
+add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
+function arch_be_qe_save_post( $post_id, $post ) {
 
 	// pointless if $_POST is empty (this happens on bulk edit)
 	if ( empty( $_POST ) )
@@ -70,7 +68,7 @@ function manage_wp_posts_be_qe_save_post( $post_id, $post ) {
 
 	switch( $post->post_type ) {
 
-		case 'post':
+		case 'deacon':
 
 			/**
 			 * Because this action is run in several places, checking for the array key
@@ -96,8 +94,8 @@ function manage_wp_posts_be_qe_save_post( $post_id, $post ) {
  * Your javascript will run an AJAX function to save your data.
  * This is the WordPress AJAX function that will handle and save your data.
  */
-add_action( 'wp_ajax_manage_wp_posts_using_bulk_quick_save_bulk_edit', 'manage_wp_posts_using_bulk_quick_save_bulk_edit' );
-function manage_wp_posts_using_bulk_quick_save_bulk_edit() {
+add_action( 'wp_ajax_arch_save_bulk_edit', 'arch_save_bulk_edit' );
+function arch_save_bulk_edit() {
 
 	// we need the post IDs
 	$post_ids = ( isset( $_POST[ 'post_ids' ] ) && !empty( $_POST[ 'post_ids' ] ) ) ? $_POST[ 'post_ids' ] : NULL;

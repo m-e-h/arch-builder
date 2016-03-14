@@ -76,8 +76,13 @@ final class Arch_Builder_Plugin {
 	 */
 	private function setup() {
 
+		// Main plugin directory path and URI.
 		$this->dir_path = trailingslashit( plugin_dir_path( __FILE__ ) );
 		$this->dir_uri  = trailingslashit( plugin_dir_url(  __FILE__ ) );
+
+		// Plugin directory URIs.
+		$this->css_uri = trailingslashit( $this->dir_uri . 'assets/css' );
+		$this->js_uri  = trailingslashit( $this->dir_uri . 'assets/js'  );
 	}
 
 	/**
@@ -91,6 +96,7 @@ final class Arch_Builder_Plugin {
 
 		require_once( $this->dir_path . 'includes/post-types.php' );
 		require_once( $this->dir_path . 'includes/taxonomies.php' );
+		require_once( $this->dir_path . 'includes/options.php' );
 		require_once( $this->dir_path . 'includes/metaboxes.php' );
 		require_once( $this->dir_path . 'includes/arch-edit-boxes.php' );
 	}
@@ -105,10 +111,10 @@ final class Arch_Builder_Plugin {
 	private function setup_actions() {
 
 		// Internationalize the text strings used.
-		add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
+		//add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
 
 		// Registers scripts and styles.
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_register_scripts' ) );
+		//add_action( 'admin_enqueue_scripts', array( $this, 'admin_register_scripts' ) );
 	}
 
 	/**

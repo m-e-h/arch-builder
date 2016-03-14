@@ -53,7 +53,7 @@
 			async: false,
 			cache: false,
 			data: {
-				action: 'manage_wp_posts_using_bulk_quick_save_bulk_edit', // this is the name of our WP AJAX function that we'll set up next
+				action: 'arch_save_bulk_edit', // this is the name of our WP AJAX function that we'll set up next
 				post_ids: $post_ids, // and these are the 2 parameters we're passing to our function
 				doc_show_content: $show_content
 			}
