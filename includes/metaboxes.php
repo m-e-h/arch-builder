@@ -1,11 +1,9 @@
 <?php
-require_once dirname(__FILE__) . '/../vendor/cmb2/init.php';
-
 
 add_action( 'cmb2_admin_init', 'arch_register_metaboxes' );
 
 function arch_register_metaboxes() {
-	$prefix = 'doc_';
+	$prefix = 'arch_';
 
 /**
  * Excerpt/Content metabox.
@@ -13,7 +11,7 @@ function arch_register_metaboxes() {
 $arch_excerpt_meta = new_cmb2_box( array(
 	'id'            => $prefix . 'excerpt_meta',
 	'title'         => __( 'Full Content', 'cmb2' ),
-	'object_types'  => array( 'post','deacon' ),
+	'object_types'  => abe_non_hierarchy_cpts(),
 	'context'       => 'side',
 	'priority'      => 'default',
 	'show_names' => false,

@@ -93,10 +93,12 @@ final class Arch_Builder_Plugin {
 	 * @return void
 	 */
 	private function includes() {
+		if ( file_exists( $this->dir_path . 'vendor/CMB2/init.php' ) )
+			require_once( $this->dir_path . 'vendor/CMB2/init.php' );
 
 		require_once( $this->dir_path . 'includes/post-types.php' );
 		require_once( $this->dir_path . 'includes/taxonomies.php' );
-		require_once( $this->dir_path . 'includes/options.php' );
+		//require_once( $this->dir_path . 'includes/options.php' );
 		require_once( $this->dir_path . 'includes/metaboxes.php' );
 		require_once( $this->dir_path . 'includes/arch-edit-boxes.php' );
 	}
@@ -109,12 +111,11 @@ final class Arch_Builder_Plugin {
 	 * @return void
 	 */
 	private function setup_actions() {
+		// Register activation hook.
+		//register_activation_hook( __FILE__, array( $this, 'activation' ) );
 
 		// Internationalize the text strings used.
 		//add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
-
-		// Registers scripts and styles.
-		//add_action( 'admin_enqueue_scripts', array( $this, 'admin_register_scripts' ) );
 	}
 
 	/**
@@ -140,6 +141,12 @@ final class Arch_Builder_Plugin {
 
 		load_plugin_textdomain( 'arch-builder', false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) . 'languages' );
 	}
+
+	// public function activation() {
+	// 	// Make sure any rewrite functionality has been loaded.
+	// 	flush_rewrite_rules();
+	// }
+
 }
 
 /**
