@@ -4,35 +4,22 @@
  */
 add_action( 'bulk_edit_custom_box', 'arch_be_qe_bulk_quick_edit_custom_box', 10, 2 );
 add_action( 'quick_edit_custom_box', 'arch_be_qe_bulk_quick_edit_custom_box', 10, 2 );
-function arch_be_qe_bulk_quick_edit_custom_box( $column_name, $post_type ) {
+function arch_be_qe_bulk_quick_edit_custom_box($column_name, $post_type) {
 
-	switch ( $post_type ) {
+	if (in_array($post_type, abe_non_hierarchy_cpts()) && $column_name == 'arch_show_content') {
 
-		case 'deacon':
-
-			switch( $column_name ) {
-
-				case 'doc_show_content':
-
-					?><fieldset class="inline-edit-col-left">
+					?><fieldset class="inline-edit-col-right">
 						<div class="inline-edit-col">
-							<label>
-								<span class="title">Show content</span>
-								<span class="input-text-wrap">
-                                    <select name="doc_show_content">
+							<label class="inline-edit-status alignleft">
+								<span class="title">Show content </span>
+                                    <select name="arch_show_content">
                                     	<option value="excerpt"><?php _e( 'Excerpt' ); ?></option>
                                     	<option value="content"><?php _e( 'Content' ); ?></option>
                                     	<option value="none"><?php _e( 'Title Only' ); ?></option>
                                     </select>
-								</span>
 							</label>
 						</div>
 					</fieldset><?php
-					break;
-
-			}
-
-			break;
 
 	}
 
@@ -48,7 +35,7 @@ function arch_be_qe_enqueue_admin_scripts() {
  * and the $post information (an object).
  */
 add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
-function arch_be_qe_save_post( $post_id, $post ) {
+function arch_be_qe_save_post($post_id, $post) {
 
 	// pointless if $_POST is empty (this happens on bulk edit)
 	if ( empty( $_POST ) )
@@ -66,16 +53,13 @@ function arch_be_qe_save_post( $post_id, $post ) {
 	if ( isset( $post->post_type ) && $post->post_type == 'revision' )
 		return $post_id;
 
-	switch( $post->post_type ) {
-
-		case 'deacon':
-
+	if (in_array($post->post_type, abe_non_hierarchy_cpts())) {
 			/**
 			 * Because this action is run in several places, checking for the array key
 			 * keeps WordPress from editing data that wasn't in the form, i.e. if you had
 			 * this post meta on your "Quick Edit" but didn't have it on the "Edit Post" screen.
 			 */
-			$custom_fields = array( 'doc_show_content' );
+			$custom_fields = array( 'arch_show_content' );
 
 			foreach( $custom_fields as $field ) {
 
@@ -83,8 +67,6 @@ function arch_be_qe_save_post( $post_id, $post ) {
 					update_post_meta( $post_id, $field, $_POST[ $field ] );
 
 			}
-
-			break;
 
 	}
 
@@ -98,13 +80,13 @@ add_action( 'wp_ajax_arch_save_bulk_edit', 'arch_save_bulk_edit' );
 function arch_save_bulk_edit() {
 
 	// we need the post IDs
-	$post_ids = ( isset( $_POST[ 'post_ids' ] ) && !empty( $_POST[ 'post_ids' ] ) ) ? $_POST[ 'post_ids' ] : NULL;
+	$post_ids = ( isset( $_POST[ 'post_ids' ] ) && !empty( $_POST[ 'post_ids' ] ) ) ? $_POST[ 'post_ids' ] : null;
 
 	// if we have post IDs
 	if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
 
 		// get the custom fields
-		$custom_fields = array( 'doc_show_content' );
+		$custom_fields = array( 'arch_show_content' );
 
 		foreach( $custom_fields as $field ) {
 

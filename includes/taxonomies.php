@@ -23,7 +23,7 @@ function get_arch_post_width($post = null) {
 // Register Width Taxonomy
 function arch_width_taxonomy() {
 
-	register_extended_taxonomy( 'arch_post_width', 'article',
+	register_extended_taxonomy( 'arch_post_width', abe_non_hierarchy_cpts(),
 	array(
 
 		'meta_box' => 'dropdown',
@@ -43,7 +43,7 @@ function arch_width_taxonomy() {
 
 	    # Override the base names used for labels:
 	    'singular' => 'Width',
-	    'plural'   => 'Width',
+	    'plural'   => 'Widths',
 	    'slug'     => 'width'
 
 	) );

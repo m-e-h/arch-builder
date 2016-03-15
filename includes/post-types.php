@@ -1,15 +1,19 @@
 <?php
 
-require_once dirname(__FILE__) . '/../vendor/extended-cpts.php';
+//require_once dirname(__FILE__) . '/../vendor/extended-cpts.php';
 
 
 add_action( 'init', 'arch_register_post_types' );
+
+
 function arch_register_post_types() {
-	register_extended_post_type( 'article', array(
+$arr = abe_non_hierarchy_cpts();
+foreach ($arr as $value) {
+	register_extended_post_type( $value, array(
 		'admin_cols' => array(
-			'doc_show_content' => array(
+			'arch_show_content' => array(
 				'title'    => 'Content',
-				'meta_key' => 'doc_show_content',
+				'meta_key' => 'arch_show_content',
 				'sortable' => false,
 			),
 			'width' => array(
@@ -18,4 +22,6 @@ function arch_register_post_types() {
 			),
 		),
 	) );
+
+}
 }
