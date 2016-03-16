@@ -17,7 +17,8 @@ foreach ($arr as $value) {
 				'sortable' => false,
 			),
 			'width' => array(
-	            'taxonomy' => 'arch_post_width',
+				'title'    => 'Width',
+				'meta_key' => 'arch_post_width',
 				'sortable' => false,
 			),
 		),
