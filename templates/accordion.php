@@ -7,7 +7,6 @@
 ?>
 <article <?php hybrid_attr('post'); ?>>
 AAACCCOOORRRDDDIIIOOOONNNNNNNNN
-	<?php tha_entry_top(); ?>
 
 		<header <?php hybrid_attr('entry-header'); ?>>
 			<?php
@@ -24,13 +23,7 @@ AAACCCOOORRRDDDIIIOOOONNNNNNNNN
 		</header>
 
 		<div <?php hybrid_attr('entry-summary'); ?>>
-			<?php tha_entry_content_before(); ?>
-			<?php abe_excerpt(); ?>
-			<?php tha_entry_content_after(); ?>
+			<?php arch_excerpt(); ?>
 		</div>
-
-		<?php get_template_part('components/entry', 'footer'); ?>
-
-<?php tha_entry_bottom(); ?>
 
 </article>
