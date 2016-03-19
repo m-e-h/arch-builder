@@ -149,14 +149,15 @@ function arch_save_bulk_edit() {
  add_filter( 'hybrid_content_template', 'arch_templates' );
 
  function arch_templates( $template ) {
-$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
-     $template = trailingslashit( arch_builder_plugin()->dir_path ) . "templates/{$arch_component}.php";
 
-     if ( is_post_type_archive( abe_non_hierarchy_cpts() ) ) {
+	if ( is_post_type_archive( abe_non_hierarchy_cpts() ) ) {
 
+ 	$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
+     	
          if ( $arch_component ) {
-
-             $has_template = locate_template( array( "templates/{$arch_component}.php" ) );
+         	
+         	$template = trailingslashit( arch_builder_plugin()->dir_path ) . "templates/{$arch_component}.php";
+		$has_template = locate_template( array( "templates/{$arch_component}.php" ) );
 
              if ( $has_template )
                  $template = $has_template;
