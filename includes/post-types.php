@@ -7,7 +7,7 @@ add_action( 'init', 'arch_register_post_types' );
 
 
 function arch_register_post_types() {
-$arr = abe_non_hierarchy_cpts();
+$arr = arch_post_types();
 foreach ($arr as $value) {
 	register_extended_post_type( $value, array(
 		'admin_cols' => array(

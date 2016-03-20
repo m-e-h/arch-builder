@@ -104,13 +104,6 @@ final class Arch_Builder_Plugin {
 		require_once( $this->dir_path . 'includes/arch-edit-boxes.php' );
 	}
 
-	public function getOneAnswer( $post_id, $answer_id ) {
-	    return array(
-	        'answer_id' => $answer_id,
-	        'answer' => get_post_meta( $post_id, $answer_id, true )
-	    );
-	}
-
 	/**
 	 * Sets up initial actions.
 	 *
@@ -122,8 +115,28 @@ final class Arch_Builder_Plugin {
 		// Register activation hook.
 		//register_activation_hook( __FILE__, array( $this, 'activation' ) );
 
+		/* Add front end styles. */
+		add_action( 'wp_enqueue_scripts', array( $this, 'arch_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+
 		// Internationalize the text strings used.
 		//add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
+	}
+
+	/**
+	 * Loads the front end scripts and styles.  No styles are loaded if the theme supports the plugin.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function arch_scripts() {
+		/* Register the plugin script. */
+		wp_register_script( 'arch', trailingslashit( $this->js_uri ) . 'arch.js', false, false, true );
+
+		/* Load the plugin stylesheet if no theme support. */
+		if ( !current_theme_supports( 'arch-builder' ) )
+			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . 'arch.css' );
 	}
 
 	/**
@@ -133,9 +146,9 @@ final class Arch_Builder_Plugin {
 	 * @access public
 	 * @return void
 	 */
-	public function admin_register_scripts() {
+	public function admin_scripts() {
 
-		//wp_register_style( 'arch-builder-style', $this->dir_uri . 'css/arch-style.css' );
+		wp_enqueue_script( 'arch-bulk-quick-edit', trailingslashit( $this->js_uri ) . 'admin.js', array( 'jquery', 'inline-edit-post' ), false, true );
 	}
 
 	/**

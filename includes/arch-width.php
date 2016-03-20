@@ -1,7 +1,7 @@
 <?php
 
 add_filter( 'post_class', 'arch_width_post_classes', 10, 3 );
-
+add_filter( 'hybrid_attr_content', 'arch_grid' );
 
 
 function arch_width_post_classes($classes, $class, $post_id) {
@@ -10,4 +10,12 @@ function arch_width_post_classes($classes, $class, $post_id) {
 		$classes[]      = $achive_width;
 
     return $classes;
+}
+
+function arch_grid($attr) {
+
+    if ( is_post_type_archive( arch_post_types() ) ) {
+        $attr['class']   .= " o-grid";
+    }
+	return $attr;
 }

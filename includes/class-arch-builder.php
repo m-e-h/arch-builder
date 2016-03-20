@@ -24,7 +24,7 @@ class Arch_Builder {
 			'arch_block_metabox',
 			__( 'Archive Display', 'arch_builder' ),
 			array( $this, 'render_metabox' ),
-			abe_non_hierarchy_cpts(),
+			arch_post_types(),
 			'normal',
 			'default'
 		);

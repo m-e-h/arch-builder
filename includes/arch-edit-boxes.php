@@ -6,7 +6,7 @@ add_action( 'bulk_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
 add_action( 'quick_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
 function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 
-	if (in_array($post_type, abe_non_hierarchy_cpts()) && $column_name == 'arch_component') {
+	if (in_array($post_type, arch_post_types()) && $column_name == 'arch_component') {
 
 					?><fieldset class="inline-edit-col-right">
 						<div class="inline-edit-col">
@@ -23,7 +23,7 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 
 	}
 
-	if (in_array($post_type, abe_non_hierarchy_cpts()) && $column_name == 'arch_excerpt') {
+	if (in_array($post_type, arch_post_types()) && $column_name == 'arch_excerpt') {
 
 					?><fieldset class="inline-edit-col-right">
 						<div class="inline-edit-col">
@@ -40,7 +40,7 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 
 	}
 
-	if (in_array($post_type, abe_non_hierarchy_cpts()) && $column_name == 'arch_width') {
+	if (in_array($post_type, arch_post_types()) && $column_name == 'arch_width') {
 
 					?><fieldset class="inline-edit-col-right">
 						<div class="inline-edit-col">
@@ -60,11 +60,6 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 
 	}
 
-}
-
-add_action( 'admin_enqueue_scripts', 'arch_be_qe_enqueue_admin_scripts' );
-function arch_be_qe_enqueue_admin_scripts() {
-	wp_enqueue_script( 'arch-bulk-quick-edit', arch_builder_plugin()->js_uri . "bulk_quick_edit.js", array( 'jquery', 'inline-edit-post' ), '', true );
 }
 
 /**
@@ -90,7 +85,7 @@ function arch_be_qe_save_post($post_id, $post) {
 	if ( isset( $post->post_type ) && $post->post_type == 'revision' )
 		return $post_id;
 
-	if (in_array($post->post_type, abe_non_hierarchy_cpts())) {
+	if (in_array($post->post_type, arch_post_types())) {
 			/**
 			 * Because this action is run in several places, checking for the array key
 			 * keeps WordPress from editing data that wasn't in the form, i.e. if you had
@@ -150,12 +145,12 @@ function arch_save_bulk_edit() {
 
  function arch_templates( $template ) {
 
-	if ( is_post_type_archive( abe_non_hierarchy_cpts() ) ) {
+	if ( is_post_type_archive( arch_post_types() ) ) {
 
  	$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
-     	
+
          if ( $arch_component ) {
-         	
+
          	$template = trailingslashit( arch_builder_plugin()->dir_path ) . "templates/{$arch_component}.php";
 		$has_template = locate_template( array( "templates/{$arch_component}.php" ) );
 
@@ -191,6 +186,17 @@ if ( ! function_exists( 'arch_width_options' ) ) {
 			'u-3of4-md'      => '3/4',
 		);
 	}
+}
+
+
+function arch_post_types($cpts = array()) {
+	$cpts = array( 'post' );
+
+	if (has_filter('arch_add_post_types')) {
+		$cpts = apply_filters('arch_add_post_types', $cpts);
+	}
+
+	return $cpts;
 }
 
 
