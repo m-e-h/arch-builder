@@ -94,11 +94,10 @@ final class Arch_Builder_Plugin {
 	 */
 	private function includes() {
 
-		require_once( $this->dir_path . 'includes/post-types.php' );
-		require_once( $this->dir_path . 'includes/class-arch-builder.php' );
-		//require_once( $this->dir_path . 'includes/options.php' );
-		require_once( $this->dir_path . 'includes/arch-width.php' );
-		require_once( $this->dir_path . 'includes/arch-edit-boxes.php' );
+		require_once $this->dir_path . 'includes/post-types.php';
+		require_once $this->dir_path . 'includes/class-arch-builder.php';
+		require_once $this->dir_path . 'includes/arch-width.php';
+		require_once $this->dir_path . 'includes/arch-edit-boxes.php';
 	}
 
 	/**
@@ -110,7 +109,7 @@ final class Arch_Builder_Plugin {
 	 */
 	private function setup_actions() {
 		// Register activation hook.
-		//register_activation_hook( __FILE__, array( $this, 'activation' ) );
+		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 
 		/* Add front end styles. */
 		add_action( 'wp_enqueue_scripts', array( $this, 'arch_scripts' ) );
@@ -128,12 +127,21 @@ final class Arch_Builder_Plugin {
 	 * @return void
 	 */
 	public function arch_scripts() {
+
+		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
+
 		/* Register the plugin script. */
-		wp_register_script( 'arch', trailingslashit( $this->js_uri ) . 'arch.js', false, false, true );
+		wp_register_script( 'arch-tabs', trailingslashit( $this->js_uri ) . 'tabby.js', false, false, true );
+		wp_register_script( 'arch-toggle', trailingslashit( $this->js_uri ) . 'houdini.js', false, false, true );
 
 		/* Load the plugin stylesheet if no theme support. */
 		if ( !current_theme_supports( 'arch-builder' ) )
 			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . 'arch.css' );
+
+		if ( !$arch_component == '' ) {
+			wp_enqueue_script('arch-tabs');
+			wp_enqueue_script('arch-toggle');
+		}
 	}
 
 	/**
@@ -160,10 +168,10 @@ final class Arch_Builder_Plugin {
 		load_plugin_textdomain( 'arch-builder', false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) . 'languages' );
 	}
 
-	// public function activation() {
-	// 	// Make sure any rewrite functionality has been loaded.
-	// 	flush_rewrite_rules();
-	// }
+	public function activation() {
+		// Make sure any rewrite functionality has been loaded.
+		flush_rewrite_rules();
+	}
 
 }
 
