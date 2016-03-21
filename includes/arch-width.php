@@ -14,7 +14,7 @@ function arch_width_post_classes($classes, $class, $post_id) {
 
 function arch_grid($attr) {
 
-    if ( is_post_type_archive( arch_post_types() ) ) {
+    if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
         $attr['class']   .= " o-grid";
     }
 	return $attr;

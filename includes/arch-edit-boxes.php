@@ -8,55 +8,55 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 
 	if (in_array($post_type, arch_post_types()) && $column_name == 'arch_component') {
 
-					?><fieldset class="inline-edit-col-right">
-						<div class="inline-edit-col">
-							<label class="inline-edit-status alignleft">
-								<span class="title">Component Type </span>
-                                    <select name="arch_component">
-                                    	<option value="card"><?php _e( 'Card' ); ?></option>
-                                    	<option value="tabs"><?php _e( 'Tab Group' ); ?></option>
-                                    	<option value="accordion"><?php _e( 'Accordion Group' ); ?></option>
-                                    </select>
-							</label>
-						</div>
-					</fieldset><?php
+		?><fieldset class="inline-edit-col-right">
+			<div class="inline-edit-col">
+				<label class="inline-edit-status alignleft">
+					<span class="title">Component Type </span>
+                        <select name="arch_component">
+                        	<option value="card"><?php _e( 'Card' ); ?></option>
+                        	<option value="tabs"><?php _e( 'Tab Group' ); ?></option>
+                        	<option value="accordion"><?php _e( 'Accordion Group' ); ?></option>
+                        </select>
+				</label>
+			</div>
+		</fieldset><?php
 
 	}
 
 	if (in_array($post_type, arch_post_types()) && $column_name == 'arch_excerpt') {
 
-					?><fieldset class="inline-edit-col-right">
-						<div class="inline-edit-col">
-							<label class="inline-edit-status alignleft">
-								<span class="title">Show content </span>
-                                    <select name="arch_excerpt">
-                                    	<option value="excerpt"><?php _e( 'Excerpt' ); ?></option>
-                                    	<option value="content"><?php _e( 'Content' ); ?></option>
-                                    	<option value="title-only"><?php _e( 'Title Only' ); ?></option>
-                                    </select>
-							</label>
-						</div>
-					</fieldset><?php
+		?><fieldset class="inline-edit-col-right">
+			<div class="inline-edit-col">
+				<label class="inline-edit-status alignleft">
+					<span class="title">Show content </span>
+	                    <select name="arch_excerpt">
+	                    	<option value="excerpt"><?php _e( 'Excerpt' ); ?></option>
+	                    	<option value="content"><?php _e( 'Content' ); ?></option>
+	                    	<option value="title-only"><?php _e( 'Title Only' ); ?></option>
+	                    </select>
+				</label>
+			</div>
+		</fieldset><?php
 
 	}
 
 	if (in_array($post_type, arch_post_types()) && $column_name == 'arch_width') {
 
-					?><fieldset class="inline-edit-col-right">
-						<div class="inline-edit-col">
-							<label class="inline-edit-status alignleft">
-								<span class="title">Width </span>
-                                    <select name="arch_width">
-                                    	<option value="u-1of1-md"><?php _e( '100%' ); ?></option>
-                                    	<option value="u-1of4-md"><?php _e( '25%' ); ?></option>
-                                    	<option value="u-1of3-md"><?php _e( '33.33%' ); ?></option>
-										<option value="u-1of2-md"><?php _e( '50%' ); ?></option>
-										<option value="u-2of3-md"><?php _e( '66.66%' ); ?></option>
-										<option value="u-3of4-md"><?php _e( '75%' ); ?></option>
-                                    </select>
-							</label>
-						</div>
-					</fieldset><?php
+		?><fieldset class="inline-edit-col-right">
+			<div class="inline-edit-col">
+				<label class="inline-edit-status alignleft">
+					<span class="title">Width </span>
+                        <select name="arch_width">
+                        	<option value="u-1of1-md"><?php _e( '100%' ); ?></option>
+                        	<option value="u-1of4-md"><?php _e( '25%' ); ?></option>
+                        	<option value="u-1of3-md"><?php _e( '33.33%' ); ?></option>
+							<option value="u-1of2-md"><?php _e( '50%' ); ?></option>
+							<option value="u-2of3-md"><?php _e( '66.66%' ); ?></option>
+							<option value="u-3of4-md"><?php _e( '75%' ); ?></option>
+                        </select>
+				</label>
+			</div>
+		</fieldset><?php
 
 	}
 
@@ -138,6 +138,11 @@ function arch_save_bulk_edit() {
 
 }
 
+
+function arch_is_home() {
+	return apply_filters( 'arch_is_home', in_array('post', arch_post_types()) && is_home() );
+}
+
 /**
  * Add templates to hybrid_get_content_template()
  */
@@ -145,14 +150,14 @@ function arch_save_bulk_edit() {
 
  function arch_templates( $template ) {
 
-	if ( is_post_type_archive( arch_post_types() ) ) {
+	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
 
  	$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
          if ( $arch_component ) {
 
          	$template = trailingslashit( arch_builder_plugin()->dir_path ) . "templates/{$arch_component}.php";
-		$has_template = locate_template( array( "templates/{$arch_component}.php" ) );
+			$has_template = locate_template( array( "templates/{$arch_component}.php" ) );
 
              if ( $has_template )
                  $template = $has_template;

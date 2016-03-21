@@ -93,13 +93,10 @@ final class Arch_Builder_Plugin {
 	 * @return void
 	 */
 	private function includes() {
-		// if ( file_exists( $this->dir_path . 'vendor/CMB2/init.php' ) )
-		// 	require_once( $this->dir_path . 'vendor/CMB2/init.php' );
 
 		require_once( $this->dir_path . 'includes/post-types.php' );
 		require_once( $this->dir_path . 'includes/class-arch-builder.php' );
 		//require_once( $this->dir_path . 'includes/options.php' );
-		//require_once( $this->dir_path . 'includes/metaboxes.php' );
 		require_once( $this->dir_path . 'includes/arch-width.php' );
 		require_once( $this->dir_path . 'includes/arch-edit-boxes.php' );
 	}
