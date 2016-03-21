@@ -6,13 +6,12 @@
  */
 ?>
 <article <?php hybrid_attr('post'); ?>>
-CCCAAAAAAAAAAAAAAAAARRRDSSS
 
         <header <?php hybrid_attr('entry-header'); ?>>
             <?php
                 get_the_image(array(
-                    'size' => 'abe-card-md',
-                    'image_class' => 'u-br-t u-1of1',
+                    //'size'               => 'abe-card-md',
+                    'image_class'        => 'u-1of1',
                     'before'             => '<div class="card-img u-overflow-hidden">',
                     'after'              => '</div>',
                 ));

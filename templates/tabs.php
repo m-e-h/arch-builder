@@ -4,25 +4,28 @@
  *
  * @package abraham
  */
-$query = new WP_Query( array( 'post_type' => get_post_type(),'post_parent' => get_the_ID() ) ); ?>
-<div class="o-cell u-1of2-md u-br row__tabs mdl-tabs mdl-js-tabs">
-  <div class="mdl-tabs__tab-bar">
+?>
+<?php $query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
+
+<div <?php hybrid_attr('post'); ?>>
+  <div data-tabs class="tabs tab-bar u-flex u-flex-wrap">
 
     <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-      <a href="#tab<?php the_ID(); ?>" class="mdl-tabs__tab u-f-plus"><?php the_title(); ?></a>
+      <a data-tab href="#tab<?php the_ID(); ?>" class="tabs-tab u-p2 u-text-center u-flexed-auto" data-behaviour="tab"><?php the_title(); ?></a>
+
     <?php endwhile; ?>
 
         <?php $query->rewind_posts(); ?>
   </div>
+<div data-tabs-content>
+    <?php while ($query->have_posts()) : $query->the_post(); ?>
 
+    <div data-tabs-pane class="tabs-pane u-p2 u-f-plus tab<?php the_ID(); ?>" id="tab<?php the_ID(); ?>">
+    <?php arch_excerpt(); ?>
+    </div>
 
-  <?php while ($query->have_posts()) : $query->the_post(); ?>
-
-  <div class="mdl-tabs__panel u-p2 u-f-plus tab<?php the_ID(); ?>" id="tab<?php the_ID(); ?>">
-    <?php the_content(); ?>
-  </div>
-
-  <?php endwhile; ?>
+    <?php endwhile; ?>
+</div>
 <?php wp_reset_postdata(); ?>
 </div>
