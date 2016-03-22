@@ -56,6 +56,7 @@ class Arch_Builder {
 		echo '			<option value="card" ' . selected( $arch_component, 'card', false ) . '> ' . __( 'Card', 'arch_builder' ) . '</option>';
 		echo '			<option value="tabs" ' . selected( $arch_component, 'tabs', false ) . '> ' . __( 'Tab Group', 'arch_builder' ) . '</option>';
 		echo '			<option value="accordion" ' . selected( $arch_component, 'accordion', false ) . '> ' . __( 'Accordion Group', 'arch_builder' ) . '</option>';
+		echo '			<option value="slides" ' . selected( $arch_component, 'accordion', false ) . '> ' . __( 'Slideshow Group', 'arch_builder' ) . '</option>';
 		echo '			</select>';
 		echo '		</td>';
 		echo '	</tr>';

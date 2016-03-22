@@ -12,7 +12,7 @@
 
     <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-      <a data-tab href="#tab<?php the_ID(); ?>" class="tabs-tab u-p2 u-text-center u-flexed-auto" data-behaviour="tab"><?php the_title(); ?></a>
+      <a data-tab href="#tab<?php the_ID(); ?>" class="tabs-tab u-p2 u-text-center u-flexed-auto u-f-plus" data-behaviour="tab"><?php the_title(); ?></a>
 
     <?php endwhile; ?>
 
@@ -21,7 +21,7 @@
 <div data-tabs-content>
     <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-    <div data-tabs-pane class="tabs-pane u-p2 u-f-plus tab<?php the_ID(); ?>" id="tab<?php the_ID(); ?>">
+    <div data-tabs-pane class="tabs-pane u-p2 tab<?php the_ID(); ?>" id="tab<?php the_ID(); ?>">
     <?php arch_excerpt(); ?>
     </div>
 

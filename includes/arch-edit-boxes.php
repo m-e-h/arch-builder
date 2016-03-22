@@ -18,6 +18,7 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
                         	<option value="card"><?php _e( 'Card' ); ?></option>
                         	<option value="tabs"><?php _e( 'Tab Group' ); ?></option>
                         	<option value="accordion"><?php _e( 'Accordion Group' ); ?></option>
+                        	<option value="slides"><?php _e( 'Slideshow Group' ); ?></option>
                         </select>
 				</label>
 			</div>
