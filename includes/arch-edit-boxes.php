@@ -303,3 +303,8 @@ function arch_landing_layout($layout) {
     }
     return $archive_layout && 'default' !== $archive_layout ? $archive_layout : $layout;
 }
+
+add_action('init', 'arch_image_sizes', 5);
+function arch_image_sizes() {
+	add_image_size('arch-hd', 1200, 675, true);
+}

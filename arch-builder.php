@@ -133,12 +133,14 @@ final class Arch_Builder_Plugin {
 		/* Register the plugin script. */
 		wp_register_script( 'arch-tabs', trailingslashit( $this->js_uri ) . 'tabby.js', false, false, true );
 		wp_register_script( 'arch-toggle', trailingslashit( $this->js_uri ) . 'houdini.js', false, false, true );
+		wp_register_script( 'flickity', trailingslashit( $this->js_uri ) . 'flickity.pkgd.js', false, false, true );
 
 		/* Load the plugin stylesheet if no theme support. */
 		if ( !current_theme_supports( 'arch-builder' ) )
 			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . 'arch.css' );
 
 		if ( !$arch_component == '' ) {
+			wp_enqueue_script('flickity');
 			wp_enqueue_script('arch-tabs');
 			wp_enqueue_script('arch-toggle');
 		}

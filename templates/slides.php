@@ -17,7 +17,7 @@
 
 			<?php
 		        get_the_image(array(
-		            'size'         => 'abe-hd',
+		            'size'         => 'arch-hd',
 		            'image_class'  => 'gallery-image u-1of1',
 		            'link_to_post' => false,
 		        ));
