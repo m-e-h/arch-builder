@@ -15,7 +15,7 @@
 
 	<?php while ($arch_query->have_posts()) : $arch_query->the_post(); ?>
 
-		<div class="gallery-cell u-1of1">
+		<div class="gallery-cell u-1of1 u-grad-overlay">
 
 			<?php
 		        get_the_image(array(
