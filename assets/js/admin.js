@@ -22,16 +22,45 @@
 			// define the edit row
 			var $edit_row = $('#edit-' + $post_id);
 
-			// get the release date
+			// get the meta
 			var $arch_component = $('tr#post-' + $post_id + '>td.arch_component').text();
 			var $arch_excerpt = $('tr#post-' + $post_id + '>td.arch_excerpt').text();
 			var $arch_width = $('tr#post-' + $post_id + '>td.arch_width').text();
 
-			// set the film rating
+			// set the meta
 			$edit_row.find('select[name="arch_component"]').val($arch_component);
 			$edit_row.find('select[name="arch_excerpt"]').val($arch_excerpt);
 			$edit_row.find('select[name="arch_width"]').val($arch_width);
 
+				var selectedComponent = $edit_row.find('select[name="arch_component"]').val();
+				var archExcerpt = $edit_row.find('.inline-edit-excerpt');
+
+				archExcerpt.show();
+
+				if( selectedComponent  === 'slides' ) {
+					archExcerpt.hide();
+				} else if ( selectedComponent  === 'tabs' ){
+					archExcerpt.hide();
+				} else if ( selectedComponent  === 'accordion' ){
+					archExcerpt.hide();
+				} else {
+					archExcerpt.show();
+				}
+
+				$edit_row.find('select[name="arch_component"]').on('change', function() {
+					var selectedComponent = $edit_row.find('select[name="arch_component"]').val();
+
+					if( selectedComponent  === 'slides' ) {
+						archExcerpt.hide();
+					} else if ( selectedComponent  === 'tabs' ){
+						archExcerpt.hide();
+					} else if ( selectedComponent  === 'accordion' ){
+						archExcerpt.hide();
+					} else {
+						archExcerpt.show();
+					}
+
+				});
 		}
 
 	};
