@@ -32,7 +32,7 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
 				<label class="inline-edit-title alignleft">
-					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M16 19H3v-2h13v2zm5-10H3v2h18V9zM3 5v2h11V5H3zm14 0v2h4V5h-4zm-6 8v2h10v-2H11zm-8 0v2h5v-2H3z"/></svg> Title </span>
+					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M3 19h18v3H3v-3zm12.82-2h3.424L14 3h-4L4.756 17H8.18l1.067-3.5h5.506L15.82 17zm-1.952-6h-3.73l1.868-5.725L13.868 11z"/></svg> Title </span>
 	                    <select name="arch_title" class="arch_title">
 							<option value=""><?php _e( ' ' ); ?></option>
 	                    	<option value="link-title"><?php _e( 'Linked Title' ); ?></option>
@@ -68,7 +68,7 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
 				<label class="inline-edit-width alignleft">
-					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M18.966 7.966l-.71.71 2.813 2.82h-6.14v1.008h6.137l-2.815 2.82.71.71L23 12l-4.034-4.034zM5.034 16.034l.71-.71-2.813-2.82h6.14v-1.008H2.93l2.815-2.82-.71-.71L1 12l4.034 4.034z"/></svg> Width </span>
+					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M16 13H5.828l2.086 2.086L6.5 16.5 2 12l4.5-4.5 1.414 1.414L5.828 11H16zm-8-2h10.172l-2.086-2.086L17.5 7.5 22 12l-4.5 4.5-1.414-1.414L18.172 13H8z"/></svg> Width </span>
                         <select name="arch_width" class="arch_width">
                         	<option value=""><?php _e( ' ' ); ?></option>
                         	<option value="u-1of1-md"><?php _e( '100%' ); ?></option>
