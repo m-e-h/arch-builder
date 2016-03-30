@@ -27,12 +27,14 @@
 			var $arch_title = $('tr#post-' + $post_id + '>td.arch_title').text();
 			var $arch_excerpt = $('tr#post-' + $post_id + '>td.arch_excerpt').text();
 			var $arch_width = $('tr#post-' + $post_id + '>td.arch_width').text();
+			var $arch_height = $('tr#post-' + $post_id + '>td.arch_height').text();
 
 			// set the meta
 			$edit_row.find('select[name="arch_component"]').val($arch_component);
 			$edit_row.find('select[name="arch_title"]').val($arch_title);
 			$edit_row.find('select[name="arch_excerpt"]').val($arch_excerpt);
 			$edit_row.find('select[name="arch_width"]').val($arch_width);
+			$edit_row.find('input[name="arch_height"][value="' + $arch_height + '"]' ).prop( 'checked', true );
 
 				var selectedComponent = $edit_row.find('select[name="arch_component"]').val();
 				var archExcerpt = $edit_row.find('.inline-edit-excerpt');
@@ -83,6 +85,8 @@
 		var $arch_title = $bulk_row.find('select[name="arch_title"]').val();
 		var $arch_excerpt = $bulk_row.find('select[name="arch_excerpt"]').val();
 		var $arch_width = $bulk_row.find('select[name="arch_width"]').val();
+		var $arch_height = $bulk_row.find('input[name="arch_height"]').val();
+
 		// save the data
 		$.ajax({
 			url: ajaxurl, // this is a variable that WordPress has already defined for us
@@ -95,7 +99,8 @@
 				arch_component: $arch_component,
 				arch_title: $arch_title,
 				arch_excerpt: $arch_excerpt,
-				arch_width: $arch_width
+				arch_width: $arch_width,
+				arch_height: $arch_height
 			}
 		});
 

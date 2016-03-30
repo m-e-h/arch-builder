@@ -161,17 +161,6 @@ http://flickity.metafizzy.co
 	width: 100%;
 }
 
-/*.o-cell {
-	display: inline-block;
-	margin: 0 0.75rem 0.75rem;
-	-webkit-align-self: flex-start;
-	align-self: flex-start;
-	-webkit-flex: 1 1 auto;
-	-ms-flex: 1 1 auto;
-	flex: 1 1 auto;
-	-ms-flex-item-align: start;
-}*/
-
 html .u-1of1 {
 	width: 100%;
 }
