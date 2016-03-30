@@ -25,7 +25,7 @@
 		        ));
 			?>
 			<div class="cta-content u-ab">
-				<h2 class="cta-heading u-h2"><?php the_title(); ?></h2>
+				<?php arch_title(); ?>
 				<div class="cta-text u-f-plus "><?php arch_excerpt(); ?></div>
 			</div>
 		</div>

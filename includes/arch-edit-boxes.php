@@ -15,11 +15,30 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 				<label class="inline-edit-component alignleft">
 					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M22 17c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5zM6.5 6.5h3.8L7 1 1 11h5.5V6.5zm9.5 4.085V8H8v8h2.585c.433-2.783 2.632-4.982 5.415-5.415z"/></svg> Type </span>
                         <select name="arch_component" class="arch_component" >
+                        	<option value=""><?php _e( ' ' ); ?></option>
                         	<option value="card"><?php _e( 'Card' ); ?></option>
                         	<option value="tabs"><?php _e( 'Tab Group' ); ?></option>
                         	<option value="accordion"><?php _e( 'Accordion Group' ); ?></option>
                         	<option value="slides"><?php _e( 'Slideshow Group' ); ?></option>
                         </select>
+				</label>
+			</div>
+		</fieldset><?php
+
+	}
+
+	if (in_array($post_type, arch_post_types()) && $column_name == 'arch_title') {
+
+		?><fieldset class="inline-edit-col-center">
+			<div class="inline-edit-col">
+				<label class="inline-edit-title alignleft">
+					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M16 19H3v-2h13v2zm5-10H3v2h18V9zM3 5v2h11V5H3zm14 0v2h4V5h-4zm-6 8v2h10v-2H11zm-8 0v2h5v-2H3z"/></svg> Title </span>
+	                    <select name="arch_title" class="arch_title">
+							<option value=""><?php _e( ' ' ); ?></option>
+	                    	<option value="link-title"><?php _e( 'Linked Title' ); ?></option>
+	                    	<option value="no-link-title"><?php _e( 'Title (no link)' ); ?></option>
+	                    	<option value="no-title"><?php _e( 'Hide Title' ); ?></option>
+	                    </select>
 				</label>
 			</div>
 		</fieldset><?php
@@ -33,9 +52,10 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 				<label class="inline-edit-excerpt alignleft">
 					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M16 19H3v-2h13v2zm5-10H3v2h18V9zM3 5v2h11V5H3zm14 0v2h4V5h-4zm-6 8v2h10v-2H11zm-8 0v2h5v-2H3z"/></svg> Excerpt </span>
 	                    <select name="arch_excerpt" class="arch_excerpt">
+                        	<option value=""><?php _e( ' ' ); ?></option>
 	                    	<option value="excerpt"><?php _e( 'Excerpt' ); ?></option>
 	                    	<option value="content"><?php _e( 'Content' ); ?></option>
-	                    	<option value="title-only"><?php _e( 'Title Only' ); ?></option>
+	                    	<option value="none"><?php _e( 'None' ); ?></option>
 	                    </select>
 				</label>
 			</div>
@@ -50,6 +70,7 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 				<label class="inline-edit-width alignleft">
 					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M18.966 7.966l-.71.71 2.813 2.82h-6.14v1.008h6.137l-2.815 2.82.71.71L23 12l-4.034-4.034zM5.034 16.034l.71-.71-2.813-2.82h6.14v-1.008H2.93l2.815-2.82-.71-.71L1 12l4.034 4.034z"/></svg> Width </span>
                         <select name="arch_width" class="arch_width">
+                        	<option value=""><?php _e( ' ' ); ?></option>
                         	<option value="u-1of1-md"><?php _e( '100%' ); ?></option>
                         	<option value="u-1of4-md"><?php _e( '25%' ); ?></option>
                         	<option value="u-1of3-md"><?php _e( '33.33%' ); ?></option>
@@ -94,7 +115,7 @@ function arch_be_qe_save_post($post_id, $post) {
 			 * keeps WordPress from editing data that wasn't in the form, i.e. if you had
 			 * this post meta on your "Quick Edit" but didn't have it on the "Edit Post" screen.
 			 */
-			$custom_fields = array( 'arch_component','arch_excerpt','arch_width' );
+			$custom_fields = array( 'arch_component','arch_title','arch_excerpt','arch_width' );
 
 			foreach( $custom_fields as $field ) {
 
@@ -121,7 +142,7 @@ function arch_save_bulk_edit() {
 	if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
 
 		// get the custom fields
-		$custom_fields = array( 'arch_component','arch_excerpt','arch_width' );
+		$custom_fields = array( 'arch_component','arch_title','arch_excerpt','arch_width' );
 
 		foreach( $custom_fields as $field ) {
 
@@ -165,6 +186,7 @@ function arch_add_cpt_columns($columns) {
 		return $columns;
 	return array_merge($columns,
 		array('arch_component' => __('Type'),
+		    'arch_title'     => __( 'Title Display'),
 		    'arch_excerpt'     => __( 'Content'),
 			'arch_width'          => __('Width'),
 		)
@@ -189,6 +211,17 @@ function arch_manage_cpt_columns($column, $post_id) {
 			else
 				echo esc_html( $arch_component );
 
+			break;
+
+		case 'arch_title' :
+
+			$arch_title = get_post_meta( $post_id, 'arch_title', true );
+
+			if ( empty( $arch_title ) )
+				echo __( '_' );
+
+			else
+				echo esc_html( $arch_title );
 			break;
 
 		case 'arch_excerpt' :
@@ -255,9 +288,21 @@ function arch_is_home() {
  }
 
 
+ function arch_title() {
+ 	$arch_title = get_post_meta( get_the_ID(), 'arch_title', true );
+ 	if ($arch_title == 'no-title')
+ 		return;
+
+ 	if ($arch_title == 'no-link-title') {
+		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' );
+	} else {
+		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' );
+	}
+ }
+
 function arch_excerpt() {
 	$arch_excerpt = get_post_meta( get_the_ID(), 'arch_excerpt', true );
-	if ($arch_excerpt == 'title-only')
+	if ($arch_excerpt == 'none')
 		return;
 
 	return $arch_excerpt == 'content' ? the_content() : the_excerpt();

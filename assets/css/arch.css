@@ -317,6 +317,7 @@ html .u-4of5 {
 .collapse-toggle {
 	display: none;
 	visibility: hidden;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .js-houdini .collapse-toggle {
@@ -342,27 +343,35 @@ html .u-4of5 {
 	transform: rotate(180deg);
 }
 
-.js-houdini .collapse.active {
-	max-height: 999px;
-	opacity: 1;
-}
+
 
 .js-houdini .collapse {
 	overflow: hidden;
+    height: 100%;
 	max-height: 0;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	opacity: 0.5;
-	background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.01) 90%, rgba(0, 0, 0, 0.02) 100%);
-	-webkit-transition: max-height, opacity 0.3s;
-	transition: max-height, opacity 0.3s;
+	-webkit-transition: max-height 0.3s ease-out;
+	transition: max-height 0.3s ease-out;
+}
+
+.js-houdini .collapse.active {
+	max-height: 500px;
 }
 
 .js-houdini .collapse-wrap {
-	display: none;
+    opacity: 0.5;
+    -webkit-transition: all 0.1s;
+	transition: all 0.1s;
+}
+
+.js-houdini .collapse:not(.active) .collapse-wrap {
+	padding-top: 0;
+    padding-bottom: 0;
+    height: 0;
 }
 
 .js-houdini .active > .collapse-wrap {
-	display: block;
+	height: auto;
+    opacity: 0.9;
 }
 
 /*  TABS */
@@ -453,9 +462,9 @@ html .u-4of5 {
 	position: absolute;
 }
 
-.cta-heading {
+/*.cta-heading {
 	max-width: 80%;
-}
+}*/
 
 .cta-text {
 	z-index: 1;
