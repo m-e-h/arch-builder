@@ -161,7 +161,7 @@ http://flickity.metafizzy.co
 	width: 100%;
 }
 
-.o-cell {
+/*.o-cell {
 	display: inline-block;
 	margin: 0 0.75rem 0.75rem;
 	-webkit-align-self: flex-start;
@@ -170,7 +170,7 @@ http://flickity.metafizzy.co
 	-ms-flex: 1 1 auto;
 	flex: 1 1 auto;
 	-ms-flex-item-align: start;
-}
+}*/
 
 html .u-1of1 {
 	width: 100%;
