@@ -4,7 +4,7 @@
  *
  * @package arch-builder
  */
-?>
+wp_enqueue_script('flickity'); ?>
 
 
 <div <?php hybrid_attr('post'); ?>>

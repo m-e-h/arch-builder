@@ -94,8 +94,7 @@
 			async: false,
 			cache: false,
 			data: {
-				action: 'arch_save_bulk_edit', // this is the name of our WP AJAX function that we'll set up next
-				post_ids: $post_ids, // and these are the 2 parameters we're passing to our function
+				action: 'arch_save_bulk_edit',
 				arch_component: $arch_component,
 				arch_title: $arch_title,
 				arch_excerpt: $arch_excerpt,

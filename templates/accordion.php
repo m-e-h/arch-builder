@@ -1,10 +1,10 @@
 <?php
 /**
- * General fallback template for post archives.
  *
- * @package abraham
+ * @package arch-builder
  */
-?>
+wp_enqueue_script('arch-toggle'); ?>
+
 <?php $query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
 
 <div <?php hybrid_attr('post'); ?>>
