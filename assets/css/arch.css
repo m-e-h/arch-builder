@@ -161,90 +161,93 @@ http://flickity.metafizzy.co
 	width: 100%;
 }
 
-html .u-1of1 {
+.arch.u-1of1 {
 	width: 100%;
 }
 
-html .u-1of2 {
+.arch.u-1of2 {
 	width: calc(50% - 1.5rem);
 }
 
-html .u-1of3 {
+.arch.u-1of3 {
 	width: calc(33.33% - 1.5rem);
 }
 
-html .u-2of3 {
+.arch.u-2of3 {
 	width: calc(66.66% - 1.5rem);
 }
 
-html .u-1of4 {
+.arch.u-1of4 {
 	width: calc(25% - 1.5rem);
 }
 
-html .u-3of4 {
+.arch.u-3of4 {
 	width: calc(75% - 1.5rem);
 }
 
-html .u-1of5 {
+.arch.u-1of5 {
 	width: calc(20% - 1.5rem);
 }
 
-html .u-2of5 {
+.arch.u-2of5 {
 	width: calc(40% - 1.5rem);
 }
 
-html .u-3of5 {
+.arch.u-3of5 {
 	width: calc(60% - 1.5rem);
 }
 
-html .u-4of5 {
+.arch.u-4of5 {
 	width: calc(80% - 1.5rem);
 }
 
 @media screen and (min-width: 48em) {
-	html .u-1of1-md {
+	.arch.u-1of1-md {
 		width: 100%;
 	}
-	html .u-1of2-md {
+	.arch.u-1of2-md {
 		width: calc(50% - 1.5rem);
 	}
-	html .u-1of2-md:last-of-type {
+	.arch.u-1of2-md:last-of-type {
 		max-width: calc(50% - 1.5rem);
 	}
-	html .u-1of3-md {
+	.arch.u-1of3-md {
 		width: calc(33.33% - 1.5rem);
 	}
-	html .u-1of3-md:last-of-type,
-	html .u-1of3-md:nth-last-child(2) {
+	.arch.u-1of3-md:last-of-type,
+	.arch.u-1of3-md:nth-last-child(2) {
 		max-width: calc(33.33% - 1.5rem);
 	}
-	html .u-2of3-md {
+	.arch.u-2of3-md {
 		width: calc(66.66% - 1.5rem);
 	}
-	html .u-1of4-md {
+    .arch.u-2of3-md:last-of-type {
+		max-width: calc(66.66% - 1.5rem);
+	}
+	.arch.u-1of4-md {
 		width: calc(25% - 1.5rem);
 	}
-	html .u-1of4-md:last-of-type,
-	html .u-1of4-md:nth-last-child(2),
-	html .u-1of4-md:nth-last-child(3) {
+	.arch.u-1of4-md:last-of-type,
+	.arch.u-1of4-md:nth-last-child(2),
+	.arch.u-1of4-md:nth-last-child(3) {
 		max-width: calc(25% - 1.5rem);
 	}
-	html .u-3of4-md {
+	.arch.u-3of4-md {
 		width: calc(75% - 1.5rem);
 	}
-	html .u-1of5-md {
+	.arch.u-1of5-md {
 		width: calc(20% - 1.5rem);
 	}
-	html .u-2of5-md {
+	.arch.u-2of5-md {
 		width: calc(40% - 1.5rem);
 	}
-	html .u-3of5-md {
+	.arch.u-3of5-md {
 		width: calc(60% - 1.5rem);
 	}
-	html .u-4of5-md {
+	.arch.u-4of5-md {
 		width: calc(80% - 1.5rem);
 	}
-	html .u-width-auto-md {
+	.arch.u-width-auto-md {
 		width: auto;
 	}
 }
@@ -460,394 +463,394 @@ html .u-4of5 {
 	max-width: 60%;
 }
 
-html .u-m1 {
+.arch.u-m1 {
 	margin: 0.5rem;
 }
 
-html .u-mt1 {
+.arch.u-mt1 {
 	margin-top: 0.5rem;
 }
 
-html .u-mr1 {
+.arch.u-mr1 {
 	margin-right: 0.5rem;
 }
 
-html .u-mb1 {
+.arch.u-mb1 {
 	margin-bottom: 0.5rem;
 }
 
-html .u-ml1 {
+.arch.u-ml1 {
 	margin-left: 0.5rem;
 }
 
-html .u-m2 {
+.arch.u-m2 {
 	margin: 1rem;
 }
 
-html .u-mt2 {
+.arch.u-mt2 {
 	margin-top: 1rem;
 }
 
-html .u-mr2 {
+.arch.u-mr2 {
 	margin-right: 1rem;
 }
 
-html .u-mb2 {
+.arch.u-mb2 {
 	margin-bottom: 1rem;
 }
 
-html .u-ml2 {
+.arch.u-ml2 {
 	margin-left: 1rem;
 }
 
-html .u-m3 {
+.arch.u-m3 {
 	margin: 1.5rem;
 }
 
-html .u-mt3 {
+.arch.u-mt3 {
 	margin-top: 1.5rem;
 }
 
-html .u-mr3 {
+.arch.u-mr3 {
 	margin-right: 1.5rem;
 }
 
-html .u-mb3 {
+.arch.u-mb3 {
 	margin-bottom: 1.5rem;
 }
 
-html .u-ml3 {
+.arch.u-ml3 {
 	margin-left: 1.5rem;
 }
 
-html .u-m4 {
+.arch.u-m4 {
 	margin: 3rem;
 }
 
-html .u-mt4 {
+.arch.u-mt4 {
 	margin-top: 3rem;
 }
 
-html .u-mr4 {
+.arch.u-mr4 {
 	margin-right: 3rem;
 }
 
-html .u-mb4 {
+.arch.u-mb4 {
 	margin-bottom: 3rem;
 }
 
-html .u-ml4 {
+.arch.u-ml4 {
 	margin-left: 3rem;
 }
 
-html .u-mx1 {
+.arch.u-mx1 {
 	margin-right: 0.5rem;
 	margin-left: 0.5rem;
 }
 
-html .u-mx2 {
+.arch.u-mx2 {
 	margin-right: 1rem;
 	margin-left: 1rem;
 }
 
-html .u-mx3 {
+.arch.u-mx3 {
 	margin-right: 1.5rem;
 	margin-left: 1.5rem;
 }
 
-html .u-mx4 {
+.arch.u-mx4 {
 	margin-right: 3rem;
 	margin-left: 3rem;
 }
 
-html .u-mtn1 {
+.arch.u-mtn1 {
 	margin-top: -0.5rem;
 }
 
-html .u-mbn1 {
+.arch.u-mbn1 {
 	margin-bottom: -0.5rem;
 }
 
-html .u-mln1 {
+.arch.u-mln1 {
 	margin-left: -0.5rem;
 }
 
-html .u-mrn1 {
+.arch.u-mrn1 {
 	margin-right: -0.5rem;
 }
 
-html .u-mxn1 {
+.arch.u-mxn1 {
 	margin-right: -0.5rem;
 	margin-left: -0.5rem;
 }
 
-html .u-mtn2 {
+.arch.u-mtn2 {
 	margin-top: -1rem;
 }
 
-html .u-mtn3 {
+.arch.u-mtn3 {
 	margin-top: -1.5rem;
 }
 
-html .u-mtn4 {
+.arch.u-mtn4 {
 	margin-top: -3rem;
 }
 
-html .u-mxn2 {
+.arch.u-mxn2 {
 	margin-right: -1rem;
 	margin-left: -1rem;
 }
 
-html .u-mrn3 {
+.arch.u-mrn3 {
 	margin-right: -1.5rem;
 }
 
-html .u-mrn4 {
+.arch.u-mrn4 {
 	margin-right: -3rem;
 }
 
-html .u-mln3 {
+.arch.u-mln3 {
 	margin-left: -1.5rem;
 }
 
-html .u-mln4 {
+.arch.u-mln4 {
 	margin-left: -3rem;
 }
 
-html .u-mxn3 {
+.arch.u-mxn3 {
 	margin-right: -1.5rem;
 	margin-left: -1.5rem;
 }
 
-html .u-mxn4 {
+.arch.u-mxn4 {
 	margin-right: -3rem;
 	margin-left: -3rem;
 }
 
-html .u-ml-auto {
+.arch.u-ml-auto {
 	margin-left: auto;
 }
 
-html .u-mr-auto {
+.arch.u-mr-auto {
 	margin-right: auto;
 }
 
-html .u-mt-auto {
+.arch.u-mt-auto {
 	margin-top: auto;
 }
 
-html .u-mb-auto {
+.arch.u-mb-auto {
 	margin-bottom: auto;
 }
 
-html .u-mx-auto {
+.arch.u-mx-auto {
 	margin-right: auto;
 	margin-left: auto;
 }
 
-html .u-m0 {
+.arch.u-m0 {
 	margin: 0;
 }
 
-html .u-mt0 {
+.arch.u-mt0 {
 	margin-top: 0;
 }
 
-html .u-mr0 {
+.arch.u-mr0 {
 	margin-right: 0;
 }
 
-html .u-mb0 {
+.arch.u-mb0 {
 	margin-bottom: 0;
 }
 
-html .u-ml0 {
+.arch.u-ml0 {
 	margin-left: 0;
 }
 
-html .u-mx0 {
+.arch.u-mx0 {
 	margin-right: 0;
 	margin-left: 0;
 }
 
-html .u-p1\/2 {
+.arch.u-p1\/2 {
 	padding: 0.25rem;
 }
 
-html .u-p1-half {
+.arch.u-p1-half {
 	padding: 0.25rem;
 }
 
-html .u-p1 {
+.arch.u-p1 {
 	padding: 0.5rem;
 }
 
-html .u-py1 {
+.arch.u-py1 {
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 }
 
-html .u-px1 {
+.arch.u-px1 {
 	padding-right: 0.5rem;
 	padding-left: 0.5rem;
 }
 
-html .u-pt1 {
+.arch.u-pt1 {
 	padding-top: 0.5rem;
 }
 
-html .u-pb1 {
+.arch.u-pb1 {
 	padding-bottom: 0.5rem;
 }
 
-html .u-p2 {
+.arch.u-p2 {
 	padding: 1rem;
 }
 
-html .u-py2 {
+.arch.u-py2 {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 }
 
-html .u-px2 {
+.arch.u-px2 {
 	padding-right: 1rem;
 	padding-left: 1rem;
 }
 
-html .u-pt2 {
+.arch.u-pt2 {
 	padding-top: 1rem;
 }
 
-html .u-pb2 {
+.arch.u-pb2 {
 	padding-bottom: 1rem;
 }
 
-html .u-p3 {
+.arch.u-p3 {
 	padding: 1.5rem;
 }
 
-html .u-pl3 {
+.arch.u-pl3 {
 	padding-left: 1.5rem;
 }
 
-html .u-py3 {
+.arch.u-py3 {
 	padding-top: 1.5rem;
 	padding-bottom: 1.5rem;
 }
 
-html .u-px3 {
+.arch.u-px3 {
 	padding-right: 1.5rem;
 	padding-left: 1.5rem;
 }
 
-html .u-pt3 {
+.arch.u-pt3 {
 	padding-top: 1.5rem;
 }
 
-html .u-pb3 {
+.arch.u-pb3 {
 	padding-bottom: 1.5rem;
 }
 
-html .u-p4 {
+.arch.u-p4 {
 	padding: 3rem;
 }
 
-html .u-pl4 {
+.arch.u-pl4 {
 	padding-left: 3rem;
 }
 
-html .u-py4 {
+.arch.u-py4 {
 	padding-top: 3rem;
 	padding-bottom: 3rem;
 }
 
-html .u-px4 {
+.arch.u-px4 {
 	padding-right: 3rem;
 	padding-left: 3rem;
 }
 
-html .u-pt4 {
+.arch.u-pt4 {
 	padding-top: 3rem;
 }
 
-html .u-pb4 {
+.arch.u-pb4 {
 	padding-bottom: 3rem;
 }
 
-html .u-p0 {
+.arch.u-p0 {
 	padding: 0;
 }
 
-html .u-py0 {
+.arch.u-py0 {
 	padding-top: 0;
 	padding-bottom: 0;
 }
 
-html .u-px0 {
+.arch.u-px0 {
 	padding-right: 0;
 	padding-left: 0;
 }
 
-html .u-pt0 {
+.arch.u-pt0 {
 	padding-top: 0;
 }
 
-html .u-rel {
+.arch.u-rel {
 	position: relative;
 }
 
-html .u-abs {
+.arch.u-abs {
 	position: absolute;
 }
 
-html .u-fix {
+.arch.u-fix {
 	position: fixed;
 }
 
-html .u-static {
+.arch.u-static {
 	position: static;
 }
 
-html .u-top0 {
+.arch.u-top0 {
 	top: 0;
 }
 
-html .u-right0 {
+.arch.u-right0 {
 	right: 0;
 }
 
-html .u-bottom0 {
+.arch.u-bottom0 {
 	bottom: 0;
 }
 
-html .u-left0 {
+.arch.u-left0 {
 	left: 0;
 }
 
-html .u-z0 {
+.arch.u-z0 {
 	z-index: 0;
 }
 
-html .u-z1 {
+.arch.u-z1 {
 	z-index: 1;
 }
 
-html .u-z2 {
+.arch.u-z2 {
 	z-index: 2;
 }
 
-html .u-z3 {
+.arch.u-z3 {
 	z-index: 3;
 }
 
-html .u-z4 {
+.arch.u-z4 {
 	z-index: 4;
 }
 
-html .u-left {
+.arch.u-left {
 	float: left;
 }
 
-html .u-right {
+.arch.u-right {
 	float: right;
 }

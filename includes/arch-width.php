@@ -9,22 +9,23 @@ function arch_width_post_classes($classes, $class, $post_id) {
 if ( is_search() || is_single($post_id))
 	return;
 
-	$achive_width = get_post_meta( $post_id, 'arch_width', true );
-	$arch_title = get_post_meta( $post_id, 'arch_title', true );
+	$achive_width   = get_post_meta( $post_id, 'arch_width', true );
+	$arch_title     = get_post_meta( $post_id, 'arch_title', true );
 	$arch_component = get_post_meta( $post_id, 'arch_component', true );
-	$arch_height = get_post_meta( $post_id, 'arch_height', true );
+	$arch_height    = get_post_meta( $post_id, 'arch_height', true );
 
 	if ( $achive_width )
+		$classes[] = 'arch';
 		$classes[] = $achive_width;
 
 	if ( $arch_component )
-			$classes[] = $arch_component;
+		$classes[] = $arch_component;
 
 	if ( $arch_title )
-			$classes[] = $arch_title;
+		$classes[] = $arch_title;
 
 	if ( 'false' == $arch_height )
-			$classes[] = 'u-flexed-start';
+		$classes[] = 'u-flexed-start';
 
     return $classes;
 }
