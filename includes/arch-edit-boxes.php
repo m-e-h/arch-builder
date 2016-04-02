@@ -14,12 +14,31 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 			<div class="inline-edit-col">
 				<label class="inline-edit-component alignleft">
 					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M22 17c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5zM6.5 6.5h3.8L7 1 1 11h5.5V6.5zm9.5 4.085V8H8v8h2.585c.433-2.783 2.632-4.982 5.415-5.415z"/></svg> Type </span>
-                        <select name="arch_component">
+                        <select name="arch_component" class="arch_component" >
+                        	<option value=""><?php _e( ' ' ); ?></option>
                         	<option value="card"><?php _e( 'Card' ); ?></option>
                         	<option value="tabs"><?php _e( 'Tab Group' ); ?></option>
                         	<option value="accordion"><?php _e( 'Accordion Group' ); ?></option>
                         	<option value="slides"><?php _e( 'Slideshow Group' ); ?></option>
                         </select>
+				</label>
+			</div>
+		</fieldset><?php
+
+	}
+
+	if (in_array($post_type, arch_post_types()) && $column_name == 'arch_title') {
+
+		?><fieldset class="inline-edit-col-center">
+			<div class="inline-edit-col">
+				<label class="inline-edit-title alignleft">
+					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M3 19h18v3H3v-3zm12.82-2h3.424L14 3h-4L4.756 17H8.18l1.067-3.5h5.506L15.82 17zm-1.952-6h-3.73l1.868-5.725L13.868 11z"/></svg> Title </span>
+	                    <select name="arch_title" class="arch_title">
+							<option value=""><?php _e( ' ' ); ?></option>
+	                    	<option value="link-title"><?php _e( 'Linked Title' ); ?></option>
+	                    	<option value="no-link-title"><?php _e( 'Title (no link)' ); ?></option>
+	                    	<option value="no-title"><?php _e( 'Hide Title' ); ?></option>
+	                    </select>
 				</label>
 			</div>
 		</fieldset><?php
@@ -32,10 +51,11 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 			<div class="inline-edit-col">
 				<label class="inline-edit-excerpt alignleft">
 					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M16 19H3v-2h13v2zm5-10H3v2h18V9zM3 5v2h11V5H3zm14 0v2h4V5h-4zm-6 8v2h10v-2H11zm-8 0v2h5v-2H3z"/></svg> Excerpt </span>
-	                    <select name="arch_excerpt">
+	                    <select name="arch_excerpt" class="arch_excerpt">
+                        	<option value=""><?php _e( ' ' ); ?></option>
 	                    	<option value="excerpt"><?php _e( 'Excerpt' ); ?></option>
 	                    	<option value="content"><?php _e( 'Content' ); ?></option>
-	                    	<option value="title-only"><?php _e( 'Title Only' ); ?></option>
+	                    	<option value="none"><?php _e( 'None' ); ?></option>
 	                    </select>
 				</label>
 			</div>
@@ -48,8 +68,9 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
 				<label class="inline-edit-width alignleft">
-					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M18.966 7.966l-.71.71 2.813 2.82h-6.14v1.008h6.137l-2.815 2.82.71.71L23 12l-4.034-4.034zM5.034 16.034l.71-.71-2.813-2.82h6.14v-1.008H2.93l2.815-2.82-.71-.71L1 12l4.034 4.034z"/></svg> Width </span>
-                        <select name="arch_width">
+					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M16 13H5.828l2.086 2.086L6.5 16.5 2 12l4.5-4.5 1.414 1.414L5.828 11H16zm-8-2h10.172l-2.086-2.086L17.5 7.5 22 12l-4.5 4.5-1.414-1.414L18.172 13H8z"/></svg> Width </span>
+                        <select name="arch_width" class="arch_width">
+                        	<option value=""><?php _e( ' ' ); ?></option>
                         	<option value="u-1of1-md"><?php _e( '100%' ); ?></option>
                         	<option value="u-1of4-md"><?php _e( '25%' ); ?></option>
                         	<option value="u-1of3-md"><?php _e( '33.33%' ); ?></option>
@@ -60,6 +81,29 @@ function arch_bulk_quick_edit_custom_box($column_name, $post_type) {
 				</label>
 			</div>
 		</fieldset><?php
+
+	}
+
+	if (in_array($post_type, arch_post_types()) && $column_name == 'arch_height') {
+//$equal = ( 'false' == get_post_meta( $post->ID, '_featured', true ) ) ? 'false' : 'true';
+		?><fieldset class="inline-edit-col-left inline-edit-categories">
+			<div class="inline-edit-col">
+
+				<div id="arch-height">
+					<span class="alignleft inline-edit-icon">
+						<svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M8.25 2.468v19.066c0 .806.66 1.465 1.47 1.465h4.397c.806 0 1.468-.66 1.467-1.47V2.47c0-.807-.66-1.467-1.467-1.467h-4.4c-.81 0-1.466.666-1.467 1.47zm3.143 17.39v1.047H8.775v-1.05l2.618.002zm2.096-2.097v1.05H8.77v-1.05h4.714zm-2.1-2.09v1.05H8.772v-1.05h2.618zm0-2.093v1.048H8.773v-1.05h2.617zm2.092-2.094v1.047h-4.71v-1.05h4.712zm-2.093-2.1v1.05H8.776V9.38h2.617zm0-2.093v1.047H8.776v-1.05h2.62zm2.1-2.098v1.05H8.773V5.19h4.714zM11.393 3.1v1.047l-2.62-.002.002-1.047h2.618z"/></svg>
+					</span>
+					<label class="alignleft inline-edit-height">
+						<span class="checkbox-title"> <?php _e( 'True Height' ); ?> </span>
+						<input type="checkbox" class="arch_height" name="arch_height" value="false" />
+					</label>
+
+					<br>
+				</div>
+
+			</div>
+		</fieldset>
+		<?php
 
 	}
 
@@ -88,21 +132,28 @@ function arch_be_qe_save_post($post_id, $post) {
 	if ( isset( $post->post_type ) && $post->post_type == 'revision' )
 		return $post_id;
 
+
+
 	if (in_array($post->post_type, arch_post_types())) {
 			/**
 			 * Because this action is run in several places, checking for the array key
 			 * keeps WordPress from editing data that wasn't in the form, i.e. if you had
 			 * this post meta on your "Quick Edit" but didn't have it on the "Edit Post" screen.
 			 */
-			$custom_fields = array( 'arch_component','arch_excerpt','arch_width' );
+			 // Sanitize user input.
+	 		$height = isset( $_POST[ 'arch_height' ] ) ? 'false' : '';
+
+
+	 		// Update the meta field in the database.
+	 		update_post_meta( $post_id, 'arch_height', $height );
+
+			$custom_fields = array( 'arch_component','arch_title','arch_excerpt','arch_width' );
 
 			foreach( $custom_fields as $field ) {
 
 				if ( array_key_exists( $field, $_POST ) )
 					update_post_meta( $post_id, $field, $_POST[ $field ] );
-
 			}
-
 	}
 
 }
@@ -121,7 +172,7 @@ function arch_save_bulk_edit() {
 	if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
 
 		// get the custom fields
-		$custom_fields = array( 'arch_component','arch_excerpt','arch_width' );
+		$custom_fields = array( 'arch_component','arch_title','arch_excerpt','arch_width','arch_height' );
 
 		foreach( $custom_fields as $field ) {
 
@@ -164,9 +215,12 @@ function arch_add_cpt_columns($columns) {
 	if ( !in_array(get_post_type(), arch_post_types()))
 		return $columns;
 	return array_merge($columns,
-		array('arch_component' => __('Type'),
+		array(
+			'arch_component'      => __('Type'),
+		    'arch_title'       => __( 'Title Display'),
 		    'arch_excerpt'     => __( 'Content'),
 			'arch_width'          => __('Width'),
+			'arch_height'         => __( 'Equal height'),
 		)
 	);
 }
@@ -191,6 +245,17 @@ function arch_manage_cpt_columns($column, $post_id) {
 
 			break;
 
+		case 'arch_title' :
+
+			$arch_title = get_post_meta( $post_id, 'arch_title', true );
+
+			if ( empty( $arch_title ) )
+				echo __( '_' );
+
+			else
+				echo esc_html( $arch_title );
+			break;
+
 		case 'arch_excerpt' :
 
 			$arch_excerpt = get_post_meta( $post_id, 'arch_excerpt', true );
@@ -212,6 +277,17 @@ function arch_manage_cpt_columns($column, $post_id) {
 			else
 				echo esc_html( $arch_width );
 
+			break;
+
+		case 'arch_height' :
+
+			$arch_height = get_post_meta( $post_id, 'arch_height', true );
+
+			if ( empty( $arch_height ) )
+				echo __( '_' );
+
+			else
+				echo esc_html( $arch_height );
 			break;
 
 		default :
@@ -255,9 +331,21 @@ function arch_is_home() {
  }
 
 
+ function arch_title() {
+ 	$arch_title = get_post_meta( get_the_ID(), 'arch_title', true );
+ 	if ($arch_title == 'no-title')
+ 		return;
+
+ 	if ($arch_title == 'no-link-title') {
+		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' );
+	} else {
+		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' );
+	}
+ }
+
 function arch_excerpt() {
 	$arch_excerpt = get_post_meta( get_the_ID(), 'arch_excerpt', true );
-	if ($arch_excerpt == 'title-only')
+	if ($arch_excerpt == 'none')
 		return;
 
 	return $arch_excerpt == 'content' ? the_content() : the_excerpt();
@@ -281,7 +369,7 @@ if ( ! function_exists( 'arch_width_options' ) ) {
 }
 
 add_action( 'pre_get_posts', 'arch_post_order', 1 );
-function arch_post_order( $query ) {
+function arch_post_order($query) {
     if ( is_admin() || ! $query->is_main_query() )
         return;
     if ( is_post_type_archive(arch_post_types()) ) {

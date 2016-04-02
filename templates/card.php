@@ -16,9 +16,9 @@
                     'after'              => '</div>',
                 ));
             ?>
-            <h2 <?php hybrid_attr('entry-title'); ?>>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-            </h2>
+            
+                <?php arch_title(); ?>
+
         </header>
 
         <div <?php hybrid_attr('entry-summary'); ?>>

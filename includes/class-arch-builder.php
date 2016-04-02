@@ -82,7 +82,7 @@ class Arch_Builder {
 		echo '			<select id="arch_excerpt" name="arch_excerpt" class="arch_excerpt_field">';
 		echo '			<option value="excerpt" ' . selected( $arch_excerpt, 'excerpt', false ) . '> ' . __( 'Excerpt', 'arch_builder' ) . '</option>';
 		echo '			<option value="content" ' . selected( $arch_excerpt, 'content', false ) . '> ' . __( 'Content', 'arch_builder' ) . '</option>';
-		echo '			<option value="title-only" ' . selected( $arch_excerpt, 'title-only', false ) . '> ' . __( 'Title Only', 'arch_builder' ) . '</option>';
+		echo '			<option value="none" ' . selected( $arch_excerpt, 'none', false ) . '> ' . __( 'None', 'arch_builder' ) . '</option>';
 		echo '			</select>';
 		echo '		</td>';
 		echo '	</tr>';

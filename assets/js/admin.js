@@ -22,16 +22,49 @@
 			// define the edit row
 			var $edit_row = $('#edit-' + $post_id);
 
-			// get the release date
+			// get the meta
 			var $arch_component = $('tr#post-' + $post_id + '>td.arch_component').text();
+			var $arch_title = $('tr#post-' + $post_id + '>td.arch_title').text();
 			var $arch_excerpt = $('tr#post-' + $post_id + '>td.arch_excerpt').text();
 			var $arch_width = $('tr#post-' + $post_id + '>td.arch_width').text();
+			var $arch_height = $('tr#post-' + $post_id + '>td.arch_height').text();
 
-			// set the film rating
+			// set the meta
 			$edit_row.find('select[name="arch_component"]').val($arch_component);
+			$edit_row.find('select[name="arch_title"]').val($arch_title);
 			$edit_row.find('select[name="arch_excerpt"]').val($arch_excerpt);
 			$edit_row.find('select[name="arch_width"]').val($arch_width);
+			$edit_row.find('input[name="arch_height"][value="' + $arch_height + '"]' ).prop( 'checked', true );
 
+				var selectedComponent = $edit_row.find('select[name="arch_component"]').val();
+				var archExcerpt = $edit_row.find('.inline-edit-excerpt');
+
+				archExcerpt.show();
+
+				if( selectedComponent  === 'slides' ) {
+					archExcerpt.hide();
+				} else if ( selectedComponent  === 'tabs' ){
+					archExcerpt.hide();
+				} else if ( selectedComponent  === 'accordion' ){
+					archExcerpt.hide();
+				} else {
+					archExcerpt.show();
+				}
+
+				$edit_row.find('select[name="arch_component"]').on('change', function() {
+					var selectedComponent = $edit_row.find('select[name="arch_component"]').val();
+
+					if( selectedComponent  === 'slides' ) {
+						archExcerpt.hide();
+					} else if ( selectedComponent  === 'tabs' ){
+						archExcerpt.hide();
+					} else if ( selectedComponent  === 'accordion' ){
+						archExcerpt.hide();
+					} else {
+						archExcerpt.show();
+					}
+
+				});
 		}
 
 	};
@@ -49,8 +82,11 @@
 
 		// get the custom fields
 		var $arch_component = $bulk_row.find('select[name="arch_component"]').val();
+		var $arch_title = $bulk_row.find('select[name="arch_title"]').val();
 		var $arch_excerpt = $bulk_row.find('select[name="arch_excerpt"]').val();
 		var $arch_width = $bulk_row.find('select[name="arch_width"]').val();
+		var $arch_height = $bulk_row.find('input[name="arch_height"]').val();
+
 		// save the data
 		$.ajax({
 			url: ajaxurl, // this is a variable that WordPress has already defined for us
@@ -58,11 +94,12 @@
 			async: false,
 			cache: false,
 			data: {
-				action: 'arch_save_bulk_edit', // this is the name of our WP AJAX function that we'll set up next
-				post_ids: $post_ids, // and these are the 2 parameters we're passing to our function
+				action: 'arch_save_bulk_edit',
 				arch_component: $arch_component,
+				arch_title: $arch_title,
 				arch_excerpt: $arch_excerpt,
-				arch_width: $arch_width
+				arch_width: $arch_width,
+				arch_height: $arch_height
 			}
 		});
 

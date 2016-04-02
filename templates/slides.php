@@ -4,31 +4,34 @@
  *
  * @package arch-builder
  */
-?>
-<?php $query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
+wp_enqueue_script('flickity'); ?>
+
 
 <div <?php hybrid_attr('post'); ?>>
 	<div class="gallery js-flickity"
-		data-flickity-options='{ "freeScroll": true, "wrapAround": true }'>
+		data-flickity-options='{ "wrapAround": true }'>
 
-	<?php while ($query->have_posts()) : $query->the_post(); ?>
+<?php $arch_query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
 
-		<div class="gallery-cell u-1of1">
+	<?php while ($arch_query->have_posts()) : $arch_query->the_post(); ?>
+
+		<div class="gallery-cell u-1of1 u-grad-overlay">
 
 			<?php
 		        get_the_image(array(
 		            'size'         => 'arch-hd',
-		            'image_class'  => 'gallery-image u-1of1',
+		            'image_class'  => 'gallery-cell-image u-1of1',
 		            'link_to_post' => false,
 		        ));
 			?>
-			<div class="u-bg-tint-2 u-abs u-top0 u-left0 u-1of1 u-height100 u-flex u-flex-wrap u-flex-center">
-				<h2 class="cta-heading u-bg-2-glass-dark u-f-plus u-p2"><?php the_title(); ?></h2>
+			<div class="cta-content u-ab">
+				<?php arch_title(); ?>
 				<div class="cta-text u-f-plus "><?php arch_excerpt(); ?></div>
 			</div>
 		</div>
 
 	<?php endwhile; ?>
+<?php wp_reset_postdata(); ?>
 
 	</div>
 </div>

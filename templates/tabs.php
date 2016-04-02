@@ -1,31 +1,42 @@
 <?php
 /**
- * General fallback template for post archives.
  *
- * @package abraham
+ * @package arch-builder
  */
-?>
+wp_enqueue_script('arch-tabs'); ?>
+
 <?php $query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
 
 <div <?php hybrid_attr('post'); ?>>
+
   <div data-tabs class="tabs tab-bar u-flex u-flex-wrap">
+
+<?php $counter = -1; ?>
 
     <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-      <a data-tab href="#tab<?php the_ID(); ?>" class="tabs-tab u-p2 u-text-center u-flexed-auto u-f-plus" data-behaviour="tab"><?php the_title(); ?></a>
+<?php $counter++; ?>
+
+      <div data-index="<?= $counter ?>" class="tab-header u-p2 u-text-center u-flexed-auto u-f-plus"><?php the_title(); ?></div>
 
     <?php endwhile; ?>
 
         <?php $query->rewind_posts(); ?>
   </div>
-<div data-tabs-content>
+
+<?php $counter = -1; ?>
+
     <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-    <div data-tabs-pane class="tabs-pane u-p2 tab<?php the_ID(); ?>" id="tab<?php the_ID(); ?>">
+<?php $counter++; ?>
+
+    <div class="tab-content u-p2 tab<?php the_ID(); ?>" data-index="<?= $counter ?>">
+
     <?php arch_excerpt(); ?>
+
     </div>
 
     <?php endwhile; ?>
-</div>
+
 <?php wp_reset_postdata(); ?>
 </div>
