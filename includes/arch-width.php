@@ -1,21 +1,10 @@
 <?php
-/**
- * Width Grid Classes.
- *
- * @package  Arch Builder
- */
 
 add_filter( 'post_class', 'arch_width_post_classes', 10, 3 );
 add_filter( 'hybrid_attr_content', 'arch_grid' );
 
-/**
- * Adds custom classes to the array of post classes.
- *
- * @param array   $classes Classes for the post element.
- * @param WP_Post $post_id The post object.
- * @return array
- */
-function arch_width_post_classes( $classes, $post_id ) {
+
+function arch_width_post_classes( $classes, $class, $post_id ) {
 
 	if ( is_search() || is_single( $post_id ) ) {
 		return; }
@@ -38,19 +27,13 @@ function arch_width_post_classes( $classes, $post_id ) {
 		$classes[] = $arch_title;
 	}
 
-	if ( 'false' === $arch_height ) {
+	if ( 'false' == $arch_height ) {
 		$classes[] = 'u-flexed-start';
 	}
 
 	return $classes;
 }
 
-/**
- * Adds class to hybrid_attr_content.
- *
- * @since  2.0.0
- * @param  array $attr Array of classes.
- */
 function arch_grid( $attr ) {
 
 	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
