@@ -4,11 +4,17 @@ add_action( 'manage_pages_custom_column', 'arch_manage_cpt_columns', 10, 2 );
 add_filter( 'register_post_type_args', 'arch_cpt_args', 10, 2 );
 add_action( 'bulk_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
 add_action( 'quick_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
+add_action( 'wp_ajax_arch_save_bulk_edit', 'arch_save_bulk_edit' );
+add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
+add_filter( 'hybrid_content_template', 'arch_templates' );
+add_action( 'pre_get_posts', 'arch_post_order', 1 );
+add_filter( 'hybrid_get_theme_layout', 'arch_landing_layout' );
+add_action( 'init', 'arch_image_sizes', 5 );
 
 
 function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
-	if ( in_array( $post_type, arch_post_types() ) && $column_name == 'arch_component' ) {
+	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_component' === $column_name ) {
 
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
@@ -27,7 +33,7 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	}
 
-	if ( in_array( $post_type, arch_post_types() ) && $column_name == 'arch_title' ) {
+	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_title' === $column_name ) {
 
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
@@ -45,7 +51,7 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	}
 
-	if ( in_array( $post_type, arch_post_types() ) && $column_name == 'arch_excerpt' ) {
+	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_excerpt' === $column_name ) {
 
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
@@ -63,7 +69,7 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	}
 
-	if ( in_array( $post_type, arch_post_types() ) && $column_name == 'arch_width' ) {
+	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_width' === $column_name ) {
 
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
@@ -84,9 +90,9 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	}
 
-	if ( in_array( $post_type, arch_post_types() ) && $column_name == 'arch_height' ) {
-		// $equal = ( 'false' == get_post_meta( $post->ID, '_featured', true ) ) ? 'false' : 'true';
-		?><fieldset class="inline-edit-col-left inline-edit-categories">
+	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_height' === $column_name ) { ?>
+
+		<fieldset class="inline-edit-col-left inline-edit-categories">
 			<div class="inline-edit-col">
 
 				<div id="arch-height">
@@ -113,7 +119,6 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
  * The 'save_post' action passes 2 arguments: the $post_id (an integer)
  * and the $post information (an object).
  */
-add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
 function arch_be_qe_save_post( $post_id, $post ) {
 
 	// pointless if $_POST is empty (this happens on bulk edit)
@@ -129,10 +134,10 @@ function arch_be_qe_save_post( $post_id, $post ) {
 		return $post_id; }
 
 	// dont save for revisions
-	if ( isset( $post->post_type ) && $post->post_type == 'revision' ) {
+	if ( isset( $post->post_type ) && 'revision' === $post->post_type ) {
 		return $post_id; }
 
-	if ( in_array( $post->post_type, arch_post_types() ) ) {
+	if ( in_array( $post->post_type, arch_post_types(), true ) ) {
 			/**
 			 * Because this action is run in several places, checking for the array key
 			 * keeps WordPress from editing data that wasn't in the form, i.e. if you had
@@ -159,7 +164,6 @@ function arch_be_qe_save_post( $post_id, $post ) {
  * Your javascript will run an AJAX function to save your data.
  * This is the WordPress AJAX function that will handle and save your data.
  */
-add_action( 'wp_ajax_arch_save_bulk_edit', 'arch_save_bulk_edit' );
 function arch_save_bulk_edit() {
 
 	// we need the post IDs
@@ -200,7 +204,7 @@ function arch_post_types() {
 
 function arch_cpt_args( $args, $post_type ) {
 
-	if ( in_array( $post_type, arch_post_types() ) ) {
+	if ( in_array( $post_type, arch_post_types(), true ) ) {
 		$args['hierarchical'] = true;
 	}
 
@@ -209,7 +213,7 @@ function arch_cpt_args( $args, $post_type ) {
 
 
 function arch_add_cpt_columns( $columns ) {
-	if ( ! in_array( get_post_type(), arch_post_types() ) ) {
+	if ( ! in_array( get_post_type(), arch_post_types(), true ) ) {
 		return $columns; }
 	return array_merge($columns,
 		array(
@@ -224,7 +228,7 @@ function arch_add_cpt_columns( $columns ) {
 
 
 function arch_manage_cpt_columns( $column, $post_id ) {
-	if ( ! in_array( get_post_type(), arch_post_types() ) ) {
+	if ( ! in_array( get_post_type(), arch_post_types(), true ) ) {
 		return; }
 	global $post;
 
@@ -283,14 +287,12 @@ function arch_manage_cpt_columns( $column, $post_id ) {
 }
 
 function arch_is_home() {
-	return apply_filters( 'arch_is_home', in_array( 'post', arch_post_types() ) && is_home() );
+	return apply_filters( 'arch_is_home', in_array( 'post', arch_post_types(), true ) && is_home() );
 }
 
 /**
  * Add templates to hybrid_get_content_template()
  */
-	add_filter( 'hybrid_content_template', 'arch_templates' );
-
 function arch_templates( $template ) {
 
 	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() || is_singular( arch_post_types() ) ) {
@@ -313,10 +315,10 @@ function arch_templates( $template ) {
 
 function arch_title() {
 	$arch_title = get_post_meta( get_the_ID(), 'arch_title', true );
-	if ( 'no-title' == $arch_title ) {
+	if ( 'no-title' === $arch_title ) {
 		return; }
 
-	if ( $arch_title == 'no-link-title' ) {
+	if ( 'no-link-title' === $arch_title ) {
 		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' );
 	} else {
 		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' );
@@ -325,10 +327,13 @@ function arch_title() {
 
 function arch_excerpt() {
 	$arch_excerpt = get_post_meta( get_the_ID(), 'arch_excerpt', true );
-	if ( 'none' == $arch_excerpt ) {
-		return; }
-
-	return $arch_excerpt == 'content' ? the_content() : the_excerpt();
+	if ( 'none' === $arch_excerpt ) {
+		return;
+	} ?>
+	<div <?php hybrid_attr( 'entry-summary' ); ?>>
+		<?php return 'content' === $arch_excerpt ? the_content() : the_excerpt(); ?>
+	</div>
+	<?php
 }
 
 
@@ -348,7 +353,7 @@ if ( ! function_exists( 'arch_width_options' ) ) {
 	}
 }
 
-	add_action( 'pre_get_posts', 'arch_post_order', 1 );
+
 function arch_post_order( $query ) {
 	if ( is_admin() || ! $query->is_main_query() ) {
 		return; }
@@ -359,7 +364,7 @@ function arch_post_order( $query ) {
 	}
 }
 
-	add_filter( 'hybrid_get_theme_layout', 'arch_landing_layout' );
+
 
 function arch_landing_layout( $layout ) {
 
@@ -372,7 +377,7 @@ function arch_landing_layout( $layout ) {
 	return $archive_layout && 'default' !== $archive_layout ? $archive_layout : $layout;
 }
 
-	add_action( 'init', 'arch_image_sizes', 5 );
+
 function arch_image_sizes() {
 	add_image_size( 'arch-hd', 1200, 675, true );
 }

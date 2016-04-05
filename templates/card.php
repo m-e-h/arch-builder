@@ -1,6 +1,6 @@
 <?php
 /**
- * General fallback template for post archives.
+ * Cards Component Template.
  *
  * @package abraham
  */
@@ -18,15 +18,12 @@
 				));
 			?>
 
-				<?php arch_title(); ?>
+			<?php arch_title(); ?>
 
 		</header>
 
-		<?php if ( $arch_excerpt ) { ?>
+		<?php arch_excerpt(); ?>
 
-		<div <?php hybrid_attr( 'entry-summary' ); ?>>
-			<?php arch_excerpt(); ?>
-		</div>
-		<?php } ?>
 </article>
+
 <?php
