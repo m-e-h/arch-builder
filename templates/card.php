@@ -4,6 +4,7 @@
  *
  * @package abraham
  */
+
 ?>
 <article <?php hybrid_attr( 'post' ); ?>>
 
@@ -21,8 +22,11 @@
 
 		</header>
 
+		<?php if ( $arch_excerpt ) { ?>
+
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php arch_excerpt(); ?>
 		</div>
-
+		<?php } ?>
 </article>
+<?php
