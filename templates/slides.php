@@ -4,16 +4,16 @@
  *
  * @package arch-builder
  */
-wp_enqueue_script('flickity'); ?>
+wp_enqueue_script( 'flickity' ); ?>
 
 
-<div <?php hybrid_attr('post'); ?>>
+<div <?php hybrid_attr( 'post' ); ?>>
 	<div class="gallery js-flickity"
 		data-flickity-options='{ "wrapAround": true }'>
 
 <?php $arch_query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
 
-	<?php while ($arch_query->have_posts()) : $arch_query->the_post(); ?>
+	<?php while ( $arch_query->have_posts() ) : $arch_query->the_post(); ?>
 
 		<div class="gallery-cell u-1of1 u-grad-overlay">
 
