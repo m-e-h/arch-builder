@@ -338,7 +338,7 @@ function arch_excerpt() {
 
 
 
-	// Set default widths
+	// Set default widths.
 if ( ! function_exists( 'arch_width_options' ) ) {
 
 	function arch_width_options() {
