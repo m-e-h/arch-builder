@@ -61,6 +61,7 @@ var POSTCSS_PLUGINS = [
 	autoPrefixer({
 		browsers: AUTOPREFIXER_BROWSERS
 	}),
+	//styleFmt()
 	perfectionist({
 		cascade: false
 	})

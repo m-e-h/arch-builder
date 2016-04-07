@@ -19,8 +19,14 @@
 }
 
 .chevron-toggle {
-	max-width: 1em;
-	transition: transform 0.3s;
+	width: 1em;
+	height: 1em;
+	opacity: 0.5;
+	transition: all 0.3s;
+}
+
+a:hover > .chevron-toggle {
+	opacity: 1;
 }
 
 .collapse-toggle.active > .chevron-toggle {
