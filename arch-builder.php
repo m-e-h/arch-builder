@@ -10,13 +10,13 @@
  * Domain Path: /languages
  */
 
- /**
- * Singleton class that sets up and initializes the plugin.
- *
- * @since  1.0.0
- * @access public
- * @return void
- */
+	/**
+	 * Singleton class that sets up and initializes the plugin.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
 final class Arch_Builder_Plugin {
 
 	/**
@@ -78,11 +78,11 @@ final class Arch_Builder_Plugin {
 
 		// Main plugin directory path and URI.
 		$this->dir_path = trailingslashit( plugin_dir_path( __FILE__ ) );
-		$this->dir_uri  = trailingslashit( plugin_dir_url(  __FILE__ ) );
+		$this->dir_uri  = trailingslashit( plugin_dir_url( __FILE__ ) );
 
 		// Plugin directory URIs.
 		$this->css_uri = trailingslashit( $this->dir_uri . 'assets/css' );
-		$this->js_uri  = trailingslashit( $this->dir_uri . 'assets/js'  );
+		$this->js_uri  = trailingslashit( $this->dir_uri . 'assets/js' );
 	}
 
 	/**
@@ -116,7 +116,7 @@ final class Arch_Builder_Plugin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 
 		// Internationalize the text strings used.
-		//add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
+		// add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
 	}
 
 	/**
@@ -128,6 +128,7 @@ final class Arch_Builder_Plugin {
 	 */
 	public function arch_scripts() {
 
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
 		/* Register the plugin script. */
@@ -136,8 +137,8 @@ final class Arch_Builder_Plugin {
 		wp_register_script( 'flickity', trailingslashit( $this->js_uri ) . 'flickity.pkgd.js', false, false, true );
 
 		/* Load the plugin stylesheet if no theme support. */
-		if ( !current_theme_supports( 'arch-builder' ) )
-			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . 'arch.css' );
+		if ( ! current_theme_supports( 'arch-builder' ) ) {
+			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . "arch{$suffix}.css" ); }
 	}
 
 	/**
@@ -168,7 +169,6 @@ final class Arch_Builder_Plugin {
 		// Make sure any rewrite functionality has been loaded.
 		flush_rewrite_rules();
 	}
-
 }
 
 /**

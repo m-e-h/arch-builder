@@ -1,0 +1,86 @@
+.arch .arch-p2 {
+	padding: 1rem;
+}
+
+.arch .arch-px2 {
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+
+.arch .arch-py1 {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.arch .arch-pt1 {
+	padding-top: 0.5rem;
+}
+
+.arch .arch-pb3 {
+	padding-bottom: 1.5rem;
+}
+
+.arch .arch-f-plus {
+	font-size: 1.1rem;
+}
+
+.arch .arch-text-center {
+	text-align: center;
+}
+
+.arch .arch-overflow-hidden {
+	overflow: hidden;
+}
+
+.o-crop {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	width: 100%;
+}
+
+.o-crop--1x1 {
+	padding-top: 100%;
+}
+
+.o-crop--4x3 {
+	padding-top: 75%;
+}
+
+.o-crop--16x9 {
+	padding-top: 56.25%;
+}
+
+.o-crop__content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.cta-content {
+	z-index: 1;
+	margin-left: 4rem;
+	bottom: 2rem;
+	color: #fff;
+	position: absolute;
+}
+
+.cta-text {
+	z-index: 1;
+	max-width: 60%;
+}
+
+.gallery-cell {
+	height: auto;
+}
+
+.arch-grad-overlay:after {
+	background: linear-gradient(rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.6) 100%);
+	content: "";
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
