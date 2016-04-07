@@ -7,9 +7,9 @@
 
 wp_enqueue_script( 'arch-tabs' ); ?>
 
-<?php $query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
-
 <div <?php hybrid_attr( 'post' ); ?>>
+
+<?php $query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
 
 	<div data-tabs class="tabs tab-bar arch-flex arch-flex-wrap">
 
@@ -19,7 +19,7 @@ wp_enqueue_script( 'arch-tabs' ); ?>
 
 <?php $counter++; ?>
 
-	  <div data-index="<?= $counter ?>" class="tab-header arch-p2 arch-text-center arch-flexed-auto arch-f-plus"><?php the_title(); ?></div>
+	  <div data-index="<?php echo $counter ?>" class="tab-header arch-p2 arch-text-center arch-flexed-1 arch-f-plus"><?php the_title(); ?></div>
 
 	<?php endwhile; ?>
 
@@ -32,7 +32,7 @@ wp_enqueue_script( 'arch-tabs' ); ?>
 
 <?php $counter++; ?>
 
-	<div class="tab-content arch-p2 tab<?php the_ID(); ?>" data-index="<?= $counter ?>">
+	<div class="tab-content arch-p2 tab<?php the_ID(); ?>" data-index="<?php echo $counter ?>">
 
 	<?php arch_excerpt(); ?>
 

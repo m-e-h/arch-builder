@@ -260,6 +260,10 @@ http://flickity.metafizzy.co
 	flex: 1 1 auto;
 }
 
+.arch .arch-flexed-1 {
+	flex: 1 1 0%;
+}
+
 .arch .arch-p2 {
 	padding: 1rem;
 }

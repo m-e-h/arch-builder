@@ -8,7 +8,7 @@ add_action( 'wp_ajax_arch_save_bulk_edit', 'arch_save_bulk_edit' );
 add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
 add_filter( 'hybrid_content_template', 'arch_templates' );
 add_action( 'pre_get_posts', 'arch_post_order', 1 );
-add_filter( 'hybrid_get_theme_layout', 'arch_landing_layout' );
+add_filter( 'hybrid_get_theme_layout', 'arch_archive_layout' );
 add_action( 'init', 'arch_image_sizes', 5 );
 
 
@@ -331,7 +331,7 @@ function arch_excerpt() {
 		return;
 	} ?>
 	<div <?php hybrid_attr( 'entry-summary' ); ?>>
-		<?php return 'content' === $arch_excerpt ? the_content() : the_excerpt(); ?>
+		<?php 'content' === $arch_excerpt ? the_content() : the_excerpt(); ?>
 	</div>
 	<?php
 }
@@ -345,11 +345,11 @@ if ( ! function_exists( 'arch_width_options' ) ) {
 		return array(
 		'u-1of1-md'      => '1/1',
 		'u-1of4-md'      => '1/4',
-			'u-1of3-md'      => '1/3',
-			'u-1of2-md'      => '1/2',
-			'u-2of3-md'      => '2/3',
-			'u-3of4-md'      => '3/4',
-			);
+		'u-1of3-md'      => '1/3',
+		'u-1of2-md'      => '1/2',
+		'u-2of3-md'      => '2/3',
+		'u-3of4-md'      => '3/4',
+		);
 	}
 }
 
@@ -366,7 +366,7 @@ function arch_post_order( $query ) {
 
 
 
-function arch_landing_layout( $layout ) {
+function arch_archive_layout( $layout ) {
 
 	$archive_layout = '';
 	if ( is_post_type_archive() ) {
