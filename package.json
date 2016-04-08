@@ -44,7 +44,7 @@
     "postcss-flexibility": "^1.0.3",
     "run-sequence": "^1.1.5",
     "stylelint-config-wordpress": "^4.0.0",
-    "stylelint": "^5.2.1"
+    "stylelint": "^5.3.0"
   },
   "stylelint": {
     "extends": "stylelint-config-wordpress"
