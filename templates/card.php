@@ -1,28 +1,40 @@
 <?php
 /**
- * General fallback template for post archives.
+ * Cards Component Template.
  *
  * @package abraham
  */
+
+$video = hybrid_media_grabber(
+	array(
+		'type'        => 'video',
+		'split_media' => true,
+	)
+);
 ?>
-<article <?php hybrid_attr('post'); ?>>
+<article <?php hybrid_attr( 'post' ); ?>>
 
-        <header <?php hybrid_attr('entry-header'); ?>>
-            <?php
-                get_the_image(array(
-                    //'size'               => 'abe-card-md',
-                    'image_class'        => 'u-1of1',
-                    'before'             => '<div class="card-img u-overflow-hidden">',
-                    'after'              => '</div>',
-                ));
-            ?>
-            
-                <?php arch_title(); ?>
+		<header <?php hybrid_attr( 'entry-header' ); ?>>
+			<?php
+			if ( $video ) {
+				echo $video;
 
-        </header>
+			} else {
+				get_the_image(array(
+					'size'               => 'large',
+					'image_class'        => 'arch-1of1 o-crop__content',
+					'before'             => '<div class="card-img arch-overflow-hidden o-crop o-crop--16x9">',
+					'after'              => '</div>',
+				));
+			}
+			?>
 
-        <div <?php hybrid_attr('entry-summary'); ?>>
-            <?php arch_excerpt(); ?>
-        </div>
+			<?php arch_title(); ?>
+
+		</header>
+
+		<?php arch_excerpt(); ?>
 
 </article>
+
+<?php

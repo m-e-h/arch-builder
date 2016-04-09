@@ -1,0 +1,61 @@
+/*  Toggles */
+.collapse-toggle {
+	display: none;
+	visibility: hidden;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.js-houdini .collapse-toggle {
+	display: inline-block;
+	display: flex;
+	visibility: visible;
+	box-sizing: border-box;
+	opacity: 1;
+	text-decoration: none;
+}
+
+.js-houdini .collapse-toggle:hover {
+	text-decoration: none;
+}
+
+.chevron-toggle {
+	width: 1em;
+	height: 1em;
+	opacity: 0.5;
+	transition: all 0.3s;
+}
+
+a:hover > .chevron-toggle {
+	opacity: 1;
+}
+
+.collapse-toggle.active > .chevron-toggle {
+	transform: rotate(180deg);
+}
+
+.js-houdini .collapse {
+	overflow: hidden;
+	height: 100%;
+	max-height: 0;
+	transition: max-height 0.3s ease-out;
+}
+
+.js-houdini .collapse.active {
+	max-height: 500px;
+}
+
+.js-houdini .collapse-wrap {
+	opacity: 0.5;
+	transition: all 0.1s;
+}
+
+.js-houdini .collapse:not(.active) .collapse-wrap {
+	padding-top: 0;
+	padding-bottom: 0;
+	height: 0;
+}
+
+.js-houdini .active > .collapse-wrap {
+	height: auto;
+	opacity: 0.9;
+}

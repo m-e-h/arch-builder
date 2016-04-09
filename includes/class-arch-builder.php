@@ -1,5 +1,15 @@
 <?php
+/**
+ * Metaboxes for components.
+ *
+ * @package Arch Builder
+ */
 
+/**
+ * Core class used to add the metaboxes.
+ *
+ * @since 1.0.0
+ */
 class Arch_Builder {
 
 	public function __construct() {
@@ -13,7 +23,7 @@ class Arch_Builder {
 
 	public function init_metabox() {
 
-		add_action( 'add_meta_boxes',        array( $this, 'add_metabox' )         );
+		add_action( 'add_meta_boxes',        array( $this, 'add_metabox' ) );
 		add_action( 'save_post',             array( $this, 'save_metabox' ), 10, 2 );
 
 	}
@@ -31,7 +41,7 @@ class Arch_Builder {
 
 	}
 
-	public function render_metabox($post) {
+	public function render_metabox( $post ) {
 
 		// Add nonce for security and authentication.
 		wp_nonce_field( 'nonce_action', 'nonce' );
@@ -42,9 +52,9 @@ class Arch_Builder {
 		$arch_excerpt   = get_post_meta( $post->ID, 'arch_excerpt', true );
 
 		// Set default values.
-		if( empty( $arch_component ) ) $arch_component = '';
-		if( empty( $arch_width ) ) $arch_width         = '';
-		if( empty( $arch_excerpt ) ) $arch_excerpt     = '';
+		if ( empty( $arch_component ) ) { $arch_component = ''; }
+		if ( empty( $arch_width ) ) { $arch_width         = ''; }
+		if ( empty( $arch_excerpt ) ) { $arch_excerpt     = ''; }
 
 		// Form fields.
 		echo '<table class="form-table">';
@@ -91,28 +101,28 @@ class Arch_Builder {
 
 	}
 
-	public function save_metabox($post_id, $post) {
+	public function save_metabox( $post_id, $post ) {
 
 		// Add nonce for security and authentication.
 		$nonce_name   = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
 		$nonce_action = 'nonce_action';
 
 		// Check if a nonce is set.
-		if ( ! isset( $nonce_name ) )
-			return;
+		if ( ! isset( $nonce_name ) ) {
+			return; }
 
 		// Check if a nonce is valid.
-		if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) )
-			return;
+		if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) ) {
+			return; }
 
 		// Check if the user has permissions to save data.
-		if ( ! current_user_can( 'edit_post', $post_id ) )
-			return;
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return; }
 
 		// Sanitize user input.
-		$new_arch_component = isset( $_POST[ 'arch_component' ] ) ? $_POST[ 'arch_component' ] : '';
-		$new_arch_width     = isset( $_POST[ 'arch_width' ] ) ? $_POST[ 'arch_width' ] : '';
-		$new_arch_excerpt   = isset( $_POST[ 'arch_excerpt' ] ) ? $_POST[ 'arch_excerpt' ] : '';
+		$new_arch_component = isset( $_POST['arch_component'] ) ? $_POST['arch_component'] : '';
+		$new_arch_width     = isset( $_POST['arch_width'] ) ? $_POST['arch_width'] : '';
+		$new_arch_excerpt   = isset( $_POST['arch_excerpt'] ) ? $_POST['arch_excerpt'] : '';
 
 		// Update the meta field in the database.
 		update_post_meta( $post_id, 'arch_component', $new_arch_component );
@@ -120,7 +130,6 @@ class Arch_Builder {
 		update_post_meta( $post_id, 'arch_excerpt', $new_arch_excerpt );
 
 	}
-
 }
 
 new Arch_Builder;
