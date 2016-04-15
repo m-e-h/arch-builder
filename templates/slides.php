@@ -16,12 +16,12 @@ wp_enqueue_script( 'flickity' ); ?>
 
 	<?php while ( $arch_query->have_posts() ) : $arch_query->the_post(); ?>
 
-		<div class="gallery-cell arch-1of1 arch-grad-overlay">
+		<div class="gallery-cell arch-u-1of1 arch-grad-overlay">
 
 			<?php
 		        get_the_image(array(
 		            'size'         => 'arch-hd',
-		            'image_class'  => 'gallery-cell-image arch-1of1',
+		            'image_class'  => 'gallery-cell-image arch-u-1of1',
 		            'link_to_post' => false,
 		        ));
 			?>
