@@ -33,11 +33,11 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	}
 
 	if ( $arch_component ) {
-		$classes[] = $arch_component;
+		$classes[] = "arch-{$arch_component}";
 	}
 
 	if ( $arch_title ) {
-		$classes[] = $arch_title;
+		$classes[] = "arch-{$arch_title}";
 	}
 
 	if ( 'false' === $arch_height ) {

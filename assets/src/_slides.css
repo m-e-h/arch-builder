@@ -1,0 +1,54 @@
+/**
+* Slider specific styles
+*/
+.frame {
+	position: relative;
+	margin: 0 auto;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.slide-cell {
+	position: relative;
+	display: inline-block;
+}
+
+.arch-slides {
+	position: relative;
+}
+
+.arch-slides .slides {
+	display: block;
+}
+
+.slide-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 44px;
+	height: 44px;
+	border: 1px solid #d0d0d0;
+	border-radius: 50%;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.85);
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.slide-btn.next {
+	right: 0.5em;
+}
+
+.slide-btn.prev {
+	left: 0.5em;
+}
+
+.slide-btn > svg {
+	position: absolute;
+	left: 20%;
+	top: 20%;
+	width: 60%;
+	height: 60%;
+}

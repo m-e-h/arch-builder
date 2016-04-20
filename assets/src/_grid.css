@@ -10,14 +10,16 @@
 	width: 100%;
 }
 
-.arch .arch-u-1of1 {
+.arch.arch .arch-u-1of1 {
 	width: 100%;
+	max-width: 100%;
 }
 
 @media screen and (min-width: 48em) {
 
-	.arch .arch-u-1of1-md {
+	.arch.arch .arch-u-1of1-md {
 		width: 100%;
+		max-width: 100%;
 	}
 
 	.arch .arch-u-1of2-md {

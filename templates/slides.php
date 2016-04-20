@@ -5,34 +5,41 @@
  * @package arch-builder
  */
 
-wp_enqueue_script( 'flickity' ); ?>
-
+wp_enqueue_script( 'lory' ); ?>
 
 <div <?php hybrid_attr( 'post' ); ?>>
-	<div class="gallery js-flickity"
-		data-flickity-options='{ "wrapAround": true }'>
 
+	<div class="frame js_frame arch-u-1of1">
+		<div class="slides js_slides">
 <?php $arch_query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
 
-	<?php while ( $arch_query->have_posts() ) : $arch_query->the_post(); ?>
+		<?php while ( $arch_query->have_posts() ) : $arch_query->the_post(); ?>
 
-		<div class="gallery-cell arch-u-1of1 arch-grad-overlay">
+			<div class="js_slide slide-cell arch-u-1of1 arch-grad-overlay">
 
-			<?php
+				<?php
 		        get_the_image(array(
 		            'size'         => 'arch-hd',
 		            'image_class'  => 'gallery-cell-image arch-u-1of1',
 		            'link_to_post' => false,
 		        ));
-			?>
-			<div class="cta-content arch-ab">
-				<?php arch_title(); ?>
-				<div class="cta-text arch-f-plus "><?php arch_excerpt(); ?></div>
+				?>
+				<div class="cta-content">
+					<?php arch_title(); ?>
+					<div class="cta-text arch-f-plus "><?php arch_excerpt(); ?></div>
+				</div>
 			</div>
-		</div>
 
-	<?php endwhile; ?>
+		<?php endwhile; ?>
 <?php wp_reset_postdata(); ?>
-
+		</div>
 	</div>
+
+	<button class="js_prev prev slide-btn">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentcolor" class="chevron-left v-icon"><path d="M20 1l4 4-10 11 10 11-4 4L6 16z"/></svg>
+	</button>
+
+	<button class="js_next next slide-btn">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentcolor" class="chevron-right v-icon"><path d="M12 1l14 15-14 15-4-4 10-11L8 5z"/></svg>
+	</button>
 </div>
