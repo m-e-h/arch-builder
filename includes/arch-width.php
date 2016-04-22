@@ -21,7 +21,7 @@ function arch_body_classes( $classes ) {
 function arch_width_post_classes( $classes, $class, $post_id ) {
 
 	if ( is_search() || is_single( $post_id ) ) {
-		return; }
+		return $classes; }
 
 	$achive_width   = get_post_meta( $post_id, 'arch_width', true );
 	$arch_title     = get_post_meta( $post_id, 'arch_title', true );

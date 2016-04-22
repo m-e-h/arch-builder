@@ -1,0 +1,42 @@
+.wp-list-table tr.iedit:not(.level-0) > td,
+
+.wp-list-table tr.iedit:not(.level-0) > td.column-title strong {
+	font-size: 1em!important;
+	margin: 0;
+}
+
+.wp-list-table tr.iedit:not(.level-0):not(:hover) {
+	opacity: 0.7;
+	transition: all .05s ease-in;
+	font-size: 0.75rem;
+}
+
+/*.wp-list-table tr.iedit:not(.level-0):hover {
+	opacity: 1;
+}*/
+
+.wp-list-table tr.iedit:not(.level-0) .wp-post-image {
+	max-width: 4em;
+}
+
+.wp-list-table tr.iedit:not(.level-0):not(:hover) > td {
+	margin: 0;
+	padding: 0;
+	max-height: 15px;
+	overflow: hidden;
+}
+
+.wp-list-table tr.iedit:not(.level-0) > td,
+.wp-list-table tr.iedit:not(.level-0) > .check-column {
+	margin: 0!important;
+	padding: 0!important;
+	transition: inherit;
+}
+
+/*.wp-list-table tr.iedit.level-1 {
+	font-size: 0.7rem;
+}*/
+
+.wp-list-table .level-0 .row-title {
+    border-bottom: 2px solid currentColor;
+}

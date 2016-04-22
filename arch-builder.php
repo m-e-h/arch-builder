@@ -153,6 +153,7 @@ final class Arch_Builder_Plugin {
 		if ( ! in_array( $screen->post_type, arch_post_types(), true ) ) {
 			return;
 		}
+		wp_enqueue_style( 'arch-admin-styles', trailingslashit( $this->css_uri ) . "admin.css" );
 		wp_enqueue_script( 'arch-bulk-quick-edit', trailingslashit( $this->js_uri ) . 'admin.js', array( 'jquery', 'inline-edit-post' ), false, true );
 	}
 
