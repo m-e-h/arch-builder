@@ -11,21 +11,7 @@ var postcss = require('gulp-postcss');
 var autoPrefixer = require('autoprefixer');
 var postcssFlex = require('postcss-flexibility');
 var postScss = require('postcss-scss');
-var postVars = require('postcss-advanced-variables');
-var postRoot = require('postcss-atroot');
-var postColor = require('postcss-color-function');
-var postMedia = require('postcss-custom-media');
-var postProps = require('postcss-custom-properties');
-var postSelects = require('postcss-custom-selectors');
-var postMinMax = require('postcss-media-minmax');
-var postMix = require('postcss-mixins');
-var postNested = require('postcss-nested');
-var postNesting = require('postcss-nesting');
-var postPartImport = require('postcss-partial-import');
-var postLook = require('postcss-property-lookup');
-var postMatch = require('postcss-selector-matches');
-var postCalc = require('postcss-calc');
-var styleFmt = require('stylefmt');
+var preCss = require('precss');
 var perfectionist = require('perfectionist');
 
 var $ = gulpLoadPlugins();
@@ -44,20 +30,7 @@ var AUTOPREFIXER_BROWSERS = [
 ];
 
 var POSTCSS_PLUGINS = [
-	postVars(),
-	postRoot(),
-	postColor(),
-	postMedia(),
-	postProps(),
-	postSelects(),
-	postMinMax(),
-	postMix(),
-	postNested(),
-	postNesting(),
-	postPartImport(),
-	postLook(),
-	postMatch(),
-	postCalc(),
+	preCss(),
 	autoPrefixer({
 		browsers: AUTOPREFIXER_BROWSERS
 	}),
