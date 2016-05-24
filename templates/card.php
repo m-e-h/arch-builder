@@ -14,7 +14,6 @@ $video = hybrid_media_grabber(
 ?>
 <article <?php hybrid_attr( 'post' ); ?>>
 
-		<header <?php hybrid_attr( 'entry-header' ); ?>>
 			<?php
 			if ( $video ) {
 				echo $video;
@@ -28,6 +27,8 @@ $video = hybrid_media_grabber(
 				));
 			}
 			?>
+
+		<header <?php hybrid_attr( 'entry-header' ); ?>>
 
 			<?php arch_title(); ?>
 
