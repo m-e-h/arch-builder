@@ -40,8 +40,10 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 		$classes[] = "arch-{$arch_title}";
 	}
 
-	if ( '1' !== $arch_height ) {
+	if ( '1' === $arch_height || 'false' === $arch_height ) {
 		$classes[] = 'u-flexed-start';
+	} else {
+		$classes[] = 'u-flexed-stretch';
 	}
 
 	return $classes;

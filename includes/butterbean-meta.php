@@ -37,9 +37,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			if ( ! in_array( $post_type, arch_post_types(), true ) ) {
 				return; }
 
-			// if ( 'page' !== $post_type )
-			// 	return;
-
 			/* === Register Managers === */
 
 			$butterbean->register_manager(
@@ -140,8 +137,8 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					'arch_height',
 					array(
 						'section'     => 'arch_modifier_feilds',
-						'label'       => 'Stretch Height',
-						'description' => 'Should this block stretch to the size of adjacent blocks?',
+						'label'       => 'Independent Height',
+						'description' => 'By default blocks stretch to the size of adjacent blocks.',
 					)
 				)
 			);
