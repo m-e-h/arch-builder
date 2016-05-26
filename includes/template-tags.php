@@ -78,6 +78,17 @@ if ( ! function_exists( 'arch_block_choices' ) ) {
 	}
 }
 
+// Set default components.
+if ( ! function_exists( 'arch_layout_choices' ) ) {
+
+	function arch_layout_choices() {
+		return array(
+			'' 				=> 'Default',
+			'flag'   		=> 'Flag (horizontal)',
+			'no-link-title' => 'Card (vertical/square)',
+		);
+	}
+}
 
 	// Set default widths.
 if ( ! function_exists( 'arch_width_options' ) ) {

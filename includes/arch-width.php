@@ -23,13 +23,14 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	if ( is_search() || is_single( $post_id ) ) {
 		return $classes; }
 
-	$achive_width   = get_post_meta( $post_id, 'arch_width', true );
+	$arch_layout  = get_post_meta( $post_id, 'arch_layout', true );
+	$archive_width   = get_post_meta( $post_id, 'arch_width', true );
 	$arch_title     = get_post_meta( $post_id, 'arch_title', true );
 	$arch_component = get_post_meta( $post_id, 'arch_component', true );
 	$arch_height    = get_post_meta( $post_id, 'arch_height', true );
 
-	if ( $achive_width ) {
-		$classes[] = "arch-{$achive_width}";
+	if ( $archive_width ) {
+		$classes[] = "arch-{$archive_width}";
 	}
 
 	if ( $arch_component ) {
@@ -38,6 +39,10 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 
 	if ( $arch_title ) {
 		$classes[] = "arch-{$arch_title}";
+	}
+
+	if ( 'flag' === $arch_layout ) {
+		$classes[] = 'u-flex';
 	}
 
 	if ( '1' === $arch_height || 'false' === $arch_height ) {
