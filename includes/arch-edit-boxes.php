@@ -101,7 +101,7 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 					</span>
 					<label class="alignleft inline-edit-height">
 						<span class="checkbox-title"> <?php _e( 'True Height' ); ?> </span>
-						<input type="checkbox" class="arch_height" name="arch_height" value="false" />
+						<input type="checkbox" class="arch_height" name="arch_height" value="1" />
 					</label>
 
 					<br>
@@ -144,7 +144,7 @@ function arch_be_qe_save_post( $post_id, $post ) {
 			 * this post meta on your "Quick Edit" but didn't have it on the "Edit Post" screen.
 			 */
 			 // Sanitize user input.
-	 		$height = isset( $_POST['arch_height'] ) ? 'false' : '';
+	 		$height = isset( $_POST['arch_height'] ) ? '1' : '';
 
 	 		// Update the meta field in the database.
 	 		update_post_meta( $post_id, 'arch_height', $height );
@@ -337,22 +337,62 @@ function arch_excerpt() {
 }
 
 
+// Set default components.
+if ( ! function_exists( 'arch_title_choices' ) ) {
+
+	function arch_title_choices() {
+		return array(
+			'' 				=> 'Default',
+			'link-title'   	=> 'Linked Title',
+			'no-link-title' => 'Title (no link)',
+			'slides'  		=> 'Hide Title',
+		);
+	}
+}
+
+// Set default components.
+if ( ! function_exists( 'arch_excerpt_choices' ) ) {
+
+	function arch_excerpt_choices() {
+		return array(
+			'' 				=> 'Default',
+			'excerpt'   	=> 'Excerpt',
+			'content' 		=> 'Content',
+			'none' 			=> 'None',
+		);
+	}
+}
+
+// Set default components.
+if ( ! function_exists( 'arch_block_choices' ) ) {
+
+	function arch_block_choices() {
+		return array(
+			'' 			=> 'Default',
+			'card'   	=> 'Card',
+			'tabs'      => 'Tab Group',
+			'accordion' => 'Accordion Group',
+			'slides'  	=> 'Slideshow Group',
+		);
+	}
+}
+
 
 	// Set default widths.
 if ( ! function_exists( 'arch_width_options' ) ) {
 
 	function arch_width_options() {
 		return array(
-		'u-1of1-md'      => '1/1',
-		'u-1of4-md'      => '1/4',
-		'u-1of3-md'      => '1/3',
-		'u-1of2-md'      => '1/2',
-		'u-2of3-md'      => '2/3',
-		'u-3of4-md'      => '3/4',
+		'' 				=> 'Default',
+		'u-1of1-md'    	=> '1/1',
+		'u-1of4-md'   	=> '1/4',
+		'u-1of3-md'   	=> '1/3',
+		'u-1of2-md'   	=> '1/2',
+		'u-2of3-md'   	=> '2/3',
+		'u-3of4-md'   	=> '3/4',
 		);
 	}
 }
-
 
 function arch_post_order( $query ) {
 	if ( is_admin() || ! $query->is_main_query() ) {
