@@ -23,7 +23,7 @@ function arch_title() {
 	if ( 'no-link-title' === $arch_title ) {
 		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' );
 	} else {
-		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a class="entry-title-link u-1of1 u-inline-flex u-flex-center" href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' );
+		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' );
 	}
 }
 
