@@ -80,67 +80,67 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			/* === Register Controls === */
 
 			$manager->register_control(
-				new ButterBean_Control_Select(
-					$manager,
-					'arch_component',
+				'arch_component',
 					array(
+						'type'        => 'select',
 						'section'     => 'arch_block_feilds',
 						'label'       => 'Component Type',
 						'description' => 'Arch description.',
 						'choices'     => arch_block_choices(),
 					)
-				)
 			);
 
 			$manager->register_control(
-				new ButterBean_Control_Select(
-					$manager,
-					'arch_title',
+				'arch_title',
 					array(
+						'type'        => 'select',
 						'section'     => 'arch_element_feilds',
 						'label'       => 'Title Display',
 						'description' => 'Arch description.',
 						'choices'     => arch_title_choices(),
 					)
-				)
 			);
 
 			$manager->register_control(
-				new ButterBean_Control_Select(
-					$manager,
-					'arch_excerpt',
+				'arch_excerpt',
 					array(
+						'type'        => 'select',
 						'section'     => 'arch_element_feilds',
 						'label'       => 'Excerpt Type',
 						'description' => 'Arch description.',
 						'choices'     => arch_excerpt_choices(),
 					)
-				)
 			);
 
 			$manager->register_control(
-				new ButterBean_Control_Select(
-					$manager,
-					'arch_width',
+				'arch_width',
 					array(
+						'type'        => 'select',
 						'section'     => 'arch_modifier_feilds',
 						'label'       => 'Block Width',
 						'description' => 'Arch description.',
 						'choices'     => arch_width_options(),
 					)
+			);
+
+			$manager->register_control(
+				'arch_color',
+				array(
+					'type'        => 'color',
+					'section'     => 'arch_modifier_feilds',
+					'label'       => 'Pick an accent color',
+					'description' => 'THIS DOESNT WORK YET.',
 				)
 			);
 
 			$manager->register_control(
-				new ButterBean_Control_Checkbox(
-					$manager,
-					'arch_height',
+				'arch_height',
 					array(
+						'type'        => 'checkbox',
 						'section'     => 'arch_modifier_feilds',
 						'label'       => 'Independent Height',
 						'description' => 'By default blocks stretch to the size of adjacent blocks.',
 					)
-				)
 			);
 
 			/* === Register Settings === */
@@ -169,7 +169,13 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				'arch_height',
 				array( 'sanitize_callback' => 'butterbean_validate_boolean' )
 			);
+
+			$manager->register_setting(
+				'arch_color',
+				array( 'sanitize_callback' => 'sanitize_hex_color_no_hash' )
+			);
 		}
+
 
 		/**
 		 * Returns the instance.
