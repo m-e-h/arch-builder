@@ -23,6 +23,12 @@
 	display: block;
 }
 
+.arch-slides a:not(.btn) {
+	color: inherit;
+	width: auto;
+	font-weight: bold;
+}
+
 .slide-btn {
 	position: absolute;
 	top: 50%;

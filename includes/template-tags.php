@@ -29,7 +29,7 @@ function arch_title() {
 
 function arch_excerpt() {
 	$arch_excerpt = get_post_meta( get_the_ID(), 'arch_excerpt', true );
-	if ( 'none' === $arch_excerpt ) {
+	if ( 'none' === $arch_excerpt || ! hybrid_post_has_content()) {
 		return;
 	} ?>
 	<div <?php hybrid_attr( 'entry-summary' ); ?>>
@@ -71,6 +71,7 @@ if ( ! function_exists( 'arch_block_choices' ) ) {
 		return array(
 			'' 			=> 'Default',
 			'card'   	=> 'Card',
+			'flag'   	=> 'Flag',
 			'tabs'      => 'Tab Group',
 			'accordion' => 'Accordion Group',
 			'slides'  	=> 'Slideshow Group',
@@ -104,4 +105,8 @@ if ( ! function_exists( 'arch_width_options' ) ) {
 		'u-3of4-md'   	=> '3/4',
 		);
 	}
+}
+
+function get_arch_block( $post_id ) {
+	return get_post_meta( $post_id, 'arch_component', true );
 }

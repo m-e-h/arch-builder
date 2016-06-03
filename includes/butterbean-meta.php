@@ -121,19 +121,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_control(
 				new ButterBean_Control_Select(
 					$manager,
-					'arch_layout',
-					array(
-						'section'     => 'arch_modifier_feilds',
-						'label'       => 'Block Layout',
-						'description' => 'Arch description.',
-						'choices'     => arch_layout_choices(),
-					)
-				)
-			);
-
-			$manager->register_control(
-				new ButterBean_Control_Select(
-					$manager,
 					'arch_width',
 					array(
 						'section'     => 'arch_modifier_feilds',
@@ -170,11 +157,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 
 			$manager->register_setting(
 				'arch_excerpt',
-				array( 'sanitize_callback' => 'sanitize_key' )
-			);
-
-			$manager->register_setting(
-				'arch_layout',
 				array( 'sanitize_callback' => 'sanitize_key' )
 			);
 
