@@ -10,7 +10,11 @@ add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
 
 function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
-	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_component' === $column_name ) {
+	// If the post type doesn't support `author`, bail.
+	if ( ! post_type_supports( $post_type, 'arch-post' ) )
+		return;
+
+	if ( 'arch_component' === $column_name ) {
 
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
@@ -29,7 +33,7 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	}
 
-	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_title' === $column_name ) {
+	if ( 'arch_title' === $column_name ) {
 
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
@@ -47,7 +51,7 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	}
 
-	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_excerpt' === $column_name ) {
+	if ( 'arch_excerpt' === $column_name ) {
 
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
@@ -65,7 +69,7 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	}
 
-	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_width' === $column_name ) {
+	if ( 'arch_width' === $column_name ) {
 
 		?><fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
@@ -86,7 +90,7 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	}
 
-	if ( in_array( $post_type, arch_post_types(), true ) && 'arch_height' === $column_name ) { ?>
+	if ( 'arch_height' === $column_name ) { ?>
 
 		<fieldset class="inline-edit-col-left inline-edit-categories">
 			<div class="inline-edit-col">
@@ -133,7 +137,7 @@ function arch_be_qe_save_post( $post_id, $post ) {
 	if ( isset( $post->post_type ) && 'revision' === $post->post_type ) {
 		return $post_id; }
 
-	if ( in_array( $post->post_type, arch_post_types(), true ) ) {
+	if ( post_type_supports( get_post_type( $post_id ), 'arch-post' ) ) {
 			/**
 			 * Because this action is run in several places, checking for the array key
 			 * keeps WordPress from editing data that wasn't in the form, i.e. if you had
@@ -188,7 +192,7 @@ function arch_save_bulk_edit() {
 
 function arch_cpt_args( $args, $post_type ) {
 
-	if ( in_array( $post_type, arch_post_types(), true ) ) {
+	if ( post_type_supports( $post_type, 'arch-post' ) ) {
 		$args['hierarchical'] = true;
 	}
 
@@ -197,8 +201,11 @@ function arch_cpt_args( $args, $post_type ) {
 
 
 function arch_add_cpt_columns( $columns ) {
-	if ( ! in_array( get_post_type(), arch_post_types(), true ) ) {
-		return $columns; }
+
+	// If the post type doesn't support `author`, bail.
+	if ( ! post_type_supports( get_post_type(), 'arch-post' ) )
+		return $columns;
+
 	return array_merge($columns,
 		array(
 			'arch_component'      => __( 'Type' ),
@@ -212,8 +219,11 @@ function arch_add_cpt_columns( $columns ) {
 
 
 function arch_manage_cpt_columns( $column, $post_id ) {
-	if ( ! in_array( get_post_type(), arch_post_types(), true ) ) {
-		return; }
+
+	// If the post type doesn't support `author`, bail.
+	if ( ! post_type_supports( get_post_type( $post_id ), 'arch-post' ) )
+		return;
+
 	global $post;
 
 	switch ( $column ) {

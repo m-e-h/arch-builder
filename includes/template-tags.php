@@ -1,6 +1,7 @@
 <?php
 
 function arch_post_types() {
+	$cpts = array();
 	$cpts = array( 'arch' );
 
 	if ( has_filter( 'arch_add_post_types' ) ) {
@@ -12,7 +13,7 @@ function arch_post_types() {
 
 
 function arch_is_home() {
-	return apply_filters( 'arch_is_home', in_array( 'post', arch_post_types(), true ) && is_home() );
+	return is_home() && current_theme_supports('arch-home');
 }
 
 function arch_title() {

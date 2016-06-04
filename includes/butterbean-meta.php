@@ -172,7 +172,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 
 			$manager->register_setting(
 				'arch_color',
-				array( 'sanitize_callback' => 'sanitize_hex_color_no_hash' )
+				array( 'sanitize_callback' => '' )
 			);
 		}
 

@@ -17,6 +17,9 @@ function arch_image_sizes() {
 function arch_post_order( $query ) {
 	if ( is_admin() || ! $query->is_main_query() ) {
 		return; }
+	if ( $query->is_home() && current_theme_supports('arch-home') ) {
+        $query->set( 'post_type', 'arch' );
+    }
 	if ( is_post_type_archive( arch_post_types() ) ) {
 			$query->set( 'order', 'ASC' );
 			$query->set( 'orderby', 'menu_order' );
@@ -29,7 +32,9 @@ function arch_post_order( $query ) {
  */
 function arch_templates( $template ) {
 
-	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() || is_singular( arch_post_types() ) ) {
+	// If the post type doesn't support `author`, bail.
+	if ( ! post_type_supports( get_post_type(), 'arch-post' ) )
+		return;
 
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
@@ -41,7 +46,6 @@ function arch_templates( $template ) {
 			if ( $has_template ) {
 				$template = $has_template; }
 		}
-	}
 
 	return $template;
 }
@@ -106,7 +110,7 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
  */
 function arch_body_classes( $classes ) {
 	// Adds a class of arch to arch post-types.
-	if ( is_post_type_archive( arch_post_types() ) || is_singular( arch_post_types() ) ) {
+	if ( post_type_supports( get_post_type(), 'arch-post' ) ) {
 		$classes[] = 'arch';
 	}
 	return $classes;

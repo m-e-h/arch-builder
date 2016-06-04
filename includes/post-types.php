@@ -35,7 +35,7 @@ function arch_post_type() {
 		'label'                 => __( 'Arch Post', 'arch_builder' ),
 		'description'           => __( 'Arch Builder', 'arch_builder' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes', 'archive' ),
+		'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes', 'archive', 'arch-post' ),
 		'hierarchical'          => true,
 		'public'                => true,
 		'show_ui'               => true,
