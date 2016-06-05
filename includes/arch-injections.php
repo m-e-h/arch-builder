@@ -34,7 +34,7 @@ function arch_templates( $template ) {
 
 	// If the post type doesn't support `author`, bail.
 	if ( ! post_type_supports( get_post_type(), 'arch-post' ) )
-		return;
+		return $template;
 
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
