@@ -1,5 +1,7 @@
 <?php
 
+use Mexitek\PHPColors\Color;
+
 if ( ! class_exists( 'ButterBean_Arch' ) ) {
 
 	/**
@@ -129,7 +131,30 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					'type'        => 'color',
 					'section'     => 'arch_modifier_feilds',
 					'label'       => 'Pick an accent color',
-					'description' => 'THIS DOESNT WORK YET.',
+				)
+			);
+
+			$manager->register_control(
+				'arch_palette',
+				array(
+					'type'        => 'palette',
+					'section'     => 'arch_modifier_feilds',
+					'label'       => 'Pick a color palette',
+					'description' => 'Example description.',
+					'choices'     => array(
+						'cilantro' => array(
+							'label' => __( 'Cilantro', 'hcct' ),
+							'colors' => array( apply_filters( 'theme_mod_primary_color', '' ), apply_filters( 'theme_mod_secondary_color', '' ) )
+						),
+						'quench' => array(
+							'label' => __( 'Quench', 'hcct' ),
+							'colors' => array( '#82D9F5', '#7cc7dc', '#60A4B9', '#a07096' )
+						),
+						'cloudy-days' => array(
+							'label' => __( 'Cloudy Days', 'hcct' ),
+							'colors' => array( '#E2735F', '#eaa16e', '#FBDF8B', '#ffe249' )
+						)
+					)
 				)
 			);
 
@@ -166,13 +191,18 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			);
 
 			$manager->register_setting(
-				'arch_height',
-				array( 'sanitize_callback' => 'butterbean_validate_boolean' )
+				'arch_color',
+				array( 'sanitize_callback' => 'butterbean_sanitize_hex_color_no_hash' )
 			);
 
 			$manager->register_setting(
-				'arch_color',
-				array( 'sanitize_callback' => '' )
+				'arch_palette',
+				array( 'sanitize_callback' => 'sanitize_key' )
+			);
+
+			$manager->register_setting(
+				'arch_height',
+				array( 'sanitize_callback' => 'butterbean_validate_boolean' )
 			);
 		}
 
