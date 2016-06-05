@@ -80,30 +80,18 @@ if ( ! function_exists( 'arch_block_choices' ) ) {
 	}
 }
 
-// Set default components.
-if ( ! function_exists( 'arch_layout_choices' ) ) {
-
-	function arch_layout_choices() {
-		return array(
-			'' 				=> 'Default',
-			'flag'   		=> 'Flag (horizontal)',
-			'no-link-title' => 'Card (vertical/square)',
-		);
-	}
-}
-
 	// Set default widths.
 if ( ! function_exists( 'arch_width_options' ) ) {
 
 	function arch_width_options() {
 		return array(
-		'' 				=> 'Default',
-		'u-1of1-md'    	=> '1/1',
-		'u-1of4-md'   	=> '1/4',
-		'u-1of3-md'   	=> '1/3',
-		'u-1of2-md'   	=> '1/2',
-		'u-2of3-md'   	=> '2/3',
-		'u-3of4-md'   	=> '3/4',
+			'' 				=> 'Default',
+			'u-1of1-md'    	=> '1/1',
+			'u-1of4-md'   	=> '1/4',
+			'u-1of3-md'   	=> '1/3',
+			'u-1of2-md'   	=> '1/2',
+			'u-2of3-md'   	=> '2/3',
+			'u-3of4-md'   	=> '3/4',
 		);
 	}
 }

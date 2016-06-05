@@ -10,7 +10,7 @@ add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
 
 function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
-	// If the post type doesn't support `author`, bail.
+	// If the post type doesn't support `arch`, bail.
 	if ( ! post_type_supports( $post_type, 'arch-post' ) )
 		return;
 
@@ -23,6 +23,7 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 						<select name="arch_component" class="arch_component" >
 							<option value=""><?php _e( ' ' ); ?></option>
 							<option value="card"><?php _e( 'Card' ); ?></option>
+							<option value="flag"><?php _e( 'Flag' ); ?></option>
 							<option value="tabs"><?php _e( 'Tab Group' ); ?></option>
 							<option value="accordion"><?php _e( 'Accordion Group' ); ?></option>
 							<option value="slides"><?php _e( 'Slideshow Group' ); ?></option>
@@ -202,7 +203,7 @@ function arch_cpt_args( $args, $post_type ) {
 
 function arch_add_cpt_columns( $columns ) {
 
-	// If the post type doesn't support `author`, bail.
+	// If the post type doesn't support `arch`, bail.
 	if ( ! post_type_supports( get_post_type(), 'arch-post' ) )
 		return $columns;
 
@@ -220,7 +221,7 @@ function arch_add_cpt_columns( $columns ) {
 
 function arch_manage_cpt_columns( $column, $post_id ) {
 
-	// If the post type doesn't support `author`, bail.
+	// If the post type doesn't support `arch`, bail.
 	if ( ! post_type_supports( get_post_type( $post_id ), 'arch-post' ) )
 		return;
 
