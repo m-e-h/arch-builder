@@ -15,15 +15,19 @@ function arch_image_sizes() {
 }
 
 function arch_post_order( $query ) {
-	if ( is_admin() || ! $query->is_main_query() ) {
-		return; }
+	if ( is_admin() || ! $query->is_main_query() )
+		return;
+
 	if ( $query->is_home() && current_theme_supports('arch-home') ) {
-        $query->set( 'post_type', 'arch' );
-    }
-	if ( is_post_type_archive( arch_post_types() ) ) {
-			$query->set( 'order', 'ASC' );
-			$query->set( 'orderby', 'menu_order' );
-			$query->set( 'post_parent', 0 );
+		$query->set( 'post_type', 'arch' );
+		$query->set( 'order', 'ASC' );
+		$query->set( 'orderby', 'menu_order' );
+		$query->set( 'post_parent', 0 );
+	}
+	elseif ( is_post_type_archive( arch_post_types() ) ) {
+		$query->set( 'order', 'ASC' );
+		$query->set( 'orderby', 'menu_order' );
+		$query->set( 'post_parent', 0 );
 	}
 }
 
