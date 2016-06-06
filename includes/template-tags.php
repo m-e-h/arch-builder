@@ -19,9 +19,8 @@ function arch_is_home() {
 function arch_title() {
 	$arch_title = get_post_meta( get_the_ID(), 'arch_title', true );
 	if ( 'no-title' === $arch_title ) {
-		return; }
-
-	if ( 'no-link-title' === $arch_title ) {
+		return;
+	} elseif ( 'no-link-title' === $arch_title ) {
 		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' );
 	} else {
 		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' );
