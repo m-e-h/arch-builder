@@ -43,7 +43,7 @@ if ( ! function_exists( 'arch_title_choices' ) ) {
 
 	function arch_title_choices() {
 		return array(
-			'' 				=> 'Default',
+			'' 				=> ' ',
 			'link-title'   	=> 'Linked Title',
 			'no-link-title' => 'Title (no link)',
 			'slides'  		=> 'Hide Title',
@@ -56,7 +56,7 @@ if ( ! function_exists( 'arch_excerpt_choices' ) ) {
 
 	function arch_excerpt_choices() {
 		return array(
-			'' 				=> 'Default',
+			'' 				=> ' ',
 			'excerpt'   	=> 'Excerpt',
 			'content' 		=> 'Content',
 			'none' 			=> 'None',
@@ -69,7 +69,7 @@ if ( ! function_exists( 'arch_block_choices' ) ) {
 
 	function arch_block_choices() {
 		return array(
-			'' 			=> 'Default',
+			'' 			=> ' ',
 			'card'   	=> 'Card',
 			'flag'   	=> 'Flag',
 			'tabs'      => 'Tab Group',
@@ -84,7 +84,7 @@ if ( ! function_exists( 'arch_width_options' ) ) {
 
 	function arch_width_options() {
 		return array(
-			'' 				=> 'Default',
+			'' 				=> ' ',
 			'u-1of1-md'    	=> '1/1',
 			'u-1of4-md'   	=> '1/4',
 			'u-1of3-md'   	=> '1/3',

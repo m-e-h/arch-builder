@@ -1,3 +1,19 @@
+
+html .butterbean-control-palette label {
+	display: inline-block;
+	width: 100%;
+	max-width: 45%;
+	padding-top: 5px;
+}
+
+.butterbean-palette-block {
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+
+
 .wp-list-table tr.iedit:not(.level-0) > td,
 .wp-list-table tr.iedit:not(.level-0) > td.column-title strong {
 	/*font-size: 1em !important;

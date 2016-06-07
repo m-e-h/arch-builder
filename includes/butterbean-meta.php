@@ -87,8 +87,29 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						'type'        => 'select',
 						'section'     => 'arch_block_feilds',
 						'label'       => 'Component Type',
-						'description' => 'Arch description.',
+						'description' => 'Description.',
 						'choices'     => arch_block_choices(),
+					)
+			);
+
+			$manager->register_control(
+				'arch_width',
+					array(
+						'type'        => 'select',
+						'section'     => 'arch_block_feilds',
+						'label'       => 'Component Width',
+						'description' => 'Description.',
+						'choices'     => arch_width_options(),
+					)
+			);
+
+			$manager->register_control(
+				'arch_height',
+					array(
+						'type'        => 'checkbox',
+						'section'     => 'arch_block_feilds',
+						'label'       => 'Independent Height',
+						'description' => 'By default blocks stretch to the size of adjacent blocks.',
 					)
 			);
 
@@ -98,7 +119,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						'type'        => 'select',
 						'section'     => 'arch_element_feilds',
 						'label'       => 'Title Display',
-						'description' => 'Arch description.',
 						'choices'     => arch_title_choices(),
 					)
 			);
@@ -109,21 +129,13 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						'type'        => 'select',
 						'section'     => 'arch_element_feilds',
 						'label'       => 'Excerpt Type',
-						'description' => 'Arch description.',
+						'description' => 'Show the whole page(content), a teaser without formatting(excerpt) or show only the title (and image).',
 						'choices'     => arch_excerpt_choices(),
 					)
 			);
 
-			$manager->register_control(
-				'arch_width',
-					array(
-						'type'        => 'select',
-						'section'     => 'arch_modifier_feilds',
-						'label'       => 'Block Width',
-						'description' => 'Arch description.',
-						'choices'     => arch_width_options(),
-					)
-			);
+			$arch_primary_c = new Color( Abraham_Custom_Styles::primary_color_default( $hex ) );
+			$arch_secondary_c = new Color( Abraham_Custom_Styles::secondary_color_default( $hex ) );
 
 			$manager->register_control(
 				'arch_palette',
@@ -131,19 +143,35 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					'type'        => 'palette',
 					'section'     => 'arch_modifier_feilds',
 					'label'       => 'Background Color',
-					'description' => 'Example description.',
+					'description' => 'Colors below are the site defaults. Your actual palette will reflect the defaults chosen for your Landing Page.',
 					'choices'     => array(
 						'u-bg-white' => array(
 							'label' => __( 'White (default)', 'hcct' ),
-							'colors' => array( '#fefefe' )
+							'colors' => array( '#ffffff' )
+						),
+						'u-bg-1-light' => array(
+							'label' => __( 'Primary Light', 'hcct' ),
+							'colors' => array( $arch_primary_c->lighten( 10 ) )
 						),
 						'u-bg-1' => array(
 							'label' => __( 'Primary', 'hcct' ),
-							'colors' => array( apply_filters( 'theme_mod_primary_color', '' ) )
+							'colors' => array( $arch_primary_c->getHex() )
+						),
+						'u-bg-1-dark' => array(
+							'label' => __( 'Primary Dark', 'hcct' ),
+							'colors' => array( $arch_primary_c->darken( 10 ) )
+						),
+						'u-bg-2-light' => array(
+							'label' => __( 'Secondary Light', 'hcct' ),
+							'colors' => array( $arch_secondary_c->lighten( 10 ) )
 						),
 						'u-bg-2' => array(
 							'label' => __( 'Secondary', 'hcct' ),
-							'colors' => array( apply_filters( 'theme_mod_secondary_color', '' ) )
+							'colors' => array( $arch_secondary_c->getHex() )
+						),
+						'u-bg-2-dark' => array(
+							'label' => __( 'Secondary Dark', 'hcct' ),
+							'colors' => array( $arch_secondary_c->darken( 10 ) )
 						),
 						'u-bg-transparent' => array(
 							'label' => __( 'Transparent', 'hcct' ),
@@ -151,16 +179,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						),
 					)
 				)
-			);
-
-			$manager->register_control(
-				'arch_height',
-					array(
-						'type'        => 'checkbox',
-						'section'     => 'arch_modifier_feilds',
-						'label'       => 'Independent Height',
-						'description' => 'By default blocks stretch to the size of adjacent blocks.',
-					)
 			);
 
 			/* === Register Settings === */
