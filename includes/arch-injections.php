@@ -3,7 +3,6 @@
 add_action( 'init', 'arch_image_sizes', 5 );
 add_action( 'pre_get_posts', 'arch_post_order', 1 );
 add_filter( 'hybrid_content_template', 'arch_templates' );
-add_filter( 'hybrid_get_theme_layout', 'arch_archive_layout' );
 add_filter( 'post_class', 'arch_width_post_classes', 10, 3 );
 add_filter( 'hybrid_attr_content', 'arch_grid' );
 add_filter( 'body_class', 'arch_body_classes' );
@@ -56,19 +55,6 @@ function arch_templates( $template ) {
 
 
 
-function arch_archive_layout( $layout ) {
-
-	$archive_layout = '';
-	if ( is_post_type_archive() ) {
-		global $cptarchives;
-
-		$archive_layout = hybrid_get_post_layout( $cptarchives->get_archive_id() );
-	}
-	return $archive_layout && 'default' !== $archive_layout ? $archive_layout : $layout;
-}
-
-
-
 function arch_width_post_classes( $classes, $class, $post_id ) {
 
 	if ( is_search() || is_single( $post_id ) ) {
@@ -94,6 +80,14 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 
 	if ( 'flag' === get_arch_block( $post_id ) ) {
 		$classes[] = 'u-flex';
+	}
+
+	if ( get_arch_bg( $post_id ) ) {
+		$classes[] = get_arch_bg( $post_id );
+	}
+
+	if ( 'u-bg-transparent' ===  get_arch_bg( $post_id ) ) {
+		$classes[] = 'u-shadow0';
 	}
 
 	if ( '1' === $arch_height || 'false' === $arch_height ) {

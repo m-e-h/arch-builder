@@ -126,34 +126,29 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			);
 
 			$manager->register_control(
-				'arch_color',
-				array(
-					'type'        => 'color',
-					'section'     => 'arch_modifier_feilds',
-					'label'       => 'Pick an accent color',
-				)
-			);
-
-			$manager->register_control(
 				'arch_palette',
 				array(
 					'type'        => 'palette',
 					'section'     => 'arch_modifier_feilds',
-					'label'       => 'Pick a color palette',
+					'label'       => 'Background Color',
 					'description' => 'Example description.',
 					'choices'     => array(
-						'cilantro' => array(
-							'label' => __( 'Cilantro', 'hcct' ),
-							'colors' => array( apply_filters( 'theme_mod_primary_color', '' ), apply_filters( 'theme_mod_secondary_color', '' ) )
+						'u-bg-white' => array(
+							'label' => __( 'White (default)', 'hcct' ),
+							'colors' => array( '#fefefe' )
 						),
-						'quench' => array(
-							'label' => __( 'Quench', 'hcct' ),
-							'colors' => array( '#82D9F5', '#7cc7dc', '#60A4B9', '#a07096' )
+						'u-bg-1' => array(
+							'label' => __( 'Primary', 'hcct' ),
+							'colors' => array( apply_filters( 'theme_mod_primary_color', '' ) )
 						),
-						'cloudy-days' => array(
-							'label' => __( 'Cloudy Days', 'hcct' ),
-							'colors' => array( '#E2735F', '#eaa16e', '#FBDF8B', '#ffe249' )
-						)
+						'u-bg-2' => array(
+							'label' => __( 'Secondary', 'hcct' ),
+							'colors' => array( apply_filters( 'theme_mod_secondary_color', '' ) )
+						),
+						'u-bg-transparent' => array(
+							'label' => __( 'Transparent', 'hcct' ),
+							'colors' => array( '#dddddd' )
+						),
 					)
 				)
 			);
@@ -188,11 +183,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_setting(
 				'arch_width',
 				array( 'sanitize_callback' => 'sanitize_key' )
-			);
-
-			$manager->register_setting(
-				'arch_color',
-				array( 'sanitize_callback' => 'butterbean_sanitize_hex_color_no_hash' )
 			);
 
 			$manager->register_setting(

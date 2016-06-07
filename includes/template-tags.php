@@ -98,3 +98,7 @@ if ( ! function_exists( 'arch_width_options' ) ) {
 function get_arch_block( $post_id ) {
 	return get_post_meta( $post_id, 'arch_component', true );
 }
+
+function get_arch_bg( $post_id ) {
+	return get_post_meta( $post_id, 'arch_palette', true );
+}
