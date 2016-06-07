@@ -399,3 +399,7 @@ a:hover > .chevron-toggle {
     left: 0;
     width: 100%;
 }
+
+.arch .flag-body > header + * {
+    padding-top: 0;
+}

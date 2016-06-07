@@ -17,9 +17,8 @@ $video = hybrid_media_grabber(
 	<?php
 	get_the_image(array(
 			'size'               => 'thumbnail',
-			'image_class'        => 'u-1of1 u-of-cover',
-			'before'             => '<div class="card-img arch-overflow-hidden u-flexed-s0 u-1of3 u-1of4-lg">',
-			'after'              => '</div>',
+			'image_class'        => 'u-1of3 u-1of4-md u-of-cover',
+			'link_to_post'		=> false,
 		));
 	?>
 	<div class="flag-body u-flexed-auto">
