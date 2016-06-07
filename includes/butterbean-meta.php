@@ -56,7 +56,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			/* === Register Sections === */
 
 			$manager->register_section(
-				'arch_block_feilds',
+				'arch_block_fields',
 				array(
 					'label' => 'Block',
 					'icon'  => 'dashicons-align-center',
@@ -64,7 +64,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			);
 
 			$manager->register_section(
-				'arch_element_feilds',
+				'arch_element_fields',
 				array(
 					'label' => 'Elements',
 					'icon'  => 'dashicons-image-filter',
@@ -72,7 +72,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			);
 
 			$manager->register_section(
-				'arch_modifier_feilds',
+				'arch_modifier_fields',
 				array(
 					'label' => 'Modifiers',
 					'icon'  => 'dashicons-admin-settings',
@@ -85,7 +85,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				'arch_component',
 					array(
 						'type'        => 'select',
-						'section'     => 'arch_block_feilds',
+						'section'     => 'arch_block_fields',
 						'label'       => 'Component Type',
 						'description' => 'Description.',
 						'choices'     => arch_block_choices(),
@@ -96,7 +96,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				'arch_width',
 					array(
 						'type'        => 'select',
-						'section'     => 'arch_block_feilds',
+						'section'     => 'arch_block_fields',
 						'label'       => 'Component Width',
 						'description' => 'Description.',
 						'choices'     => arch_width_options(),
@@ -107,7 +107,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				'arch_height',
 					array(
 						'type'        => 'checkbox',
-						'section'     => 'arch_block_feilds',
+						'section'     => 'arch_block_fields',
 						'label'       => 'Independent Height',
 						'description' => 'By default blocks stretch to the size of adjacent blocks.',
 					)
@@ -117,7 +117,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				'arch_title',
 					array(
 						'type'        => 'select',
-						'section'     => 'arch_element_feilds',
+						'section'     => 'arch_element_fields',
 						'label'       => 'Title Display',
 						'choices'     => arch_title_choices(),
 					)
@@ -127,7 +127,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				'arch_excerpt',
 					array(
 						'type'        => 'select',
-						'section'     => 'arch_element_feilds',
+						'section'     => 'arch_element_fields',
 						'label'       => 'Excerpt Type',
 						'description' => 'Show the whole page(content), a teaser without formatting(excerpt) or show only the title (and image).',
 						'choices'     => arch_excerpt_choices(),
@@ -141,7 +141,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				'arch_palette',
 				array(
 					'type'        => 'palette',
-					'section'     => 'arch_modifier_feilds',
+					'section'     => 'arch_modifier_fields',
 					'label'       => 'Background Color',
 					'description' => 'Colors below are the site defaults. Your actual palette will reflect the defaults chosen for your Landing Page.',
 					'choices'     => array(

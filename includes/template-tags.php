@@ -46,7 +46,7 @@ if ( ! function_exists( 'arch_title_choices' ) ) {
 			'' 				=> ' ',
 			'link-title'   	=> 'Linked Title',
 			'no-link-title' => 'Title (no link)',
-			'slides'  		=> 'Hide Title',
+			'no-title'  	=> 'Hide Title',
 		);
 	}
 }
