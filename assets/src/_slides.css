@@ -58,3 +58,10 @@
 	width: 60%;
 	height: 60%;
 }
+
+@media screen and (max-width: 47em) {
+    .slides .entry-summary {
+        display: none;
+        visibility: hidden;
+    }
+}

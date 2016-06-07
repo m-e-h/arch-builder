@@ -63,6 +63,13 @@
     height: 60%;
 }
 
+@media screen and (max-width: 47em) {
+    .slides .entry-summary {
+        display: none;
+        visibility: hidden;
+    }
+}
+
 .site-main, .o-grid {
     display: -webkit-flex;
     display: -ms-flexbox;
