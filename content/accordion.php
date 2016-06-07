@@ -6,7 +6,13 @@
 
 wp_enqueue_script( 'arch-toggle' ); ?>
 
-<div <?php hybrid_attr( 'post' ); ?>>
+<article <?php hybrid_attr( 'post' ); ?>>
+
+	<header <?php hybrid_attr( 'entry-header' ); ?>>
+
+		<?php arch_title(); ?>
+
+	</header>
 
 	<?php $query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
 
@@ -25,4 +31,4 @@ wp_enqueue_script( 'arch-toggle' ); ?>
 
 <?php wp_reset_postdata(); ?>
 
-</div>
+</article>
