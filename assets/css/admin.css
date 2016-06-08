@@ -1,12 +1,12 @@
 
-html .butterbean-control-palette label {
+#butterbean-control-arch_bg_color label {
 	display: inline-block;
 	width: 100%;
 	max-width: 45%;
 	padding-top: 5px;
 }
 
-.butterbean-palette-block {
+#butterbean-control-arch_bg_color .butterbean-palette-block {
 	border: 1px solid #e5e5e5;
 	border-radius: 3px;
 	overflow: hidden;

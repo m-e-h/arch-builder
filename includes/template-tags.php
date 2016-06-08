@@ -100,5 +100,5 @@ function get_arch_block( $post_id ) {
 }
 
 function get_arch_bg( $post_id ) {
-	return get_post_meta( $post_id, 'arch_palette', true );
+	return get_post_meta( $post_id, 'arch_bg_color', true );
 }

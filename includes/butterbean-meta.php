@@ -138,7 +138,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$arch_secondary_c = new Color( Abraham_Custom_Styles::secondary_color_default( $hex ) );
 
 			$manager->register_control(
-				'arch_palette',
+				'arch_bg_color',
 				array(
 					'type'        => 'palette',
 					'section'     => 'arch_modifier_fields',
@@ -204,7 +204,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			);
 
 			$manager->register_setting(
-				'arch_palette',
+				'arch_bg_color',
 				array( 'sanitize_callback' => 'sanitize_key' )
 			);
 
