@@ -30,6 +30,9 @@ $video = hybrid_media_grabber(
 
 		<?php arch_excerpt(); ?>
 	</div>
+
+	<?php edit_post_link(); ?>
+
 </article>
 
 <?php

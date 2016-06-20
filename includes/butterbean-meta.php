@@ -80,16 +80,37 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			);
 
 			/* === Register Controls === */
+$uri = arch_builder_plugin()->img_uri;
 
 			$manager->register_control(
 				'arch_component',
-					array(
-						'type'        => 'select',
-						'section'     => 'arch_block_fields',
-						'label'       => 'Component Type',
-						'description' => 'Description.',
-						'choices'     => arch_block_choices(),
+				array(
+					'type'        => 'radio-image',
+					'section'     => 'arch_block_fields',
+					'label'       => 'Component Type',
+					'choices' => array(
+						'card' => array(
+							'url'   => $uri . 'card.svg',
+							'label' => __( 'Card', 'hcct' )
+						),
+						'flag' => array(
+							'url'   => $uri . 'flag.svg',
+							'label' => __( 'Flag', 'hcct' )
+						),
+						'tabs' => array(
+							'url'   => $uri . 'tabs.svg',
+							'label' => __( 'Tabs', 'hcct' )
+						),
+						'accordion' => array(
+							'url'   => $uri . 'accordion.svg',
+							'label' => __( 'Accordion', 'hcct' )
+						),
+						'slides' => array(
+							'url'   => $uri . 'slide.svg',
+							'label' => __( 'Slides', 'hcct' )
+						),
 					)
+				)
 			);
 
 			$manager->register_control(
@@ -98,7 +119,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						'type'        => 'select',
 						'section'     => 'arch_block_fields',
 						'label'       => 'Component Width',
-						'description' => 'Description.',
 						'choices'     => arch_width_options(),
 					)
 			);

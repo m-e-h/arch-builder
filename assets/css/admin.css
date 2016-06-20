@@ -7,12 +7,20 @@
 }
 
 #butterbean-control-arch_bg_color .butterbean-palette-block {
-	border: 1px solid #e5e5e5;
 	border-radius: 3px;
 	overflow: hidden;
 }
 
+.butterbean-control-radio-image img {
+	border-radius: 3px;
+	opacity: 0.5;
+	-webkit-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
 
+.butterbean-control-radio-image input:checked + span + img {
+	opacity: 1;
+}
 
 .wp-list-table tr.iedit:not(.level-0) > td,
 .wp-list-table tr.iedit:not(.level-0) > td.column-title strong {

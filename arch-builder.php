@@ -37,6 +37,34 @@ final class Arch_Builder_Plugin {
 	 */
 	public $dir_uri = '';
 
+
+	/**
+	 * Plugin CSS directory URI.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @var    string
+	 */
+	public $css_uri = '';
+
+	/**
+	 * Plugin JS directory URI.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @var    string
+	 */
+	public $js_uri = '';
+
+	/**
+	 * Plugin JS directory URI.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @var    string
+	 */
+	public $img_uri = '';
+
 	/**
 	 * Returns the instance.
 	 *
@@ -83,6 +111,7 @@ final class Arch_Builder_Plugin {
 		// Plugin directory URIs.
 		$this->css_uri = trailingslashit( $this->dir_uri . 'assets/css' );
 		$this->js_uri  = trailingslashit( $this->dir_uri . 'assets/js' );
+		$this->img_uri  = trailingslashit( $this->dir_uri . 'assets/images' );
 	}
 
 	/**
