@@ -154,8 +154,8 @@ $uri = arch_builder_plugin()->img_uri;
 					)
 			);
 
-			$arch_primary_c = new Color( Abraham_Custom_Styles::primary_color_default( $hex ) );
-			$arch_secondary_c = new Color( Abraham_Custom_Styles::secondary_color_default( $hex ) );
+			$arch_primary_c = new Color( apply_filters( 'theme_mod_secondary_color', '' ) );
+			$arch_secondary_c = new Color( apply_filters( 'theme_mod_primary_color', '' ) );
 
 			$manager->register_control(
 				'arch_bg_color',
