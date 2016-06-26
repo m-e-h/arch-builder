@@ -20,10 +20,14 @@ function arch_title() {
 	$arch_title = get_post_meta( get_the_ID(), 'arch_title', true );
 	if ( 'no-title' === $arch_title ) {
 		return;
-	} elseif ( 'no-link-title' === $arch_title ) {
-		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' );
-	} else {
-		the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' );
+	} elseif ( 'no-link-title' === $arch_title ) { ?>
+		<header <?php hybrid_attr( 'entry-header' ); ?>>
+			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' ); ?>
+		</header>
+	<?php } else { ?>
+		<header <?php hybrid_attr( 'entry-header' ); ?>>
+			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
+		</header><?php
 	}
 }
 
