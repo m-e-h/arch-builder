@@ -102,55 +102,47 @@
 
     .arch .arch-u-1of2-md {
         width: calc(50% - 1.5rem);
-    }
-
-    .arch .arch-u-1of2-md:last-of-type {
         max-width: calc(50% - 1.5rem);
     }
 
     .arch .arch-u-1of3-md {
         width: calc(33.33% - 1.5rem);
-    }
-
-    .arch .arch-u-1of3-md:last-of-type, .arch .arch-u-1of3-md:nth-last-child(2) {
         max-width: calc(33.33% - 1.5rem);
     }
 
     .arch .arch-u-2of3-md {
         width: calc(66.66% - 1.5rem);
-    }
-
-    .arch .arch-u-2of3-md:last-of-type {
         max-width: calc(66.66% - 1.5rem);
     }
 
     .arch .arch-u-1of4-md {
         width: calc(25% - 1.5rem);
-    }
-
-    .arch .arch-u-1of4-md:last-of-type, .arch .arch-u-1of4-md:nth-last-child(2),
-    .arch .arch-u-1of4-md:nth-last-child(3) {
         max-width: calc(25% - 1.5rem);
     }
 
     .arch .arch-u-3of4-md {
         width: calc(75% - 1.5rem);
+        max-width: calc(75% - 1.5rem);
     }
 
     .arch .arch-u-1of5-md {
         width: calc(20% - 1.5rem);
+        max-width: calc(20% - 1.5rem);
     }
 
     .arch .arch-u-2of5-md {
         width: calc(40% - 1.5rem);
+        max-width: calc(40% - 1.5rem);
     }
 
     .arch .arch-u-3of5-md {
         width: calc(60% - 1.5rem);
+        max-width: calc(60% - 1.5rem);
     }
 
     .arch .arch-u-4of5-md {
         width: calc(80% - 1.5rem);
+        max-width: calc(80% - 1.5rem);
     }
 
     .arch .arch-width-auto-md {
