@@ -8,11 +8,9 @@ wp_enqueue_script( 'arch-toggle' ); ?>
 
 <article <?php hybrid_attr( 'post' ); ?>>
 
-	<header <?php hybrid_attr( 'entry-header' ); ?>>
+	<?php arch_title(); ?>
 
-		<?php arch_title(); ?>
-
-	</header>
+	<?php arch_excerpt(); ?>
 
 	<?php $query = new WP_Query(
 		array(
