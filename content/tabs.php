@@ -9,7 +9,14 @@ wp_enqueue_script( 'arch-tabs' ); ?>
 
 <article <?php hybrid_attr( 'post' ); ?>>
 
-<?php $query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
+	<?php $query = new WP_Query(
+		array(
+			'post_type' => get_post_type(),
+			'post_parent' => get_the_ID(),
+			'orderby' => 'menu_order',
+			'order'   => 'ASC',
+		)
+	); ?>
 
 	<ul data-tabs class="tabs tab-bar arch-flex arch-flex-wrap u-mb0" role="tablist">
 

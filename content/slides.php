@@ -11,9 +11,16 @@ wp_enqueue_script( 'lory' ); ?>
 
 	<div class="frame js_frame arch-u-1of1">
 		<div class="slides js_slides">
-<?php $arch_query = new WP_Query( array( 'post_type' => get_post_type(), 'post_parent' => get_the_ID() ) ); ?>
+			<?php $query = new WP_Query(
+				array(
+					'post_type' => get_post_type(),
+					'post_parent' => get_the_ID(),
+					'orderby' => 'menu_order',
+					'order'   => 'ASC',
+				)
+			); ?>
 
-		<?php while ( $arch_query->have_posts() ) : $arch_query->the_post(); ?>
+		<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
 			<div class="js_slide slide-cell arch-u-1of1 arch-grad-overlay">
 
