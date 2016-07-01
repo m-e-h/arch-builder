@@ -13,7 +13,7 @@ function arch_post_types() {
 
 
 function arch_is_home() {
-	return is_home() && current_theme_supports('arch-home');
+	return is_home() && current_theme_supports( 'arch-home' );
 }
 
 function arch_title() {
@@ -28,12 +28,12 @@ function arch_title() {
 		<header <?php hybrid_attr( 'entry-header' ); ?>>
 			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
 		</header><?php
-	}
+}
 }
 
 function arch_excerpt() {
 	$arch_excerpt = get_post_meta( get_the_ID(), 'arch_excerpt', true );
-	if ( 'none' === $arch_excerpt || ! hybrid_post_has_content()) {
+	if ( 'none' === $arch_excerpt || ! hybrid_post_has_content() ) {
 		return;
 	} ?>
 	<div <?php hybrid_attr( 'entry-summary' ); ?>>
@@ -106,3 +106,20 @@ function get_arch_block( $post_id ) {
 function get_arch_bg( $post_id ) {
 	return get_post_meta( $post_id, 'arch_bg_color', true );
 }
+
+
+
+
+function my_searchwp_exclude( $ids, $engine, $terms ) {
+	$entries_to_exclude = get_posts(
+		array(
+			'post_type' => 'any',
+			'key' => 'arch_title',
+			'value' => 'no-link-title',
+			'compare' => '=',
+		)
+	);
+	$ids = array_unique( array_merge( $ids, array_map( 'absint', $entries_to_exclude ) ) );
+	return $ids;
+}
+add_filter( 'searchwp_exclude', 'my_searchwp_exclude', 10, 3 );
