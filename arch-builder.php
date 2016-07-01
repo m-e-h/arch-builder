@@ -1,15 +1,16 @@
 <?php
-/**
- * Plugin Name: Arch Builder
- * Plugin URI: https://github.com/m-e-h/arch-builder
- * Description: Flexible WP archive pages.
- * Version: 0.5.0
- * Author: Marty Helmick
- * License:     GPLv2
- * Text Domain: arch-builder
- * Domain Path: /languages
- * GitHub Plugin URI: https://github.com/m-e-h/arch-builder
- */
+/*
+Plugin Name: Arch Builder
+Plugin URI: https://github.com/m-e-h/arch-builder
+Description: Flexible WP archive pages.
+Version: 0.6.0
+Author: Marty Helmick
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: arch-builder
+Domain Path: /languages
+GitHub Plugin URI: https://github.com/m-e-h/arch-builder
+*/
 
 	/**
 	 * Singleton class that sets up and initializes the plugin.
