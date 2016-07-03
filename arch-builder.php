@@ -59,7 +59,7 @@ final class Arch_Builder_Plugin {
 	public $js_uri = '';
 
 	/**
-	 * Plugin JS directory URI.
+	 * Plugin Image directory URI.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -110,7 +110,7 @@ final class Arch_Builder_Plugin {
 		$this->dir_path = trailingslashit( plugin_dir_path( __FILE__ ) );
 		$this->dir_uri  = trailingslashit( plugin_dir_url( __FILE__ ) );
 
-		// Plugin directory URIs.
+		// Plugin assets URIs.
 		$this->css_uri = trailingslashit( $this->dir_uri . 'assets/css' );
 		$this->js_uri  = trailingslashit( $this->dir_uri . 'assets/js' );
 		$this->img_uri  = trailingslashit( $this->dir_uri . 'assets/images' );
