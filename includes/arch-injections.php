@@ -36,7 +36,7 @@ function arch_post_order( $query ) {
 function arch_templates( $template ) {
 
 	// If the post type doesn't support `arch-posts`, bail.
-	if ( ! post_type_supports( get_post_type(), 'arch-post' ) || ! members_can_current_user_view_post() )
+	if ( ! post_type_supports( get_post_type(), 'arch-post' ) || ! members_can_current_user_view_post() || is_search() )
 		return $template;
 
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
