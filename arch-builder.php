@@ -3,7 +3,7 @@
 Plugin Name: Arch Builder
 Plugin URI: https://github.com/m-e-h/arch-builder
 Description: Flexible WP archive pages.
-Version: 0.6.0
+Version: 0.7.0
 Author: Marty Helmick
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
