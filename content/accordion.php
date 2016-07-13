@@ -23,7 +23,7 @@ wp_enqueue_script( 'arch-toggle' ); ?>
 
 <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-	<a class="collapse-toggle arch-f-plus arch-px2 arch-py1 arch-1of1 arch-flex arch-flex-justify-between" data-collapse="#toggle<?php the_ID(); ?>" data-group="accordion" href="#"><?php the_title(); ?> <svg xmlns="http://www.w3.org/2000/svg" class="chevron-toggle" fill="currentcolor" viewBox="0 0 32 32"><path d="M1 12l15 14 15-14-4-4-11 10L5 8z"/></svg>
+	<a class="collapse-toggle arch-f-plus arch-px2 arch-py1 arch-1of1 arch-flex arch-flex-justify-between" data-collapse="#toggle<?php the_ID(); ?>" href="#"><?php the_title(); ?> <svg xmlns="http://www.w3.org/2000/svg" class="chevron-toggle" fill="currentcolor" viewBox="0 0 32 32"><path d="M1 12l15 14 15-14-4-4-11 10L5 8z"/></svg>
 	</a>
 
 	<div class="collapse" id="toggle<?php the_ID(); ?>">
