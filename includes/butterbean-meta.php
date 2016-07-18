@@ -80,7 +80,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			);
 
 			/* === Register Controls === */
-$uri = arch_builder_plugin()->img_uri;
+			$uri = arch_builder_plugin()->img_uri;
 
 			$manager->register_control(
 				'arch_component',
@@ -91,31 +91,39 @@ $uri = arch_builder_plugin()->img_uri;
 					'choices' => array(
 						'card' => array(
 							'url'   => $uri . 'card.svg',
-							'label' => __( 'Card', 'hcct' )
+							'label' => __( 'Card', 'arch' ),
 						),
 						'flag' => array(
 							'url'   => $uri . 'flag.svg',
-							'label' => __( 'Flag', 'hcct' )
+							'label' => __( 'Flag', 'arch' ),
+						),
+						'tile' => array(
+							'url'   => $uri . 'tile.svg',
+							'label' => __( 'Tile(NOT READY)', 'arch' ),
+						),
+						'row' => array(
+							'url'   => $uri . 'row.svg',
+							'label' => __( 'Row(NOT READY)', 'arch' ),
 						),
 						'tabs' => array(
 							'url'   => $uri . 'tabs.svg',
-							'label' => __( 'Tabs', 'hcct' )
+							'label' => __( 'Tabs', 'arch' ),
 						),
 						'accordion' => array(
 							'url'   => $uri . 'accordion.svg',
-							'label' => __( 'Accordion', 'hcct' )
+							'label' => __( 'Accordion', 'arch' ),
 						),
 						'slides' => array(
 							'url'   => $uri . 'slide.svg',
-							'label' => __( 'Slides', 'hcct' )
+							'label' => __( 'Slides', 'arch' ),
 						),
-					)
+					),
 				)
 			);
 
 			$manager->register_control(
 				'arch_width',
-					array(
+				array(
 						'type'        => 'select',
 						'section'     => 'arch_block_fields',
 						'label'       => 'Component Width',
@@ -125,7 +133,7 @@ $uri = arch_builder_plugin()->img_uri;
 
 			$manager->register_control(
 				'arch_height',
-					array(
+				array(
 						'type'        => 'checkbox',
 						'section'     => 'arch_block_fields',
 						'label'       => 'Independent Height',
@@ -135,7 +143,7 @@ $uri = arch_builder_plugin()->img_uri;
 
 			$manager->register_control(
 				'arch_title',
-					array(
+				array(
 						'type'        => 'select',
 						'section'     => 'arch_element_fields',
 						'label'       => 'Title Display',
@@ -145,7 +153,7 @@ $uri = arch_builder_plugin()->img_uri;
 
 			$manager->register_control(
 				'arch_excerpt',
-					array(
+				array(
 						'type'        => 'select',
 						'section'     => 'arch_element_fields',
 						'label'       => 'Excerpt Type',
@@ -166,38 +174,38 @@ $uri = arch_builder_plugin()->img_uri;
 					'description' => 'Colors below are the site defaults. Your actual palette will reflect the defaults chosen for your Landing Page.',
 					'choices'     => array(
 						'u-bg-white' => array(
-							'label' => __( 'White (default)', 'hcct' ),
-							'colors' => array( '#ffffff' )
+							'label' => __( 'White (default)', 'arch' ),
+							'colors' => array( '#ffffff' ),
 						),
 						'u-bg-1-light' => array(
-							'label' => __( 'Primary Light', 'hcct' ),
-							'colors' => array( $arch_primary_c->lighten( 10 ) )
+							'label' => __( 'Primary Light', 'arch' ),
+							'colors' => array( $arch_primary_c->lighten( 10 ) ),
 						),
 						'u-bg-1' => array(
-							'label' => __( 'Primary', 'hcct' ),
-							'colors' => array( $arch_primary_c->getHex() )
+							'label' => __( 'Primary', 'arch' ),
+							'colors' => array( $arch_primary_c->getHex() ),
 						),
 						'u-bg-1-dark' => array(
-							'label' => __( 'Primary Dark', 'hcct' ),
-							'colors' => array( $arch_primary_c->darken( 10 ) )
+							'label' => __( 'Primary Dark', 'arch' ),
+							'colors' => array( $arch_primary_c->darken( 10 ) ),
 						),
 						'u-bg-2-light' => array(
-							'label' => __( 'Secondary Light', 'hcct' ),
-							'colors' => array( $arch_secondary_c->lighten( 10 ) )
+							'label' => __( 'Secondary Light', 'arch' ),
+							'colors' => array( $arch_secondary_c->lighten( 10 ) ),
 						),
 						'u-bg-2' => array(
-							'label' => __( 'Secondary', 'hcct' ),
-							'colors' => array( $arch_secondary_c->getHex() )
+							'label' => __( 'Secondary', 'arch' ),
+							'colors' => array( $arch_secondary_c->getHex() ),
 						),
 						'u-bg-2-dark' => array(
-							'label' => __( 'Secondary Dark', 'hcct' ),
-							'colors' => array( $arch_secondary_c->darken( 10 ) )
+							'label' => __( 'Secondary Dark', 'arch' ),
+							'colors' => array( $arch_secondary_c->darken( 10 ) ),
 						),
 						'u-bg-transparent' => array(
-							'label' => __( 'Transparent', 'hcct' ),
-							'colors' => array( '#dddddd' )
+							'label' => __( 'Transparent', 'arch' ),
+							'colors' => array( '#dddddd' ),
 						),
-					)
+					),
 				)
 			);
 
