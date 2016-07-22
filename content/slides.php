@@ -11,6 +11,21 @@ wp_enqueue_script( 'lory' ); ?>
 
 	<div class="frame js_frame arch-u-1of1">
 		<div class="slides js_slides">
+
+		<?php
+		if ( get_post_gallery() ) :
+			$gallery = get_post_gallery( get_the_ID(), false );
+
+			/* Loop through all the image and output them one by one */
+			foreach ( $gallery['src'] as $src ) : ?>
+			<div class="js_slide slide-cell arch-u-1of1">
+				<img src="<?php echo $src; ?>" class="gallery-cell-image arch-u-1of1" alt="Gallery image" />
+			</div>
+				<?php
+			endforeach;
+
+		else:
+		?>
 			<?php $query = new WP_Query(
 				array(
 					'post_type' => get_post_type(),
@@ -39,6 +54,7 @@ wp_enqueue_script( 'lory' ); ?>
 
 		<?php endwhile; ?>
 <?php wp_reset_postdata(); ?>
+<?php endif; ?>
 		</div>
 	</div>
 
