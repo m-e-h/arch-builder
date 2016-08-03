@@ -42,6 +42,34 @@
 	opacity: 1;
 }
 
+.arch-video-embed {
+	max-width: 600px;
+}
+
+.FlexEmbed {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.FlexEmbed-ratio {
+  display: block;
+  padding-bottom: 100%;
+  width: 100%;
+}
+
+.FlexEmbed-ratio--16by9 {
+  padding-bottom: 56.25%;
+}
+
+.FlexEmbed>iframe {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
 /*.wp-list-table tr.iedit:not(.level-0) > td,
 .wp-list-table tr.iedit:not(.level-0) > td.column-title strong {
 	font-size: 0.75rem !important;
