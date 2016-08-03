@@ -151,6 +151,21 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					)
 			);
 
+$dir = plugin_dir_path( __FILE__ );
+require_once $dir . 'bb-controls/class-control-oembed.php';
+
+			$manager->register_control(
+			new ButterBean_Control_Oembed(
+				$manager,
+				'arch_oembed',
+				array(
+					'type'        => 'oembed',
+					'section'     => 'arch_element_fields',
+					'label'       => 'Embed',
+				)
+				)
+			);
+
 			$manager->register_control(
 				'arch_excerpt',
 				array(
@@ -219,6 +234,11 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_setting(
 				'arch_title',
 				array( 'sanitize_callback' => 'sanitize_key' )
+			);
+
+			$manager->register_setting(
+				'arch_oembed',
+				array( 'sanitize_callback' => 'esc_url' )
 			);
 
 			$manager->register_setting(
