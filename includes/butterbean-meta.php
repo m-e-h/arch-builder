@@ -151,8 +151,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					)
 			);
 
-$dir = plugin_dir_path( __FILE__ );
-require_once $dir . 'bb-controls/class-control-oembed.php';
+			require_once arch_builder_plugin()->dir_path . 'includes/bb-controls/class-control-oembed.php';
 
 			$manager->register_control(
 			new ButterBean_Control_Oembed(
