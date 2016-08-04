@@ -151,6 +151,17 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					)
 			);
 
+			$manager->register_control(
+				'arch_excerpt',
+				array(
+						'type'        => 'select',
+						'section'     => 'arch_element_fields',
+						'label'       => 'Excerpt Type',
+						'description' => 'Show the whole page(content), a teaser without formatting(excerpt) or show only the title (and image).',
+						'choices'     => arch_excerpt_choices(),
+					)
+			);
+
 			require_once arch_builder_plugin()->dir_path . 'includes/bb-controls/class-control-oembed.php';
 
 			$manager->register_control(
@@ -163,17 +174,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					'label'       => 'Embed',
 				)
 				)
-			);
-
-			$manager->register_control(
-				'arch_excerpt',
-				array(
-						'type'        => 'select',
-						'section'     => 'arch_element_fields',
-						'label'       => 'Excerpt Type',
-						'description' => 'Show the whole page(content), a teaser without formatting(excerpt) or show only the title (and image).',
-						'choices'     => arch_excerpt_choices(),
-					)
 			);
 
 			$arch_primary_c = new Color( apply_filters( 'theme_mod_secondary_color', '' ) );
