@@ -17,7 +17,7 @@ function arch_post_order( $query ) {
 	if ( is_admin() || ! $query->is_main_query() )
 		return;
 
-	if ( $query->is_home() && current_theme_supports('arch-home') ) {
+	if ( 1 === get_theme_mod( 'arch_front_page', '' ) && $query->is_home() ) {
 		$query->set( 'post_type', 'arch' );
 		$query->set( 'order', 'ASC' );
 		$query->set( 'orderby', 'menu_order' );
@@ -84,6 +84,10 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 
 	if ( 'flag' === get_arch_block( $post_id ) ) {
 		$classes[] = 'u-flex';
+	}
+
+	if ( 'tile' === get_arch_block( $post_id ) ) {
+		$classes[] = 'tilo u-flex-wrap o-cell u-br u-flex u-flex-col u-shadow1 shadow-hover';
 	}
 
 	if ( get_arch_bg( $post_id ) ) {

@@ -127,7 +127,7 @@ final class Arch_Builder_Plugin {
 
 		require_once $this->dir_path . 'includes/post-types.php';
 		require_once $this->dir_path . 'includes/template-tags.php';
-		require_once $this->dir_path . 'includes/arch-edit-boxes.php';
+		// require_once $this->dir_path . 'includes/arch-edit-boxes.php';
 		require_once $this->dir_path . 'includes/customizer.php';
 		require_once $this->dir_path . 'includes/arch-injections.php';
 		require_once $this->dir_path . 'includes/butterbean-meta.php';
@@ -186,7 +186,7 @@ final class Arch_Builder_Plugin {
 		if ( ! in_array( $screen->post_type, arch_post_types(), true ) ) {
 			return;
 		}
-		wp_enqueue_style( 'arch-admin-styles', trailingslashit( $this->css_uri ) . "admin.css" );
+		wp_enqueue_style( 'arch-admin-styles', trailingslashit( $this->css_uri ) . 'admin.css' );
 		wp_enqueue_script( 'arch-bulk-quick-edit', trailingslashit( $this->js_uri ) . 'admin.js', array( 'jquery', 'inline-edit-post' ), false, true );
 	}
 

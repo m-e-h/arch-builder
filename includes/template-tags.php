@@ -13,7 +13,7 @@ function arch_post_types() {
 
 
 function arch_is_home() {
-	return is_home() && current_theme_supports( 'arch-home' );
+	return is_home() && 1 === get_theme_mod( 'arch_front_page', '' );
 }
 
 function arch_title() {
