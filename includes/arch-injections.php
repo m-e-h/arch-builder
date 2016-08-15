@@ -15,7 +15,7 @@ function arch_image_sizes() {
 
 function arch_post_order( $query ) {
 	if ( is_admin() || ! $query->is_main_query() )
-		return;
+		return $query;
 
 	if ( 1 === get_theme_mod( 'arch_front_page', '' ) && $query->is_home() ) {
 		$query->set( 'post_type', 'arch' );
@@ -35,7 +35,7 @@ function arch_post_order( $query ) {
  */
 function arch_templates( $template ) {
 	if (is_admin())
-		return;
+		return $template;
 
 	// If the post type doesn't support `arch-posts`, bail.
 	if ( ! post_type_supports( get_post_type(), 'arch-post' ) || ! members_can_current_user_view_post() || is_search() )
@@ -58,10 +58,8 @@ function arch_templates( $template ) {
 
 
 function arch_width_post_classes( $classes, $class, $post_id ) {
-	if (is_admin())
-		return;
 
-	if ( is_search() || is_single( $post_id ) ) {
+	if ( is_admin() || is_search() || is_single( $post_id ) ) {
 		return $classes; }
 
 	$arch_layout  = get_post_meta( $post_id, 'arch_layout', true );
@@ -116,7 +114,7 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
  */
 function arch_body_classes( $classes ) {
 	if (is_admin())
-		return;
+		return $classes;
 
 	// Adds a class of arch to arch post-types.
 	if ( post_type_supports( get_post_type(), 'arch-post' ) ) {
@@ -129,7 +127,7 @@ function arch_body_classes( $classes ) {
 
 function arch_grid( $attr ) {
 	if (is_admin())
-		return;
+		return $attr;
 
 	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
 		$attr['class']   .= ' o-grid';
