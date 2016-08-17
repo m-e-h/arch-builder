@@ -855,9 +855,13 @@ return /******/ (function(modules) { // webpackBootstrap
 });
 ;
 
+var domReady = function(callback) {
+	document.readyState === "interactive" ||
+		document.readyState === "complete" ? callback() : document.addEventListener("DOMContentLoaded", callback);
+};
 
 
-document.addEventListener('DOMContentLoaded', function () {
+domReady(function () {
 	var slides = document.querySelector('.arch-slides');
 
 	lory(slides, {
