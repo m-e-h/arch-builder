@@ -168,10 +168,30 @@ final class Arch_Builder_Plugin {
 		wp_register_script( 'arch-tabs', trailingslashit( $this->js_uri ) . 'arch-tabs.js', false, false, true );
 		wp_register_script( 'arch-toggle', trailingslashit( $this->js_uri ) . 'houdini.js', false, false, true );
 		wp_register_script( 'lory', trailingslashit( $this->js_uri ) . 'lory.js', false, false, true );
+		wp_add_inline_script( 'lory', $this->get_lory_script() );
 
 		/* Load the plugin stylesheet if no theme support. */
 		if ( ! current_theme_supports( 'arch-builder' ) ) {
 			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . "arch{$suffix}.css" ); }
+	}
+
+	public function get_lory_script() {
+
+	return "
+	var domReady = function(callback) {
+		document.readyState === 'interactive' ||
+		document.readyState === 'complete' ? callback() : document.addEventListener('DOMContentLoaded', callback);
+	};
+
+
+	domReady(function () {
+		var slides = document.querySelector('.arch-slides');
+
+		lory(slides, {
+			infinite: 1,
+			enableMouseEvents: true
+		});
+	});";
 	}
 
 	/**
