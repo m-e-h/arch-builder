@@ -15,12 +15,13 @@
 			'order'   => 'ASC',
 		)
 	); ?>
+	<div class="row-inner u-max-center u-flexed-stretch u-flex u-flex-wrap u-flexed-auto">
 <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
 	<?php hybrid_get_content_template(); ?>
 
 <?php endwhile; ?>
-
+</div>
 <?php wp_reset_postdata(); ?>
 
 </div>

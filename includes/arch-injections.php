@@ -84,6 +84,10 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 		$classes[] = 'u-flex';
 	}
 
+	if ( 'row' === get_arch_block( $post_id ) ) {
+		$classes[] = 'u-shadow0 u-br0 u-m0';
+	}
+
 	if ( 'tile' === get_arch_block( $post_id ) ) {
 		$classes[] = 'tilo u-flex-wrap o-cell u-br u-flex u-flex-col u-shadow1 shadow-hover';
 	}
