@@ -85,7 +85,7 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	}
 
 	if ( 'row' === get_arch_block( $post_id ) ) {
-		$classes[] = 'u-shadow0 u-br0 u-m0';
+		$classes[] = 'u-shadow0 u-br0 u-m0 section-row u-relative u-1of1 u-fluid-xp u-pt3 u-pt4-md u-pb2 u-pb3-md';
 	}
 
 	if ( 'tile' === get_arch_block( $post_id ) ) {
