@@ -162,22 +162,31 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					)
 			);
 
-			require_once arch_builder_plugin()->dir_path . 'includes/bb-controls/class-control-oembed.php';
+			// require_once arch_builder_plugin()->dir_path . 'includes/bb-controls/class-control-oembed.php';
+			//
+			// $manager->register_control(
+			// new ButterBean_Control_Oembed(
+			// 	$manager,
+			// 	'arch_oembed',
+			// 	array(
+			// 		'type'        => 'oembed',
+			// 		'section'     => 'arch_element_fields',
+			// 		'label'       => 'Embed',
+			// 	)
+			// 	)
+			// );
 
-			$manager->register_control(
-			new ButterBean_Control_Oembed(
-				$manager,
-				'arch_oembed',
-				array(
-					'type'        => 'oembed',
-					'section'     => 'arch_element_fields',
-					'label'       => 'Embed',
-				)
-				)
-			);
-
-			$arch_primary_c = new Color( apply_filters( 'theme_mod_secondary_color', '' ) );
-			$arch_secondary_c = new Color( apply_filters( 'theme_mod_primary_color', '' ) );
+			$arch_primary_default = apply_filters( 'theme_mod_primary_color', '' );
+			$arch_primary_archive = $arch_primary_default;
+			$arch_secondary_default = apply_filters( 'theme_mod_secondary_color', '' );
+			$arch_secondary_archive = $arch_secondary_default;
+			global $cptarchives;
+			if ( $GLOBALS['cptarchives'] ) {
+				$arch_primary_archive = $cptarchives->get_archive_meta( 'doc_page_primary_color', true, $arch_primary_default, $post_type );
+				$arch_secondary_archive = $cptarchives->get_archive_meta( 'doc_page_secondary_color', true, $arch_secondary_default, $post_type );
+			}
+			$arch_primary_c = new Color( $arch_primary_archive );
+			$arch_secondary_c = new Color( $arch_secondary_archive );
 
 			$manager->register_control(
 				'arch_bg_color',
@@ -185,7 +194,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					'type'        => 'palette',
 					'section'     => 'arch_modifier_fields',
 					'label'       => 'Background Color',
-					'description' => 'Colors below are the site defaults. Your actual palette will reflect the defaults chosen for your Landing Page.',
+					'description' => 'The default colors can be designated from your Landing Page.',
 					'choices'     => array(
 						'u-bg-white' => array(
 							'label' => __( 'White (default)', 'arch' ),
@@ -235,10 +244,10 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				array( 'sanitize_callback' => 'sanitize_key' )
 			);
 
-			$manager->register_setting(
-				'arch_oembed',
-				array( 'sanitize_callback' => 'esc_url' )
-			);
+			// $manager->register_setting(
+			// 	'arch_oembed',
+			// 	array( 'sanitize_callback' => 'esc_url' )
+			// );
 
 			$manager->register_setting(
 				'arch_excerpt',
