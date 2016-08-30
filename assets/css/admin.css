@@ -2,13 +2,19 @@
 #butterbean-control-arch_bg_color label {
 	display: inline-block;
 	width: 100%;
-	max-width: 45%;
+	max-width: 23%;
 	padding-top: 5px;
+	-webkit-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
 }
 
 #butterbean-control-arch_bg_color .butterbean-palette-block {
 	border-radius: 3px;
 	overflow: hidden;
+}
+
+#butterbean-control-arch_bg_color label:hover {
+	    background-color: #eee;
 }
 
 .butterbean-control-radio-image img {

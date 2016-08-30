@@ -212,6 +212,10 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 							'label' => __( 'Primary Dark', 'arch' ),
 							'colors' => array( $arch_primary_c->darken( 10 ) ),
 						),
+						'u-bg-transparent' => array(
+							'label' => __( 'Transparent', 'arch' ),
+							'colors' => array( '#dddddd' ),
+						),
 						'u-bg-2-light' => array(
 							'label' => __( 'Secondary Light', 'arch' ),
 							'colors' => array( $arch_secondary_c->lighten( 10 ) ),
@@ -223,10 +227,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						'u-bg-2-dark' => array(
 							'label' => __( 'Secondary Dark', 'arch' ),
 							'colors' => array( $arch_secondary_c->darken( 10 ) ),
-						),
-						'u-bg-transparent' => array(
-							'label' => __( 'Transparent', 'arch' ),
-							'colors' => array( '#dddddd' ),
 						),
 					),
 				)
