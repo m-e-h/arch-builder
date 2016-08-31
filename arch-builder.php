@@ -127,6 +127,7 @@ final class Arch_Builder_Plugin {
 
 		require_once $this->dir_path . 'includes/post-types.php';
 		require_once $this->dir_path . 'includes/template-tags.php';
+		require_once $this->dir_path . 'lib/butterbean/butterbean.php';
 		require_once $this->dir_path . 'includes/arch-edit-boxes.php';
 		require_once $this->dir_path . 'includes/customizer.php';
 		require_once $this->dir_path . 'includes/arch-injections.php';
