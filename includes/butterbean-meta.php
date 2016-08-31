@@ -144,37 +144,49 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_control(
 				'arch_title',
 				array(
-						'type'        => 'select',
-						'section'     => 'arch_element_fields',
-						'label'       => 'Title Display',
-						'choices'     => arch_title_choices(),
-					)
+					'type'        => 'radio-image',
+					'section'     => 'arch_element_fields',
+					'label'       => 'Title Display',
+					'choices' => array(
+						'link-title' => array(
+							'url'   => $uri . 'link.svg',
+							'label' => __( 'Linked Title', 'arch' ),
+						),
+						'no-link-title' => array(
+							'url'   => $uri . 'no-link.svg',
+							'label' => __( 'Title (no link)', 'arch' ),
+						),
+						'no-title' => array(
+							'url'   => $uri . 'none.svg',
+							'label' => __( 'Hide Title', 'arch' ),
+						),
+					),
+				)
 			);
 
 			$manager->register_control(
 				'arch_excerpt',
 				array(
-						'type'        => 'select',
-						'section'     => 'arch_element_fields',
-						'label'       => 'Excerpt Type',
-						'description' => 'Show the whole page(content), a teaser without formatting(excerpt) or show only the title (and image).',
-						'choices'     => arch_excerpt_choices(),
-					)
+					'type'        => 'radio-image',
+					'section'     => 'arch_element_fields',
+					'label'       => 'Body Display',
+					'description' => 'Show the whole page(content), a teaser without formatting(excerpt) or show only the title and(or) image.',
+					'choices' => array(
+						'excerpt' => array(
+							'url'   => $uri . 'excerpt.svg',
+							'label' => __( 'Excerpt', 'arch' ),
+						),
+						'content' => array(
+							'url'   => $uri . 'content.svg',
+							'label' => __( 'Content', 'arch' ),
+						),
+						'none' => array(
+							'url'   => $uri . 'none.svg',
+							'label' => __( 'None', 'arch' ),
+						),
+					),
+				)
 			);
-
-			// require_once arch_builder_plugin()->dir_path . 'includes/bb-controls/class-control-oembed.php';
-			//
-			// $manager->register_control(
-			// new ButterBean_Control_Oembed(
-			// 	$manager,
-			// 	'arch_oembed',
-			// 	array(
-			// 		'type'        => 'oembed',
-			// 		'section'     => 'arch_element_fields',
-			// 		'label'       => 'Embed',
-			// 	)
-			// 	)
-			// );
 
 			$arch_primary_default = apply_filters( 'theme_mod_primary_color', '' );
 			$arch_primary_archive = $arch_primary_default;
@@ -200,33 +212,33 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 							'label' => __( 'White (default)', 'arch' ),
 							'colors' => array( '#ffffff' ),
 						),
-						'u-bg-1-light' => array(
-							'label' => __( 'Primary Light', 'arch' ),
-							'colors' => array( $arch_primary_c->lighten( 10 ) ),
-						),
 						'u-bg-1' => array(
 							'label' => __( 'Primary', 'arch' ),
 							'colors' => array( $arch_primary_c->getHex() ),
+						),
+						'u-bg-1-light' => array(
+							'label' => __( 'Primary Light', 'arch' ),
+							'colors' => array( $arch_primary_c->lighten( 10 ) ),
 						),
 						'u-bg-1-dark' => array(
 							'label' => __( 'Primary Dark', 'arch' ),
 							'colors' => array( $arch_primary_c->darken( 10 ) ),
 						),
-						'u-bg-transparent' => array(
-							'label' => __( 'Transparent', 'arch' ),
-							'colors' => array( '#dddddd' ),
+						'u-bg-2' => array(
+							'label' => __( 'Secondary', 'arch' ),
+							'colors' => array( $arch_secondary_c->getHex() ),
 						),
 						'u-bg-2-light' => array(
 							'label' => __( 'Secondary Light', 'arch' ),
 							'colors' => array( $arch_secondary_c->lighten( 10 ) ),
 						),
-						'u-bg-2' => array(
-							'label' => __( 'Secondary', 'arch' ),
-							'colors' => array( $arch_secondary_c->getHex() ),
-						),
 						'u-bg-2-dark' => array(
 							'label' => __( 'Secondary Dark', 'arch' ),
 							'colors' => array( $arch_secondary_c->darken( 10 ) ),
+						),
+						'u-bg-transparent' => array(
+							'label' => __( 'Transparent', 'arch' ),
+							'colors' => array( '#ddd','#f5f5f5','#ddd','#f5f5f5','#ddd','#f5f5f5' ),
 						),
 					),
 				)
@@ -243,11 +255,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				'arch_title',
 				array( 'sanitize_callback' => 'sanitize_key' )
 			);
-
-			// $manager->register_setting(
-			// 	'arch_oembed',
-			// 	array( 'sanitize_callback' => 'esc_url' )
-			// );
 
 			$manager->register_setting(
 				'arch_excerpt',
