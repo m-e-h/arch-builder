@@ -1,3 +1,11 @@
+.butterbean-manager-default .butterbean-control.butterbean-control-radio-image {
+    margin-bottom: 2rem;
+}
+
+.butterbean-manager-default .butterbean-description {
+    margin-bottom: 1rem!important;
+    opacity: .9;
+}
 
 #butterbean-control-arch_bg_color label {
 	display: inline-block;
@@ -15,6 +23,15 @@
 
 #butterbean-control-arch_bg_color label:hover {
 	    background-color: #ddd;
+}
+
+.butterbean-radio-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.butterbean-radio-list > li {
+    margin-right: 1rem;
 }
 
 .butterbean-control-radio-image img {
