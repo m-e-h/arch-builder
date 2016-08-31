@@ -97,14 +97,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 							'url'   => $uri . 'flag.svg',
 							'label' => __( 'Flag', 'arch' ),
 						),
-						'tile' => array(
-							'url'   => $uri . 'tile.svg',
-							'label' => __( 'Tile(NOT READY)', 'arch' ),
-						),
-						'row' => array(
-							'url'   => $uri . 'row.svg',
-							'label' => __( 'Row(NOT READY)', 'arch' ),
-						),
 						'tabs' => array(
 							'url'   => $uri . 'tabs.svg',
 							'label' => __( 'Tabs', 'arch' ),
@@ -116,6 +108,14 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						'slides' => array(
 							'url'   => $uri . 'slide.svg',
 							'label' => __( 'Slides', 'arch' ),
+						),
+						'tile' => array(
+							'url'   => $uri . 'tile.svg',
+							'label' => __( 'Tile(NOT READY)', 'arch' ),
+						),
+						'row' => array(
+							'url'   => $uri . 'row.svg',
+							'label' => __( 'Row(NOT READY)', 'arch' ),
 						),
 					),
 				)
