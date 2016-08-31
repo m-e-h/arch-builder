@@ -32,10 +32,10 @@
 }
 
 .butterbean-control-radio-image .screen-reader-text {
-    width: auto;
-    height: auto;
-    position: static;
-	padding-top: .25em;
+    width: auto!important;
+    height: auto!important;
+    position: static!important;
+	padding-top: .25em!important;
 	font-style: italic;
 	color: #666666;
 }
