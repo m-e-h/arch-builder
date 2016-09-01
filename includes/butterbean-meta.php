@@ -270,8 +270,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				)
 			);
 
-
-
 			$manager->register_control(
 				'arch_height',
 				array(
