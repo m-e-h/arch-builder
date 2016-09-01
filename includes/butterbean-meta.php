@@ -168,26 +168,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			);
 
 			$manager->register_control(
-				'arch_height',
-				array(
-					'type'        => 'radio-image',
-					'section'     => 'arch_block_fields',
-					'label'       => 'Height',
-					'description' => 'Should card be equal in height to others in the row regardless of content size?',
-					'choices' => array(
-						'stretch' => array(
-							'url'   => $uri . 'equal-height.svg',
-							'label' => __( 'Stretch (default)', 'arch' ),
-						),
-						'independent' => array(
-							'url'   => $uri . 'not-equal.svg',
-							'label' => __( 'Independent Height', 'arch' ),
-						),
-					),
-				)
-			);
-
-			$manager->register_control(
 				'arch_title',
 				array(
 					'type'        => 'radio-image',
@@ -285,6 +265,28 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						'u-bg-transparent' => array(
 							'label' => __( 'Transparent', 'arch' ),
 							'colors' => array( '#ddd','#f5f5f5','#ddd','#f5f5f5','#ddd','#f5f5f5' ),
+						),
+					),
+				)
+			);
+
+
+
+			$manager->register_control(
+				'arch_height',
+				array(
+					'type'        => 'radio-image',
+					'section'     => 'arch_modifier_fields',
+					'label'       => 'Equal Height',
+					'description' => 'Should this component stretch to the height of others in the row, regardless of content size?',
+					'choices' => array(
+						'stretch' => array(
+							'url'   => $uri . 'equal-height.svg',
+							'label' => __( 'Stretch (default)', 'arch' ),
+						),
+						'independent' => array(
+							'url'   => $uri . 'not-equal.svg',
+							'label' => __( 'Independent Height', 'arch' ),
 						),
 					),
 				)
