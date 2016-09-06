@@ -15,11 +15,13 @@
 			'order'   => 'ASC',
 		)
 	); ?>
+
 <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
 	<?php hybrid_get_content_template(); ?>
 
 <?php endwhile; ?>
+
 <?php wp_reset_postdata(); ?>
 
 </div>

@@ -226,49 +226,70 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$arch_primary_c = new Color( $arch_primary_archive );
 			$arch_secondary_c = new Color( $arch_secondary_archive );
 
-			$manager->register_control(
-				'arch_bg_color',
-				array(
-					'type'        => 'palette',
+
+			if ( 'arch' === $post_type ) {
+
+				$manager->register_control(
+					'arch_primary_color',
+					array(
+					'type'        => 'color',
 					'section'     => 'arch_modifier_fields',
 					'label'       => 'Background Color',
-					'description' => 'The default colors can be designated from your Landing Page.',
-					'choices'     => array(
-						'u-bg-1' => array(
-							'label' => __( 'Primary', 'arch' ),
-							'colors' => array( $arch_primary_c->getHex() ),
+					'options' => array( 'palettes' => array( "#{$arch_primary_c->getHex()}", "#{$arch_primary_c->lighten( 10 )}", "#{$arch_primary_c->darken( 10 )}", "#{$arch_secondary_c->getHex()}", "#{$arch_secondary_c->lighten( 10 )}", "#{$arch_secondary_c->darken( 10 )}" ) ),
+					)
+				);
+				$manager->register_setting(
+					'arch_primary_color',
+					array( 'sanitize_callback' => 'sanitize_hex_color_no_hash', 'default' => $arch_primary_default )
+				);
+
+			} else {
+
+				$manager->register_control(
+					'arch_bg_color',
+					array(
+						'type'        => 'palette',
+						'section'     => 'arch_modifier_fields',
+						'label'       => 'Background Color',
+						'description' => 'The default colors can be designated from your Landing Page.',
+						'choices'     => array(
+							'u-bg-1' => array(
+								'label' => __( 'Primary', 'arch' ),
+								'colors' => array( $arch_primary_c->getHex() ),
+							),
+							'u-bg-1-light' => array(
+								'label' => __( 'Primary Light', 'arch' ),
+								'colors' => array( $arch_primary_c->lighten( 10 ) ),
+							),
+							'u-bg-1-dark' => array(
+								'label' => __( 'Primary Dark', 'arch' ),
+								'colors' => array( $arch_primary_c->darken( 10 ) ),
+							),
+							'u-bg-white' => array(
+								'label' => __( 'White (default)', 'arch' ),
+								'colors' => array( '#ffffff' ),
+							),
+							'u-bg-2' => array(
+								'label' => __( 'Secondary', 'arch' ),
+								'colors' => array( $arch_secondary_c->getHex() ),
+							),
+							'u-bg-2-light' => array(
+								'label' => __( 'Secondary Light', 'arch' ),
+								'colors' => array( $arch_secondary_c->lighten( 10 ) ),
+							),
+							'u-bg-2-dark' => array(
+								'label' => __( 'Secondary Dark', 'arch' ),
+								'colors' => array( $arch_secondary_c->darken( 10 ) ),
+							),
+							'u-bg-transparent' => array(
+								'label' => __( 'Transparent', 'arch' ),
+								'colors' => array( '#ddd','#f5f5f5','#ddd','#f5f5f5','#ddd','#f5f5f5' ),
+							),
 						),
-						'u-bg-1-light' => array(
-							'label' => __( 'Primary Light', 'arch' ),
-							'colors' => array( $arch_primary_c->lighten( 10 ) ),
-						),
-						'u-bg-1-dark' => array(
-							'label' => __( 'Primary Dark', 'arch' ),
-							'colors' => array( $arch_primary_c->darken( 10 ) ),
-						),
-						'u-bg-white' => array(
-							'label' => __( 'White (default)', 'arch' ),
-							'colors' => array( '#ffffff' ),
-						),
-						'u-bg-2' => array(
-							'label' => __( 'Secondary', 'arch' ),
-							'colors' => array( $arch_secondary_c->getHex() ),
-						),
-						'u-bg-2-light' => array(
-							'label' => __( 'Secondary Light', 'arch' ),
-							'colors' => array( $arch_secondary_c->lighten( 10 ) ),
-						),
-						'u-bg-2-dark' => array(
-							'label' => __( 'Secondary Dark', 'arch' ),
-							'colors' => array( $arch_secondary_c->darken( 10 ) ),
-						),
-						'u-bg-transparent' => array(
-							'label' => __( 'Transparent', 'arch' ),
-							'colors' => array( '#ddd','#f5f5f5','#ddd','#f5f5f5','#ddd','#f5f5f5' ),
-						),
-					),
-				)
-			);
+					)
+				);
+
+			} //endif
 
 			$manager->register_control(
 				'arch_height',

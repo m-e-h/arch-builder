@@ -69,7 +69,7 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	$arch_height    = get_post_meta( $post_id, 'arch_height', true );
 
 	if ( $archive_width ) {
-		$classes[] = "arch-{$archive_width}";
+		$classes[] = "{$archive_width}";
 	}
 
 	if ( $arch_component ) {
@@ -85,11 +85,11 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	}
 
 	if ( 'row' === get_arch_block( $post_id ) ) {
-		$classes[] = 'u-shadow0 u-br0 u-m0 section-row u-relative u-1of1 u-fluid-xp u-pt3 u-pt4-md u-pb2 u-pb3-md';
+		$classes[] = 'tile-row u-shadow0 u-br0 u-m0 section-row u-relative u-1of1 u-fluid-xp u-pt3 u-pt4-md u-pb2 u-pb3-md is-animating';
 	}
 
 	if ( 'tile' === get_arch_block( $post_id ) ) {
-		$classes[] = 'tilo u-flex-wrap o-cell u-br u-flex u-flex-col u-shadow1 shadow-hover';
+		$classes[] = 'tile u-flex-wrap o-cell u-br u-flex u-flex-col u-shadow1 shadow-hover';
 	}
 
 	if ( get_arch_bg( $post_id ) ) {
@@ -137,4 +137,21 @@ function arch_grid( $attr ) {
 		$attr['class']   .= ' o-grid';
 	}
 	return $attr;
+}
+
+
+
+
+add_filter( 'hybrid_get_theme_layout', 'my_home_layout' );
+
+function my_home_layout( $layout ) {
+
+
+
+    if ( arch_is_home() && $GLOBALS['cptarchives'] ) {
+		global $cptarchives;
+
+		$layout = hybrid_get_post_layout( $cptarchives->get_archive_id() );
+	}
+		return $layout;
 }
