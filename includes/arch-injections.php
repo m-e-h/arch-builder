@@ -56,32 +56,24 @@ function arch_templates( $template ) {
 	return $template;
 }
 
+
+
 function arch_admin_post_classes( $classes, $class, $post_id ) {
 
-	if ( ! is_admin() ) { return $classes; }
+    if ( ! is_admin() ) { return $classes; }
 
-	$parent_id = wp_get_post_parent_id( $post_id );
-	$parent_id_one = wp_get_post_parent_id( $parent_id );
-	$parent_id_two = wp_get_post_parent_id( $parent_id_one );
-	$parent_id_three = wp_get_post_parent_id( $parent_id_two );
+    $post = get_post( $post_id );
 
 	$arch_component = get_post_meta( $post_id, 'arch_component', true );
 
 	if ( $arch_component ) {
 		$classes[] = "arch-{$arch_component}";
 	}
-	if ( $parent_id ) {
-		$classes[] = 'is-child';
-	}
-	if ( $parent_id_three ) {
-		$classes[] = 'is-child-3';
-	} elseif ( $parent_id_two ) {
-		$classes[] = 'is-child-2';
-	} elseif ( $parent_id_one ) {
-		$classes[] = 'is-child-1';
-	}
 
-	return $classes;
+    if ( 0 < absint( $post->post_parent ) )
+        $classes[] = 'is-parent-post';
+
+    return $classes;
 }
 
 function arch_width_post_classes( $classes, $class, $post_id ) {
