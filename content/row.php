@@ -7,6 +7,11 @@
 ?>
 
 <div <?php hybrid_attr( 'post' ); ?>>
+
+	<?php arch_title(); ?>
+
+	<?php arch_excerpt(); ?>
+
 	<?php $query = new WP_Query(
 		array(
 			'post_type' => get_post_type(),

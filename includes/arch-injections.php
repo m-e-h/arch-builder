@@ -4,6 +4,7 @@ add_action( 'init', 'arch_image_sizes', 5 );
 add_action( 'pre_get_posts', 'arch_post_order', 1 );
 add_filter( 'hybrid_content_template', 'arch_templates' );
 add_filter( 'post_class', 'arch_width_post_classes', 10, 3 );
+add_filter( 'post_class', 'arch_admin_post_classes', 10, 3 );
 add_filter( 'hybrid_attr_content', 'arch_grid' );
 add_filter( 'body_class', 'arch_body_classes' );
 
@@ -55,14 +56,40 @@ function arch_templates( $template ) {
 	return $template;
 }
 
+function arch_admin_post_classes( $classes, $class, $post_id ) {
 
+	if ( ! is_admin() ) { return $classes; }
+
+	$parent_id = wp_get_post_parent_id( $post_id );
+	$parent_id_one = wp_get_post_parent_id( $parent_id );
+	$parent_id_two = wp_get_post_parent_id( $parent_id_one );
+	$parent_id_three = wp_get_post_parent_id( $parent_id_two );
+
+	$arch_component = get_post_meta( $post_id, 'arch_component', true );
+
+	if ( $arch_component ) {
+		$classes[] = "arch-{$arch_component}";
+	}
+	if ( $parent_id ) {
+		$classes[] = 'is-child';
+	}
+	if ( $parent_id_three ) {
+		$classes[] = 'is-child-3';
+	} elseif ( $parent_id_two ) {
+		$classes[] = 'is-child-2';
+	} elseif ( $parent_id_one ) {
+		$classes[] = 'is-child-1';
+	}
+
+	return $classes;
+}
 
 function arch_width_post_classes( $classes, $class, $post_id ) {
 
 	if ( is_admin() || is_search() || is_single( $post_id ) ) {
 		return $classes; }
 
-	$arch_layout  = get_post_meta( $post_id, 'arch_layout', true );
+	//$arch_layout  = get_post_meta( $post_id, 'arch_layout', true );
 	$archive_width   = get_post_meta( $post_id, 'arch_width', true );
 	$arch_title     = get_post_meta( $post_id, 'arch_title', true );
 	$arch_component = get_post_meta( $post_id, 'arch_component', true );

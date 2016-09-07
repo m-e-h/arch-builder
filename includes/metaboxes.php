@@ -214,6 +214,23 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				)
 			);
 
+			if ( current_user_can( 'manage_options' ) ) {
+				$manager->register_control(
+					'arch_svg',
+					array(
+						'type'        => 'textarea',
+						'section'     => 'arch_element_fields',
+						'attr'        => array( 'class' => 'bb-codeblock' ),
+						'label'       => 'SVG Icon',
+						'description' => 'Paste svg markup.'
+					)
+				);
+				$manager->register_setting(
+					'arch_svg',
+					array( 'sanitize_callback' => 'esc_html' )
+				);
+			}
+
 			$arch_primary_default = apply_filters( 'theme_mod_primary_color', '' );
 			$arch_primary_archive = $arch_primary_default;
 			$arch_secondary_default = apply_filters( 'theme_mod_secondary_color', '' );

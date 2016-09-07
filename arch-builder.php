@@ -131,7 +131,7 @@ final class Arch_Builder_Plugin {
 		require_once $this->dir_path . 'includes/arch-edit-boxes.php';
 		require_once $this->dir_path . 'includes/customizer.php';
 		require_once $this->dir_path . 'includes/arch-injections.php';
-		require_once $this->dir_path . 'includes/butterbean-meta.php';
+		require_once $this->dir_path . 'includes/metaboxes.php';
 	}
 
 	/**
@@ -224,6 +224,19 @@ final class Arch_Builder_Plugin {
 	}
 
 	public function activation() {
+
+		arch_posts_register_post_types();
+		
+		/* Get the administrator role. */
+		$role = get_role( 'administrator' );
+
+		/* If the administrator role exists, add required capabilities for the plugin. */
+		if ( !empty( $role ) ) {
+			$role->add_cap( 'manage_arch_posts' );
+			$role->add_cap( 'create_arch_posts' );
+			$role->add_cap( 'edit_arch_posts'   );
+		}
+
 		// Make sure any rewrite functionality has been loaded.
 		flush_rewrite_rules();
 	}

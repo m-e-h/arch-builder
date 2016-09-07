@@ -1,3 +1,28 @@
+.bb-codeblock {
+	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	direction: ltr;
+	unicode-bidi: embed;
+	background-color: #32373C;
+	color: #b4b9be;
+	color: rgba(240,245,250,0.7);
+	font-size: 0.9rem;
+    padding: 15px;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+	border: 0;
+	-moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    position: relative;
+    line-height: 1.5;
+}
+
+.bb-codeblock:focus {
+	background-color: #23282D;
+	color: rgba(240, 245, 250, 0.8);
+}
+
 .butterbean-manager-default .butterbean-control.butterbean-control-radio-image {
     margin-bottom: 2rem;
 }
