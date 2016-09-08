@@ -4,7 +4,6 @@ add_action( 'init', 'arch_image_sizes', 5 );
 add_action( 'pre_get_posts', 'arch_post_order', 1 );
 add_filter( 'hybrid_content_template', 'arch_templates' );
 add_filter( 'post_class', 'arch_width_post_classes', 10, 3 );
-add_filter( 'post_class', 'arch_admin_post_classes', 10, 3 );
 add_filter( 'hybrid_attr_content', 'arch_grid' );
 add_filter( 'body_class', 'arch_body_classes' );
 
@@ -15,16 +14,15 @@ function arch_image_sizes() {
 }
 
 function arch_post_order( $query ) {
-	if ( is_admin() || ! $query->is_main_query() )
-		return $query;
+	if ( is_admin() || ! $query->is_main_query() ) {
+		return $query; }
 
 	if ( 1 === get_theme_mod( 'arch_front_page', '' ) && $query->is_home() ) {
 		$query->set( 'post_type', 'arch' );
 		$query->set( 'order', 'ASC' );
 		$query->set( 'orderby', 'menu_order' );
 		$query->set( 'post_parent', 0 );
-	}
-	elseif ( is_post_type_archive( arch_post_types() ) ) {
+	} elseif ( is_post_type_archive( arch_post_types() ) ) {
 		$query->set( 'order', 'ASC' );
 		$query->set( 'orderby', 'menu_order' );
 		$query->set( 'post_parent', 0 );
@@ -35,46 +33,92 @@ function arch_post_order( $query ) {
  * Add templates to hybrid_get_content_template()
  */
 function arch_templates( $template ) {
-	if (is_admin())
-		return $template;
+	if ( is_admin() ) {
+		return $template; }
 
 	// If the post type doesn't support `arch-posts`, bail.
-	if ( ! post_type_supports( get_post_type(), 'arch-post' ) || ! members_can_current_user_view_post() || is_search() )
-		return $template;
+	if ( ! post_type_supports( get_post_type(), 'arch-post' ) || ! members_can_current_user_view_post() || is_search() ) {
+		return $template; }
 
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
-		if ( $arch_component && ! is_single( get_the_ID() ) ) {
+	if ( $arch_component && ! is_single( get_the_ID() ) ) {
 
-		 	$template = trailingslashit( arch_builder_plugin()->dir_path ) . "content/{$arch_component}.php";
-			$has_template    = locate_template( array( "content/{$arch_component}.php" ) );
+		$template = trailingslashit( arch_builder_plugin()->dir_path ) . "content/{$arch_component}.php";
+		$has_template    = locate_template( array( "content/{$arch_component}.php" ) );
 
-			if ( $has_template ) {
-				$template = $has_template; }
-		}
+		if ( $has_template ) {
+			$template = $has_template; }
+	}
 
 	return $template;
 }
 
 
+add_filter( 'post_class', 'arch_admin_post_classes', 10, 3 );
 
 function arch_admin_post_classes( $classes, $class, $post_id ) {
 
-    if ( ! is_admin() ) { return $classes; }
+	if ( ! is_admin() ) {
+		return $classes; }
 
-    $post = get_post( $post_id );
+	if ( metadata_exists( 'post', $post_id, 'arch_has_children' ) ) {
+		$classes[] = 'arch-has-children'; }
 
-	$arch_component = get_post_meta( $post_id, 'arch_component', true );
-
-	if ( $arch_component ) {
-		$classes[] = "arch-{$arch_component}";
-	}
-
-    if ( 0 < absint( $post->post_parent ) )
-        $classes[] = 'is-parent-post';
-
-    return $classes;
+	return $classes;
 }
+
+add_action( 'save_post', 'arch_admin_has_children_meta' );
+
+function arch_admin_has_children_meta( $post_id ) {
+
+	$children = get_posts( array( 'post_type' => get_post_type( $post_id ), 'post_parent' => $post_id ) );
+	$parent_id = wp_get_post_parent_id( $post_id );
+
+	if ( $children ) {
+		update_post_meta( $post_id, 'arch_has_children', 1 );
+	} else {
+		delete_post_meta( $post_id, 'arch_has_children', 1 );
+	}
+	if ( $parent_id ) {
+		update_post_meta( $parent_id, 'arch_has_children', 1 );
+	}
+}
+
+add_action( 'post_updated', 'arch_child_update', 10, 3 );
+
+function arch_child_update( $post_id, $post_after, $post_before ) {
+
+	if ( $post_after->post_parent !== $post_before->post_parent ) {
+
+		$siblings = get_posts( array( 'post_type' => get_post_type( $post_id ), 'post_parent' => $post_before->post_parent ) );
+
+		update_post_meta( $post_after->post_parent, 'arch_has_children', 1 );
+
+		if ( ! $siblings ) {
+			delete_post_meta( $post_before->post_parent, 'arch_has_children', 1 );
+		}
+	}
+}
+
+
+// function arch_admin_post_classes( $classes, $class, $post_id ) {
+//
+//     if ( ! is_admin() ) { return $classes; }
+//
+//     $post = get_post( $post_id );
+//
+// 	$arch_component = get_post_meta( $post_id, 'arch_component', true );
+//
+// 	if ( $arch_component ) {
+// 		$classes[] = "arch-{$arch_component}";
+// 	}
+//
+//     if ( 0 < absint( $post->post_parent ) )
+//         $classes[] = 'is-parent-post';
+//
+//     return $classes;
+// }
 
 function arch_width_post_classes( $classes, $class, $post_id ) {
 
@@ -115,7 +159,7 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 		$classes[] = get_arch_bg( $post_id );
 	}
 
-	if ( 'u-bg-transparent' ===  get_arch_bg( $post_id ) ) {
+	if ( 'u-bg-transparent' === get_arch_bg( $post_id ) ) {
 		$classes[] = 'u-shadow0';
 	}
 
@@ -136,8 +180,8 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
  * @return array
  */
 function arch_body_classes( $classes ) {
-	if (is_admin())
-		return $classes;
+	if ( is_admin() ) {
+		return $classes; }
 
 	// Adds a class of arch to arch post-types.
 	if ( post_type_supports( get_post_type(), 'arch-post' ) ) {
@@ -149,8 +193,8 @@ function arch_body_classes( $classes ) {
 
 
 function arch_grid( $attr ) {
-	if (is_admin())
-		return $attr;
+	if ( is_admin() ) {
+		return $attr; }
 
 	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
 		$attr['class']   .= ' o-grid';
@@ -165,9 +209,7 @@ add_filter( 'hybrid_get_theme_layout', 'my_home_layout' );
 
 function my_home_layout( $layout ) {
 
-
-
-    if ( arch_is_home() && $GLOBALS['cptarchives'] ) {
+	if ( arch_is_home() && $GLOBALS['cptarchives'] ) {
 		global $cptarchives;
 
 		$layout = hybrid_get_post_layout( $cptarchives->get_archive_id() );
