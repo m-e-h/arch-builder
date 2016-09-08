@@ -252,7 +252,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					'type'        => 'color',
 					'section'     => 'arch_modifier_fields',
 					'label'       => 'Background Color',
-					'options' => array( 'palettes' => array( "#{$arch_primary_c->getHex()}", "#{$arch_primary_c->lighten( 10 )}", "#{$arch_primary_c->darken( 10 )}", "#{$arch_secondary_c->getHex()}", "#{$arch_secondary_c->lighten( 10 )}", "#{$arch_secondary_c->darken( 10 )}" ) ),
+					'options' => array( 'palettes' => array( "#{$arch_primary_c->lighten( 10 )}", "#{$arch_primary_c->getHex()}", "#{$arch_primary_c->darken( 10 )}", "#{$arch_secondary_c->lighten( 10 )}", "#{$arch_secondary_c->getHex()}", "#{$arch_secondary_c->darken( 10 )}" ) ),
 					)
 				);
 				$manager->register_setting(
