@@ -4,6 +4,17 @@
 	background-color: #fff !important;
 }
 
+.arch-has-children .featured_image.column-featured_image {
+    padding: 0;
+    margin: 0;
+}
+
+.arch-has-children .featured_image > .wp-post-image {
+    padding: 0;
+    margin: 0;
+	max-width: 70px;
+}
+
 .arch-has-children.level-1 {
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
 	transform: scale(1.015);
