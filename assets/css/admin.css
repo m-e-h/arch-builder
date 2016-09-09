@@ -1,61 +1,85 @@
+body {
+    background: #f3f6f8;
+}
+
+.striped>tbody>:nth-child(even) {
+	background-color: #FAFBFC;
+}
+
+.striped>tbody>:nth-child(odd) {
+    background-color: #F3F6F8;
+}
+
 .arch-has-children {
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22), 0 14px 56px rgba(0, 0, 0, 0.25);
-	transform: scale(1.02);
+	box-shadow: 0 0 0 1px rgba(200,215,225,.5),0 1px 2px #e9eff3;
+	transform: scale(1.005, 1);
 	background-color: #fff !important;
+	opacity: 1;
+}
+
+.arch-has-children > th.check-column {
+    border-left: 2px solid #2e4453;
 }
 
 .arch-has-children .featured_image.column-featured_image {
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 .arch-has-children .featured_image > .wp-post-image {
-    padding: 0;
-    margin: 0;
-	max-width: 70px;
+	padding: 0;
+	margin: 0;
+}
+
+td.featured_image.column-featured_image {
+	text-align: right;
+}
+
+.row-actions {
+	min-width: 200px;
+}
+
+.arch-has-children + tr > td {
+	padding-top: 1rem;
+}
+
+.arch-has-children + tr > th {
+	padding-top: 1rem !important;
+}
+
+.arch-has-children.level-0 {
+	//box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+	transform: scale(1.015, 1);
 }
 
 .arch-has-children.level-1 {
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
-	transform: scale(1.015);
+	//box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+	transform: scale(1.01, 1);
 }
-
 .arch-has-children.level-2 {
-	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
-	transform: scale(1.01);
+	//box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+	transform: scale(1.005, 1);
 }
 
-.arch-has-children.level-3 {
-	box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-	transform: scale(1.005);
+table.wp-list-table tr * {
+	transition-duration: .2s;
+	transition-timing-function: cubic-bezier(.4,0,.2,1);
+	transition-property: opacity;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
-.level-1:not(.arch-has-children),
-.level-2:not(.arch-has-children),
-.level-3:not(.arch-has-children) {
-	opacity: 0.8;
+.level-1:not(.arch-has-children):not(:hover) *,
+.level-2:not(.arch-has-children):not(:hover) *,
+.level-3:not(.arch-has-children):not(:hover) * {
+	opacity: 0.9;
 }
 
-/*.level-1:not(.arch-has-children) {
-font-size: .7rem;
-box-shadow: inset 0 0 5px rgba(0,0,0,.3);
+.level-1:not(.arch-has-children) .featured_image > .wp-post-image,
+.level-2:not(.arch-has-children) .featured_image > .wp-post-image,
+.level-3:not(.arch-has-children) .featured_image > .wp-post-image {
+	max-width: 70px;
 }
-
-.level-2:not(.arch-has-children) {
-font-size: .7rem;
-box-shadow: inset 0 0 10px rgba(0,0,0,.3);
-}
-
-
-
-.level-1 img.wp-post-image,
-.level-2 img.wp-post-image {
-max-width: 40px;
-}
-
-.arch-has-children img.wp-post-image {
-max-width: initial;
-}*/
 
 .bb-codeblock {
 	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
