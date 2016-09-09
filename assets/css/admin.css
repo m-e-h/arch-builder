@@ -29,6 +29,13 @@
 	box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
 	transform: scale(1.005);
 }
+
+.level-1:not(.arch-has-children),
+.level-2:not(.arch-has-children),
+.level-3:not(.arch-has-children) {
+	opacity: 0.8;
+}
+
 /*.level-1:not(.arch-has-children) {
 font-size: .7rem;
 box-shadow: inset 0 0 5px rgba(0,0,0,.3);
@@ -39,10 +46,7 @@ font-size: .7rem;
 box-shadow: inset 0 0 10px rgba(0,0,0,.3);
 }
 
-.level-1:not(.arch-has-children) > * ,
-.level-2:not(.arch-has-children) > * {
-font-size: 1em;
-}
+
 
 .level-1 img.wp-post-image,
 .level-2 img.wp-post-image {
