@@ -86,7 +86,6 @@ table.wp-list-table tr * {
 	direction: ltr;
 	unicode-bidi: embed;
 	background-color: #32373c;
-	color: #b4b9be;
 	color: rgba(240, 245, 250, 0.7);
 	font-size: 0.9rem;
 	padding: 15px;
@@ -168,7 +167,7 @@ table.wp-list-table tr * {
 }
 
 .butterbean-control-radio-image input:checked + span {
-	color: #444;
+	color: #444444;
 }
 
 .butterbean-control-radio-image input:checked + span + img {
@@ -203,35 +202,3 @@ table.wp-list-table tr * {
 	top: 0;
 	width: 100%;
 }
-/*.wp-list-table tr.iedit:not(.level-0) > td,
-.wp-list-table tr.iedit:not(.level-0) > td.column-title strong {
-font-size: 0.75rem !important;
-margin: 0;
-}
-
-.wp-list-table tr.iedit:not(.level-0) .row-title {
-font-size: 12px !important;
-font-weight: 500 !important;
-transition: all .05s ease-in;
-}
-
-.wp-list-table tr.iedit:not(.level-0) .wp-post-image {
-max-width: 4em;
-}
-
-.wp-list-table tr.iedit:not(.level-0):not(:hover) > td {
-max-height: 15px;
-overflow: hidden;
-}
-
-.wp-list-table tr.iedit:not(.level-0) > td,
-.wp-list-table tr.iedit:not(.level-0) > .check-column {
-margin: 0 !important;
-padding: 0 !important;
-transition: inherit;
-}*/
-
-
-/*.wp-list-table .level-0 .row-title {
-border-bottom: 2px solid currentColor;
-}*/
