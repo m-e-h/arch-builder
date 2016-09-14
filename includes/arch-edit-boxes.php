@@ -11,7 +11,7 @@ add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
 function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	// If the post type doesn't support `arch`, bail.
-	if ( ! post_type_supports( $post_type, 'arch-post' ) )
+	if ( ! is_arch_post() )
 		return;
 
 	if ( 'arch_component' === $column_name ) {
@@ -138,7 +138,7 @@ function arch_be_qe_save_post( $post_id, $post ) {
 	if ( isset( $post->post_type ) && 'revision' === $post->post_type ) {
 		return $post_id; }
 
-	if ( post_type_supports( get_post_type( $post_id ), 'arch-post' ) ) {
+	if ( is_arch_post() ) {
 			/**
 			 * Because this action is run in several places, checking for the array key
 			 * keeps WordPress from editing data that wasn't in the form, i.e. if you had
@@ -193,7 +193,7 @@ function arch_save_bulk_edit() {
 
 function arch_cpt_args( $args, $post_type ) {
 
-	if ( post_type_supports( $post_type, 'arch-post' ) ) {
+	if ( is_arch_post() ) {
 		$args['hierarchical'] = true;
 	}
 
@@ -204,7 +204,7 @@ function arch_cpt_args( $args, $post_type ) {
 function arch_add_cpt_columns( $columns ) {
 
 	// If the post type doesn't support `arch`, bail.
-	if ( ! post_type_supports( get_post_type(), 'arch-post' ) )
+	if ( ! is_arch_post() )
 		return $columns;
 
 	return array_merge($columns,
@@ -222,7 +222,7 @@ function arch_add_cpt_columns( $columns ) {
 function arch_manage_cpt_columns( $column, $post_id ) {
 
 	// If the post type doesn't support `arch`, bail.
-	if ( ! post_type_supports( get_post_type( $post_id ), 'arch-post' ) )
+	if ( ! is_arch_post() )
 		return;
 
 	global $post;
