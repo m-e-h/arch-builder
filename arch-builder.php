@@ -166,8 +166,8 @@ final class Arch_Builder_Plugin {
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
 		/* Register the plugin script. */
-		wp_register_script( 'arch-tabs', trailingslashit( $this->js_uri ) . 'arch-tabs.js', false, false, true );
-		wp_register_script( 'arch-toggle', trailingslashit( $this->js_uri ) . 'houdini.js', false, false, true );
+		wp_register_script( 'arch-tabs', trailingslashit( $this->js_uri ) . "arch-tabs{$suffix}.js", false, false, true );
+		wp_register_script( 'arch-toggle', trailingslashit( $this->js_uri ) . "houdini{$suffix}.js", false, false, true );
 		wp_register_script( 'lory', trailingslashit( $this->js_uri ) . 'lory.js', false, false, true );
 		wp_add_inline_script( 'lory', $this->get_lory_script() );
 
@@ -178,7 +178,7 @@ final class Arch_Builder_Plugin {
 
 	public function get_lory_script() {
 
-	return "
+		return "
 	var domReady = function(callback) {
 		document.readyState === 'interactive' ||
 		document.readyState === 'complete' ? callback() : document.addEventListener('DOMContentLoaded', callback);
@@ -226,15 +226,15 @@ final class Arch_Builder_Plugin {
 	public function activation() {
 
 		arch_posts_register_post_types();
-		
+
 		/* Get the administrator role. */
 		$role = get_role( 'administrator' );
 
 		/* If the administrator role exists, add required capabilities for the plugin. */
-		if ( !empty( $role ) ) {
+		if ( ! empty( $role ) ) {
 			$role->add_cap( 'manage_arch_posts' );
 			$role->add_cap( 'create_arch_posts' );
-			$role->add_cap( 'edit_arch_posts'   );
+			$role->add_cap( 'edit_arch_posts' );
 		}
 
 		// Make sure any rewrite functionality has been loaded.

@@ -34,37 +34,37 @@
 			$edit_row.find('select[name="arch_title"]').val($arch_title);
 			$edit_row.find('select[name="arch_excerpt"]').val($arch_excerpt);
 			$edit_row.find('select[name="arch_width"]').val($arch_width);
-			$edit_row.find('input[name="arch_height"][value="' + $arch_height + '"]' ).prop( 'checked', true );
+			$edit_row.find('input[name="arch_height"][value="' + $arch_height + '"]').prop('checked', true);
 
-				var selectedComponent = $edit_row.find('select[name="arch_component"]').val();
-				var archExcerpt = $edit_row.find('.inline-edit-excerpt');
+			var selectedComponent = $edit_row.find('select[name="arch_component"]').val();
+			var archExcerpt = $edit_row.find('.inline-edit-excerpt');
 
+			archExcerpt.show();
+
+			if (selectedComponent === 'slides') {
+				archExcerpt.hide();
+			} else if (selectedComponent === 'tabs') {
+				archExcerpt.hide();
+			} else if (selectedComponent === 'accordion') {
+				archExcerpt.hide();
+			} else {
 				archExcerpt.show();
+			}
 
-				if( selectedComponent  === 'slides' ) {
+			$edit_row.find('select[name="arch_component"]').on('change', function() {
+				var selectedComponent = $edit_row.find('select[name="arch_component"]').val();
+
+				if (selectedComponent === 'slides') {
 					archExcerpt.hide();
-				} else if ( selectedComponent  === 'tabs' ){
+				} else if (selectedComponent === 'tabs') {
 					archExcerpt.hide();
-				} else if ( selectedComponent  === 'accordion' ){
+				} else if (selectedComponent === 'accordion') {
 					archExcerpt.hide();
 				} else {
 					archExcerpt.show();
 				}
 
-				$edit_row.find('select[name="arch_component"]').on('change', function() {
-					var selectedComponent = $edit_row.find('select[name="arch_component"]').val();
-
-					if( selectedComponent  === 'slides' ) {
-						archExcerpt.hide();
-					} else if ( selectedComponent  === 'tabs' ){
-						archExcerpt.hide();
-					} else if ( selectedComponent  === 'accordion' ){
-						archExcerpt.hide();
-					} else {
-						archExcerpt.show();
-					}
-
-				});
+			});
 		}
 
 	};
