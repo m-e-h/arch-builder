@@ -175,7 +175,7 @@ function arch_body_classes( $classes ) {
 		return $classes; }
 
 	// Adds a class of arch to arch post-types.
-	if ( post_type_supports( get_post_type(), 'arch-post' ) ) {
+	if ( is_arch_post() ) {
 		$classes[] = 'arch';
 	}
 	return $classes;

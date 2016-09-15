@@ -5,7 +5,8 @@ function arch_post_types() {
 }
 
 function is_arch_post() {
-	return in_array( get_post_type( get_the_ID(), arch_post_types() ) );
+	$post_type = get_post_type( get_the_ID() );
+	return in_array( $post_type, arch_post_types() );
 }
 
 function arch_is_home() {
