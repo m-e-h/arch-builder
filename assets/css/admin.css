@@ -204,3 +204,26 @@ table.wp-list-table tr * {
 	top: 0;
 	width: 100%;
 }
+
+
+
+/*table.wp-list-table {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+table.wp-list-table tr {
+    max-width: calc(25% - 1.2rem);
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0 0 0 1px rgba(191, 191, 191, 0.5),0 1px 2px #ccc;
+    margin: 0 0 1rem 1rem;
+}
+
+
+table.wp-list-table td {
+    flex: 1 1 auto;
+    min-width: 100%!important;
+}*/

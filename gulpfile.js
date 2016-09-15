@@ -2,21 +2,40 @@
  * MEH gulp
  */
 
-// 'use strict';
+'use strict';
 
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
-var gulpLoadPlugins = require('gulp-load-plugins');
-var postcss = require('gulp-postcss');
-var autoPrefixer = require('autoprefixer');
-var postcssFlex = require('postcss-flexibility');
-var postScss = require('postcss-scss');
-var preCss = require('precss');
-var perfectionist = require('perfectionist');
+// var gulp = require('gulp');
+// var runSequence = require('run-sequence');
+// var gulpLoadPlugins = require('gulp-load-plugins');
+// var postcss = require('gulp-postcss');
+// var autoPrefixer = require('autoprefixer');
+// var postcssFlex = require('postcss-flexibility');
+// var postScss = require('postcss-scss');
+// var preCss = require('precss');
+// var perfectionist = require('perfectionist');
 
-var $ = gulpLoadPlugins();
+// var $ = gulpLoadPlugins();
 
-var AUTOPREFIXER_BROWSERS = [
+const fs = require('graceful-fs');
+const path = require('path');
+const gulp = require('gulp');
+const browserSync = require('browser-sync');
+const runSequence = require('run-sequence');
+
+const autoPrefixer = require('autoprefixer');
+const atImport = require("postcss-import");
+const pcMixins = require("postcss-mixins");
+const pcColor = require('postcss-color-function');
+const pcVars = require("postcss-simple-vars");
+const pcNested = require("postcss-nested");
+const pcMedia = require("postcss-custom-media");
+const pcProperties = require("postcss-custom-properties");
+const pcCalc = require('postcss-calc');
+const pcSvg = require('postcss-inline-svg');
+
+const $ = require('gulp-load-plugins')();
+
+const AUTOPREFIXER_BROWSERS = [
 	'ie >= 10',
 	'ie_mob >= 10',
 	'last 2 ff versions',
@@ -29,27 +48,33 @@ var AUTOPREFIXER_BROWSERS = [
 	'bb >= 10'
 ];
 
-var POSTCSS_PLUGINS = [
-	preCss(),
+const POSTCSS_PLUGINS = [
+	atImport,
+	pcMixins,
+	pcProperties,
+	pcVars,
+	pcCalc,
+	pcColor,
+	pcMedia,
+	pcNested,
 	autoPrefixer({
 		browsers: AUTOPREFIXER_BROWSERS
-	}),
-	//styleFmt()
-	perfectionist({
-		cascade: false
 	})
 ];
 
 // Compile and Automatically Prefix Stylesheets (production)
-gulp.task('styles', function () {
+gulp.task('styles', () => {
 	gulp.src('assets/src/arch.css')
 		.pipe($.sourcemaps.init())
-		.pipe(postcss(POSTCSS_PLUGINS, {syntax: postScss}))
+		.pipe($.postcss(POSTCSS_PLUGINS))
 		.pipe($.concat('arch.css'))
+		.pipe($.stylefmt())
 		.pipe(gulp.dest('assets/css'))
 		.pipe($.if('*.css', $.cssnano()))
 		.pipe($.concat('arch.min.css'))
-		.pipe($.size({title: 'styles'}))
+		.pipe($.size({
+			title: 'styles'
+		}))
 		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest('assets/css'))
 });
