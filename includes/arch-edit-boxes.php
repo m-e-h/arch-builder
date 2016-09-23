@@ -1,7 +1,6 @@
 <?php
 add_filter( 'manage_posts_columns', 'arch_add_cpt_columns' );
 add_action( 'manage_pages_custom_column', 'arch_manage_cpt_columns', 10, 2 );
-add_filter( 'register_post_type_args', 'arch_cpt_args', 10, 2 );
 add_action( 'bulk_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
 add_action( 'quick_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
 add_action( 'wp_ajax_arch_save_bulk_edit', 'arch_save_bulk_edit' );
@@ -189,17 +188,6 @@ function arch_save_bulk_edit() {
 		}
 	}
 }
-
-
-function arch_cpt_args( $args, $post_type ) {
-
-	if ( is_arch_post() ) {
-		$args['hierarchical'] = true;
-	}
-
-	return $args;
-}
-
 
 function arch_add_cpt_columns( $columns ) {
 

@@ -1,6 +1,16 @@
 <?php
 
 add_action( 'init', 'arch_posts_register_post_types' );
+add_filter( 'register_post_type_args', 'arch_cpt_args', 10, 2 );
+
+function arch_cpt_args( $args, $post_type ) {
+
+	if ( is_arch_post() && $args['hierarchical'] = false ) {
+		$args['hierarchical'] = true;
+	}
+
+	return $args;
+}
 
 function arch_posts_register_post_types() {
 
