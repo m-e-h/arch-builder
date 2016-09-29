@@ -95,7 +95,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					'section' => 'arch_visibility_fields',
 					'label'   => 'Custom URL',
 					'attr'        => array( 'class' => 'widefat' ),
-					'description' => 'https://www.google.com/',
+					'description' => '(e.g., https://www.google.com/)',
 				)
 			);
 
