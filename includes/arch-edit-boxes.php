@@ -1,4 +1,5 @@
 <?php
+add_action( 'do_meta_boxes', 'arch_remove_plugin_metaboxes' );
 add_filter( 'manage_posts_columns', 'arch_add_cpt_columns' );
 add_action( 'manage_pages_custom_column', 'arch_manage_cpt_columns', 10, 2 );
 add_action( 'bulk_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
@@ -6,12 +7,18 @@ add_action( 'quick_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
 add_action( 'wp_ajax_arch_save_bulk_edit', 'arch_save_bulk_edit' );
 add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
 
+function arch_remove_plugin_metaboxes() {
+	if ( is_arch_post() ) {
+		remove_meta_box( 'page-links-to', get_post_type(), 'advanced' );
+	}
+}
+
 
 function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 
 	// If the post type doesn't support `arch`, bail.
-	if ( ! is_arch_post() )
-		return;
+	if ( ! is_arch_post() ) {
+		return; }
 
 	if ( 'arch_component' === $column_name ) {
 
@@ -192,8 +199,8 @@ function arch_save_bulk_edit() {
 function arch_add_cpt_columns( $columns ) {
 
 	// If the post type doesn't support `arch`, bail.
-	if ( ! is_arch_post() )
-		return $columns;
+	if ( ! is_arch_post() ) {
+		return $columns; }
 
 	return array_merge($columns,
 		array(
@@ -210,8 +217,8 @@ function arch_add_cpt_columns( $columns ) {
 function arch_manage_cpt_columns( $column, $post_id ) {
 
 	// If the post type doesn't support `arch`, bail.
-	if ( ! is_arch_post() )
-		return;
+	if ( ! is_arch_post() ) {
+		return; }
 
 	global $post;
 

@@ -79,6 +79,63 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				)
 			);
 
+			$manager->register_section(
+				'arch_visibility_fields',
+				array(
+					'label' => 'Redirect',
+					'icon'  => 'dashicons-external',
+					'capability' => 'manage_options',
+				)
+			);
+
+			$manager->register_control(
+				'_links_to',
+				array(
+					'type'    => 'text',
+					'section' => 'arch_visibility_fields',
+					'label'   => 'Custom URL',
+					'attr'        => array( 'class' => 'widefat' ),
+					'description' => 'https://www.google.com/',
+				)
+			);
+
+			$manager->register_setting(
+				'_links_to',
+				array( 'sanitize_callback' => 'esc_url' )
+			);
+
+			$manager->register_control(
+				'_links_to_target',
+				array(
+					'type'        => 'radio',
+					'section'     => 'arch_visibility_fields',
+					'label'       => 'Open this link in a new tab',
+					'choices'     => array(
+						''        => 'Same Tab',
+						'_blank' => 'New Tab',
+					),
+				)
+			);
+
+			$manager->register_setting(
+				'_links_to_target',
+				array( 'sanitize_callback' => 'sanitize_key' )
+			);
+
+			// $manager->register_control(
+			// 	'_searchwp_excluded',
+			// 	array(
+			// 		'type'        => 'checkbox',
+			// 		'section'     => 'arch_visibility_fields',
+			// 		'label'       => 'Exclude from search',
+			// 	)
+			// );
+			//
+			// $manager->register_setting(
+			// 	'_searchwp_excluded',
+			// 	array( 'sanitize_callback' => 'wp_validate_boolean' )
+			// );
+
 			/* === Register Controls === */
 			$uri = arch_builder_plugin()->img_uri;
 
@@ -222,7 +279,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						'section'     => 'arch_element_fields',
 						'attr'        => array( 'class' => 'bb-codeblock' ),
 						'label'       => 'SVG Icon',
-						'description' => 'Paste svg markup.'
+						'description' => 'Paste svg markup.',
 					)
 				);
 				$manager->register_setting(
@@ -242,7 +299,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			}
 			$arch_primary_c = new Color( $arch_primary_archive );
 			$arch_secondary_c = new Color( $arch_secondary_archive );
-
 
 			if ( 'arch' === $post_type ) {
 
@@ -313,8 +369,8 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				array(
 					'type'        => 'radio-image',
 					'section'     => 'arch_modifier_fields',
-					'label'       => 'Equal Height',
-					'description' => 'Should this component stretch to the height of others in the row, regardless of content size?',
+					'label'       => 'Alignment in row',
+					'description' => 'Should this component stretch to the height of others, regardless of content size?',
 					'choices' => array(
 						'stretch' => array(
 							'url'   => $uri . 'equal-height.svg',
@@ -322,7 +378,15 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						),
 						'independent' => array(
 							'url'   => $uri . 'not-equal.svg',
-							'label' => __( 'Independent Height', 'arch' ),
+							'label' => _x( 'Float (top)', 'arch' ),
+						),
+						'independent-middle' => array(
+							'url'   => $uri . 'not-equal-center.svg',
+							'label' => __( 'Float (middle)', 'arch' ),
+						),
+						'independent-bottom' => array(
+							'url'   => $uri . 'not-equal-bottom.svg',
+							'label' => __( 'Float (bottom)', 'arch' ),
 						),
 					),
 				)
