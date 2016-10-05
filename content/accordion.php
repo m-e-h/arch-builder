@@ -34,4 +34,6 @@ wp_enqueue_script( 'arch-toggle' ); ?>
 
 <?php wp_reset_postdata(); ?>
 
+<?php edit_post_link(); ?>
+
 </article>
