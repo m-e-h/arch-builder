@@ -8,6 +8,7 @@ add_action( 'save_post', 'arch_admin_has_children_meta' );
 add_action( 'post_updated', 'arch_child_update', 10, 3 );
 add_filter( 'post_class', 'arch_width_post_classes', 10, 3 );
 add_filter( 'hybrid_attr_content', 'arch_grid' );
+add_filter( 'hybrid_attr_entry-title', 'arch_attr_entry_title' );
 add_filter( 'body_class', 'arch_body_classes' );
 add_filter( 'hybrid_get_theme_layout', 'arch_home_layout' );
 
@@ -192,6 +193,19 @@ function arch_grid( $attr ) {
 
 	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
 		$attr['class']   .= ' o-grid';
+	}
+	return $attr;
+}
+
+function arch_attr_entry_title( $attr ) {
+	if ( is_admin() ) {
+		return $attr; }
+
+	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
+
+		if ( 'row' === get_arch_block( get_the_ID() ) ) {
+			$attr['class']   = 'u-text-center';
+		}
 	}
 	return $attr;
 }

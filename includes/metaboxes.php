@@ -300,23 +300,23 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$arch_primary_c = new Color( $arch_primary_archive );
 			$arch_secondary_c = new Color( $arch_secondary_archive );
 
-			if ( 'arch' === $post_type ) {
-
-				$manager->register_control(
-					'arch_primary_color',
-					array(
-					'type'        => 'color',
-					'section'     => 'arch_modifier_fields',
-					'label'       => 'Background Color',
-					'options' => array( 'palettes' => array( "#{$arch_primary_c->lighten( 10 )}", "#{$arch_primary_c->getHex()}", "#{$arch_primary_c->darken( 10 )}", "#{$arch_secondary_c->lighten( 10 )}", "#{$arch_secondary_c->getHex()}", "#{$arch_secondary_c->darken( 10 )}" ) ),
-					)
-				);
-				$manager->register_setting(
-					'arch_primary_color',
-					array( 'sanitize_callback' => 'sanitize_hex_color_no_hash', 'default' => $arch_primary_default )
-				);
-
-			} else {
+			// if ( 'arch' === $post_type ) {
+			//
+			// 	$manager->register_control(
+			// 		'arch_primary_color',
+			// 		array(
+			// 		'type'        => 'color',
+			// 		'section'     => 'arch_modifier_fields',
+			// 		'label'       => 'Background Color',
+			// 		'options' => array( 'palettes' => array( "#{$arch_primary_c->lighten( 10 )}", "#{$arch_primary_c->getHex()}", "#{$arch_primary_c->darken( 10 )}", "#{$arch_secondary_c->lighten( 10 )}", "#{$arch_secondary_c->getHex()}", "#{$arch_secondary_c->darken( 10 )}" ) ),
+			// 		)
+			// 	);
+			// 	$manager->register_setting(
+			// 		'arch_primary_color',
+			// 		array( 'sanitize_callback' => 'sanitize_hex_color_no_hash', 'default' => $arch_primary_default )
+			// 	);
+			//
+			// } else {
 
 				$manager->register_control(
 					'arch_bg_color',
@@ -362,7 +362,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					)
 				);
 
-			} //endif
+			// } //endif
 
 			$manager->register_control(
 				'arch_height',
