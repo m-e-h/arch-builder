@@ -24,6 +24,8 @@ $video = hybrid_media_grabber(
 			'image_class'        => 'arch-1of1 o-crop__content',
 			'before'             => '<div class="card-img arch-overflow-hidden o-crop o-crop--16x9">',
 			'after'              => '</div>',
+			'attachment' 		=> false,
+			'link_to_post' 		=> false,
 		));
 	}
 	?>
