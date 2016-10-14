@@ -82,10 +82,49 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_section(
 				'arch_visibility_fields',
 				array(
-					'label' => 'Redirect',
-					'icon'  => 'dashicons-external',
+					'label' => 'Visibility',
+					'icon'  => 'dashicons-welcome-view-site',
 					'capability' => 'manage_options',
 				)
+			);
+
+			$manager->register_control(
+				'_searchwp_excluded',
+				array(
+					'type'        => 'checkbox',
+					'section'     => 'arch_visibility_fields',
+					'label'       => 'Hide from site search',
+				)
+			);
+			$manager->register_setting(
+				'_searchwp_excluded',
+				array( 'sanitize_callback' => 'butterbean_validate_boolean' )
+			);
+
+			$manager->register_control(
+				'_yoast_wpseo_meta-robots-nofollow',
+				array(
+					'type'        => 'checkbox',
+					'section'     => 'arch_visibility_fields',
+					'label'       => 'Hide from search engines',
+				)
+			);
+			$manager->register_setting(
+				'_yoast_wpseo_meta-robots-nofollow',
+				array( 'sanitize_callback' => 'butterbean_validate_boolean' )
+			);
+
+			$manager->register_control(
+				'low-vis',
+				array(
+					'type'        => 'checkbox',
+					'section'     => 'arch_visibility_fields',
+					'label'       => 'Hide on page',
+				)
+			);
+			$manager->register_setting(
+				'low-vis',
+				array( 'sanitize_callback' => 'butterbean_validate_boolean' )
 			);
 
 			$manager->register_control(
@@ -362,11 +401,11 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					)
 				);
 
-			// } //endif
+				// } //endif
 
-			$manager->register_control(
-				'arch_height',
-				array(
+				$manager->register_control(
+					'arch_height',
+					array(
 					'type'        => 'radio-image',
 					'section'     => 'arch_modifier_fields',
 					'label'       => 'Alignment in row',
@@ -389,40 +428,40 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 							'label' => __( 'Float (bottom)', 'arch' ),
 						),
 					),
-				)
-			);
+					)
+				);
 
-			/* === Register Settings === */
+				/* === Register Settings === */
 
-			$manager->register_setting(
-				'arch_component',
-				array( 'sanitize_callback' => 'sanitize_key', 'default' => 'card' )
-			);
+				$manager->register_setting(
+					'arch_component',
+					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'card' )
+				);
 
-			$manager->register_setting(
-				'arch_title',
-				array( 'sanitize_callback' => 'sanitize_key', 'default' => 'link-title' )
-			);
+				$manager->register_setting(
+					'arch_title',
+					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'link-title' )
+				);
 
-			$manager->register_setting(
-				'arch_excerpt',
-				array( 'sanitize_callback' => 'sanitize_key', 'default' => 'excerpt' )
-			);
+				$manager->register_setting(
+					'arch_excerpt',
+					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'excerpt' )
+				);
 
-			$manager->register_setting(
-				'arch_width',
-				array( 'sanitize_callback' => 'sanitize_key' )
-			);
+				$manager->register_setting(
+					'arch_width',
+					array( 'sanitize_callback' => 'sanitize_key' )
+				);
 
-			$manager->register_setting(
-				'arch_bg_color',
-				array( 'sanitize_callback' => 'sanitize_key', 'default' => 'u-bg-white' )
-			);
+				$manager->register_setting(
+					'arch_bg_color',
+					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'u-bg-white' )
+				);
 
-			$manager->register_setting(
-				'arch_height',
-				array( 'sanitize_callback' => 'sanitize_key', 'default' => 'stretch' )
-			);
+				$manager->register_setting(
+					'arch_height',
+					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'stretch' )
+				);
 		}
 
 
