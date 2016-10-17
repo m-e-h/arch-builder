@@ -8,3 +8,11 @@
 .row-wide > * {
 	margin: 0;
 }
+
+.u-bg-transparent > .entry-summary {
+	padding: 0.5rem;
+}
+
+.o-flag {
+	display: inline-flex;
+}

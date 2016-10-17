@@ -396,3 +396,13 @@ a:hover > .chevron-toggle {
 .row-wide > * {
 	margin: 0;
 }
+
+.u-bg-transparent > .entry-summary {
+	padding: 0.5rem;
+}
+
+.o-flag {
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+}
