@@ -65,4 +65,7 @@ wp_enqueue_script( 'lory' ); ?>
 	<button class="js_next next slide-btn">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentcolor" class="chevron-right v-icon"><path d="M12 1l14 15-14 15-4-4 10-11L8 5z"/></svg>
 	</button>
+
+	<?php edit_post_link('<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>'); ?>
+
 </div>
