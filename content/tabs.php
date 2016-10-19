@@ -39,7 +39,7 @@ wp_enqueue_script( 'arch-tabs' ); ?>
 
 <?php $counter++; ?>
 
-	<section class="tab-content arch-p2 tab<?php the_ID(); ?>" data-index="<?php echo $counter ?>" role="tabpanel">
+	<section class="tab-content u-bg-white arch-p2 tab<?php the_ID(); ?>" data-index="<?php echo $counter ?>" role="tabpanel">
 
 	<?php arch_excerpt(); ?>
 
