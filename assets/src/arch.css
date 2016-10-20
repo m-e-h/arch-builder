@@ -16,3 +16,12 @@
 .o-flag {
 	display: inline-flex;
 }
+
+.entry-title .arch-icon {
+    margin-left: auto;
+}
+
+.arch-flag > .thumbnail {
+    max-width: 33.33%;
+    width: 100%;
+}

@@ -51,3 +51,10 @@
 .tab-header.is-active:before {
 	opacity: 0.7;
 }
+
+ul.tabs {
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    max-width: 100%;
+}

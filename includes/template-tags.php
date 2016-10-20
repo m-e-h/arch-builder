@@ -22,8 +22,9 @@ function arch_title() {
 			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' ); ?>
 		</header>
 	<?php } else { ?>
-		<header <?php hybrid_attr( 'entry-header' ); ?>>
-			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
+		<h2 <?php hybrid_attr( 'entry-title' ); ?>>
+			<a href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php the_title(); ?><?php arch_do_svg('arrow-right') ?></a>
+		</h2>
 		</header><?php
 }
 }
@@ -120,3 +121,121 @@ function my_searchwp_exclude( $ids, $engine, $terms ) {
 	return $ids;
 }
 add_filter( 'searchwp_exclude', 'my_searchwp_exclude', 10, 3 );
+
+
+function arch_do_svg( $icon ) {
+
+	$args = array(
+		'icon'   => $icon,
+		'title'  => $icon,
+		'desc'   => '',
+		'class'  => 'arch-icon u-flexed-s0',
+		'inline' => true,
+	);
+	echo croft_get_svg( $args );
+}
+function croft_get_svg( $args = array() ) {
+
+	// Make sure $args are an array.
+	if ( empty( $args ) ) {
+		return esc_html__( 'Please define default parameters in the form of an array.', 'croft' );
+	}
+
+	// Define an icon.
+	if ( false === array_key_exists( 'icon', $args ) ) {
+		return esc_html__( 'Please define an SVG icon filename.', 'croft' );
+	}
+
+	// Set defaults.
+	$defaults = array(
+		'icon'   => '',
+		'height' => '',
+		'width'  => '',
+		'title'  => '',
+		'desc'   => '',
+		'class'  => '',
+		'inline' => true,
+	);
+
+	// Parse args.
+	$args = wp_parse_args( $args, $defaults );
+
+	// Sets unique IDs for use by aria-labelledby.
+	$title_id = $args['title'] ? uniqid( 'title-' ) : '';
+	$desc_id = $args['desc'] ? uniqid( 'desc-' ) : '';
+
+	// Sets SVG title.
+	$title = $args['title'] ? '<title id="' . $title_id . '">' . esc_html( $args['title'] ) . '</title>' : '';
+
+	// Sets SVG desc.
+	$desc = $args['desc'] ? '<desc id="' . $desc_id . '">' . esc_html( $args['desc'] ) . '</desc>' : '';
+
+	// Set ARIA labeledby.
+	if ( $args['title'] && $args['desc'] ) {
+		$aria_labelledby = 'aria-labelledby="' . $title_id . ' ' . $desc_id . '"';
+	} elseif ( $args['title'] ) {
+		$aria_labelledby = 'aria-labelledby="' . $title_id . '"';
+	} elseif ( $args['desc'] ) {
+		$aria_labelledby = 'aria-labelledby="' . $desc_id . '"';
+	} else {
+		$aria_labelledby = '';
+	}
+
+	// Set ARIA hidden.
+	if ( $args['title'] || $args['desc'] ) {
+		$aria_hidden = '';
+	} else {
+		$aria_hidden = 'aria-hidden="true"';
+	}
+
+	// Sets icon class.
+	$class = $args['class'] ? esc_html( $args['class'] ) : 'icon icon-' . esc_html( $args['icon'] );
+
+	$height = $args['height'] ? esc_html( $args['height'] ) : '1em';
+	$width = $args['width'] ? esc_html( $args['width'] ) : $height;
+
+	// If our SVG is inline.
+	if ( true === $args['inline'] ) {
+
+		// Begin SVG markup.
+		$svg = file_get_contents( locate_template( 'images/icons/' . esc_html( $args['icon'] ) . '.svg' ) );
+
+		// Add ARIA hidden, ARIA labeledby and class markup.
+		$svg = str_replace( '<svg', '<svg class="' . $class . '" height="' . $height . '" width="' . $width . '"' . $aria_hidden . $aria_labelledby . 'role="img"', $svg );
+
+		if ( $title && $desc ) {
+
+			// Get the intro SVG markup and save as $svg_intro.
+			preg_match( '/<svg(.*?)>/', $svg, $svg_intro );
+
+			// Add the title/desc to the markup.
+			$svg = str_replace( $svg_intro[0], $svg_intro[0] . $title . $desc, $svg );
+		}
+	} else { // Otherwise, use our sprite.
+
+		// Begin SVG markup.
+		$svg = '<svg class="' . $class . '"' . $aria_hidden . $aria_labelledby . ' role="img">';
+
+		// If there is a title, display it.
+		if ( $title ) {
+			$svg .= '<title  id="' . $title_id . '">' . esc_html( $args['title'] ) . '</title>';
+		}
+
+		// If there is a description, display it.
+		if ( $desc ) {
+			$svg .= '<desc id="' . $desc_id . '">' . esc_html( $args['desc'] ) . '</desc>';
+		}
+
+		// Use absolute path in the Customizer so that icons show up in there.
+		if ( is_customize_preview() ) {
+			$svg .= '<use xlink:href="' . get_template_directory_uri() . '/assets/img/svg-icons.svg' . '#icon-' . esc_html( $args['icon'] ) . '"></use>';
+		} else {
+			$svg .= '<use xlink:href="#icon-' . esc_html( $args['icon'] ) . '"></use>';
+		}
+
+			$svg .= '</svg>';
+
+	}
+
+	return $svg;
+}
