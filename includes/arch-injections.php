@@ -15,6 +15,7 @@ add_filter( 'hybrid_get_theme_layout', 'arch_home_layout' );
 
 function arch_image_sizes() {
 	add_image_size( 'arch-hd', 1200, 675, true );
+	add_image_size( 'arch-sd', 320, 240, true );
 }
 
 function arch_post_order( $query ) {
@@ -125,9 +126,14 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	$arch_title     = get_post_meta( $post_id, 'arch_title', true );
 	$arch_component = get_post_meta( $post_id, 'arch_component', true );
 	$arch_height    = get_post_meta( $post_id, 'arch_height', true );
+	$arch_excerpt    = get_post_meta( $post_id, 'arch_excerpt', true );
 
 	if ( $archive_width ) {
 		$classes[] = "{$archive_width}";
+	}
+
+	if ( $arch_excerpt ) {
+		$classes[] = "arch-{$arch_excerpt}";
 	}
 
 	if ( $arch_component ) {

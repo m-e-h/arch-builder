@@ -21,7 +21,27 @@
     margin-left: auto;
 }
 
-.arch-flag > .thumbnail {
+/*.arch-flag > .thumbnail {
     max-width: 33.33%;
     width: 100%;
+}*/
+
+.arch-excerpt.arch-flag>.landscape {
+    max-width: 50%;
+    height: calc( 70px + 10vw);
+    width: calc( 80px + 10vw);
+    flex: 1 0 calc( 80px + 10vw);
+}
+
+.arch-excerpt.arch-flag>.portrait {
+    max-width: 50%;
+    height: calc( 80px + 10vw);
+    width: calc( 60px + 10vw);
+    flex: 1 0 calc( 60px + 10vw);
+}
+
+.arch-none.arch-flag>.thumbnail {
+    height: calc( 50px + 5vw);
+    max-width: calc( 50px + 5vw);
+    flex: 1 0 calc( 50px + 5vw);
 }

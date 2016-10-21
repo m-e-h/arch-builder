@@ -417,8 +417,32 @@ a:hover > .chevron-toggle {
 .entry-title .arch-icon {
 	margin-left: auto;
 }
+/*.arch-flag > .thumbnail {
+    max-width: 33.33%;
+    width: 100%;
+}*/
+.arch-excerpt.arch-flag > .landscape {
+	max-width: 50%;
+	height: calc(70px + 10vw);
+	width: calc(80px + 10vw);
+	-webkit-flex: 1 0 calc(80px + 10vw);
+	-ms-flex: 1 0 calc(80px + 10vw);
+	flex: 1 0 calc(80px + 10vw);
+}
 
-.arch-flag > .thumbnail {
-	max-width: 33.33%;
-	width: 100%;
+.arch-excerpt.arch-flag > .portrait {
+	max-width: 50%;
+	height: calc(80px + 10vw);
+	width: calc(60px + 10vw);
+	-webkit-flex: 1 0 calc(60px + 10vw);
+	-ms-flex: 1 0 calc(60px + 10vw);
+	flex: 1 0 calc(60px + 10vw);
+}
+
+.arch-none.arch-flag > .thumbnail {
+	height: calc(50px + 5vw);
+	max-width: calc(50px + 5vw);
+	-webkit-flex: 1 0 calc(50px + 5vw);
+	-ms-flex: 1 0 calc(50px + 5vw);
+	flex: 1 0 calc(50px + 5vw);
 }
