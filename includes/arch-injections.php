@@ -15,7 +15,7 @@ add_filter( 'hybrid_get_theme_layout', 'arch_home_layout' );
 
 function arch_image_sizes() {
 	add_image_size( 'arch-hd', 1200, 675, true );
-	add_image_size( 'arch-sd', 320, 240, true );
+	add_image_size( 'arch-sd', 380, 506, true );
 }
 
 function arch_post_order( $query ) {

@@ -28,17 +28,19 @@
 
 .arch-excerpt.arch-flag>.landscape {
     max-width: 210px;
-    height: calc( 70px + 10vw);
-    width: calc( 80px + 10vw);
-    flex: 1 0 calc( 80px + 10vw);
+    height: calc( 70px + 5vw);
+    width: calc( 80px + 5vw);
+    flex: 1 0 calc( 80px + 5vw);
 	max-height: 200px;
 }
 
 .arch-excerpt.arch-flag>.portrait {
     max-width: 33%;
-    height: calc( 80px + 10vw);
-    width: calc( 60px + 10vw);
-    flex: 1 0 calc( 60px + 10vw);
+    height: calc( 80px + 5vw);
+    width: calc( 60px + 5vw);
+    flex: 1 0 calc( 60px + 5vw);
+	max-height: 200px;
+    max-width: 150px;
 }
 
 .arch-none.arch-flag>.thumbnail {
@@ -52,26 +54,26 @@
     align-content: flex-start;
 }
 
-.u-1of1-md.arch-excerpt.arch-flag > .thumbnail {
+.u-1of1-md.arch-flag:not(.arch-none) > .thumbnail {
 	max-height: 200px;
 }
 
-.u-1of2-md.arch-excerpt.arch-flag > .thumbnail {
+.u-1of2-md.arch-flag:not(.arch-none) > .thumbnail {
 	max-height: 200px;
 }
 
-.u-2of3-md.arch-excerpt.arch-flag > .thumbnail {
+.u-2of3-md.arch-flag:not(.arch-none) > .thumbnail {
 	max-height: 230px;
 }
 
-.u-1of2-md.arch-excerpt.arch-flag > .portrait {
+.u-1of2-md.arch-flag:not(.arch-none) > .portrait {
     max-width: 50%;
-    height: calc(141px + 10vw);
-    width: calc(80px + 10vw);
-    flex: 1 0 calc(80px + 10vw);
+    height: calc(141px + 5vw);
+    width: calc(80px + 5vw);
+    flex: 1 0 calc(80px + 5vw);
 }
 
-.u-2of3-md.arch-excerpt.arch-flag > .portrait {
-    width: calc(20px + 10vw);
-    flex: 1 0 calc(20px + 10vw);
+.u-2of3-md.arch-flag:not(.arch-none) > .portrait {
+    width: calc(20px + 5vw);
+    flex: 1 0 calc(20px + 5vw);
 }

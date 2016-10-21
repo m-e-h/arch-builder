@@ -10,7 +10,7 @@
 	<?php
 	get_the_image(array(
 			'size'               => 'arch-sd',
-			'image_class'        => 'u-1of3 u-1of4-md u-of-cover',
+			'image_class'        => 'u-of-cover',
 			'link_to_post'		=> false,
 		));
 	?>
