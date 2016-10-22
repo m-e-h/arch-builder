@@ -73,6 +73,10 @@ flex: 1 0 calc(20px + 5vw);
 }*/
 
 @media (max-width: 47em) {
+	.arch-flag > .thumbnail {
+		margin-top: .5rem;
+		margin-left: .5rem;
+	}
 }
 
 @media (min-width: 48em) {
@@ -90,7 +94,7 @@ flex: 1 0 calc(20px + 5vw);
 }
 
 @media (min-width: 92em) {
-	.arch-flag:not(.arch-none) > .portrait {
+	.u-1of1-md.arch-flag:not(.arch-none) > .portrait {
 		height: calc(92px + 5vw);
 	}
 }

@@ -64,12 +64,16 @@ flex: 1 0 calc(20px + 5vw);
 
 @media (--sm) {
 
+	.arch-flag>.thumbnail {
+		margin-top: .5rem;
+		margin-left: .5rem;
+	}
 }
 
 @media (--md) {
 
 	.arch-flag:not(.arch-none) > .portrait {
-	    height: calc(150px + 5vw);
+		height: calc(150px + 5vw);
 		width: calc(90px + 5vw);
 	}
 }
@@ -77,14 +81,14 @@ flex: 1 0 calc(20px + 5vw);
 @media (--lg) {
 
 	.arch-flag:not(.arch-none) > .portrait {
-	    height: calc(140px + 5vw);
+		height: calc(140px + 5vw);
 		width: calc(90px + 5vw);
 	}
 }
 
 @media (--xl) {
 
-	.arch-flag:not(.arch-none) > .portrait {
-	    height: calc(92px + 5vw);
+	.u-1of1-md.arch-flag:not(.arch-none) > .portrait {
+		height: calc(92px + 5vw);
 	}
 }
