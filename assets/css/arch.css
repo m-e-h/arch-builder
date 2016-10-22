@@ -1,6 +1,104 @@
+.arch-flag,
+.o-flag {
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+}
+
+/*.arch-flag > .thumbnail {
+max-width: 33.33%;
+width: 100%;
+}*/
+
+.arch-excerpt.arch-flag > .landscape {
+	max-width: 210px;
+	height: calc(70px + 5vw);
+	width: calc(80px + 5vw);
+	-webkit-flex: 1 0 calc(80px + 5vw);
+	-ms-flex: 1 0 calc(80px + 5vw);
+	flex: 1 0 calc(80px + 5vw);
+	max-height: 200px;
+}
+
+.arch-excerpt.arch-flag > .portrait {
+	max-width: 33%;
+	height: calc(80px + 5vw);
+	width: calc(60px + 5vw);
+	-webkit-flex: 1 0 calc(60px + 5vw);
+	-ms-flex: 1 0 calc(60px + 5vw);
+	flex: 1 0 calc(60px + 5vw);
+	max-height: 200px;
+	max-width: 150px;
+}
+
+.arch-none.arch-flag > .thumbnail {
+	height: calc(50px + 5vw);
+	max-width: calc(50px + 5vw);
+	-webkit-flex: 1 0 calc(50px + 5vw);
+	-ms-flex: 1 0 calc(50px + 5vw);
+	flex: 1 0 calc(50px + 5vw);
+}
+
+.flag-body {
+	-webkit-align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	-webkit-align-content: flex-start;
+	-ms-flex-line-pack: start;
+	align-content: flex-start;
+}
+
+/*.u-1of1-md.arch-flag:not(.arch-none) > .thumbnail {
+max-height: 200px;
+}
+
+.u-1of2-md.arch-flag:not(.arch-none) > .thumbnail {
+max-height: 200px;
+}
+
+.u-2of3-md.arch-flag:not(.arch-none) > .thumbnail {
+max-height: 230px;
+}
+
+.u-1of2-md.arch-flag:not(.arch-none) > .portrait {
+max-width: 50%;
+height: calc(141px + 5vw);
+width: calc(80px + 5vw);
+flex: 1 0 calc(80px + 5vw);
+}
+
+.u-2of3-md.arch-flag:not(.arch-none) > .portrait {
+width: calc(20px + 5vw);
+flex: 1 0 calc(20px + 5vw);
+}*/
+
+@media (max-width: 47em) {
+}
+
+@media (min-width: 48em) {
+	.arch-flag:not(.arch-none) > .portrait {
+		height: calc(150px + 5vw);
+		width: calc(90px + 5vw);
+	}
+}
+
+@media (min-width: 62em) {
+	.arch-flag:not(.arch-none) > .portrait {
+		height: calc(140px + 5vw);
+		width: calc(90px + 5vw);
+	}
+}
+
+@media (min-width: 92em) {
+	.arch-flag:not(.arch-none) > .portrait {
+		height: calc(92px + 5vw);
+	}
+}
+
 /**
 * Slider specific styles
 */
+
 .frame {
 	position: relative;
 	margin: 0 auto;
@@ -184,7 +282,9 @@
 	-ms-flex: 1 1 0%;
 	flex: 1 1 0%;
 }
+
 /*  TABS */
+
 .tab-content {
 	display: none;
 	visibility: hidden;
@@ -245,7 +345,9 @@ ul.tabs {
 	width: 100%;
 	max-width: 100%;
 }
+
 /*  Toggles */
+
 .collapse-toggle {
 	display: none;
 	visibility: hidden;
@@ -400,6 +502,8 @@ a:hover > .chevron-toggle {
 	padding-top: 0;
 }
 
+/* Custom media queries */
+
 .row-wide > * {
 	margin: 0;
 }
@@ -408,81 +512,6 @@ a:hover > .chevron-toggle {
 	padding: 0.5rem;
 }
 
-.o-flag {
-	display: -webkit-inline-flex;
-	display: -ms-inline-flexbox;
-	display: inline-flex;
-}
-
 .entry-title .arch-icon {
 	margin-left: auto;
-}
-/*.arch-flag > .thumbnail {
-    max-width: 33.33%;
-    width: 100%;
-}*/
-.arch-excerpt.arch-flag > .landscape {
-	max-width: 210px;
-	height: calc(70px + 5vw);
-	width: calc(80px + 5vw);
-	-webkit-flex: 1 0 calc(80px + 5vw);
-	-ms-flex: 1 0 calc(80px + 5vw);
-	flex: 1 0 calc(80px + 5vw);
-	max-height: 200px;
-}
-
-.arch-excerpt.arch-flag > .portrait {
-	max-width: 33%;
-	height: calc(80px + 5vw);
-	width: calc(60px + 5vw);
-	-webkit-flex: 1 0 calc(60px + 5vw);
-	-ms-flex: 1 0 calc(60px + 5vw);
-	flex: 1 0 calc(60px + 5vw);
-	max-height: 200px;
-	max-width: 150px;
-}
-
-.arch-none.arch-flag > .thumbnail {
-	height: calc(50px + 5vw);
-	max-width: calc(50px + 5vw);
-	-webkit-flex: 1 0 calc(50px + 5vw);
-	-ms-flex: 1 0 calc(50px + 5vw);
-	flex: 1 0 calc(50px + 5vw);
-}
-
-.flag-body {
-	-webkit-align-items: flex-start;
-	-ms-flex-align: start;
-	align-items: flex-start;
-	-webkit-align-content: flex-start;
-	-ms-flex-line-pack: start;
-	align-content: flex-start;
-}
-
-.u-1of1-md.arch-flag:not(.arch-none) > .thumbnail {
-	max-height: 200px;
-}
-
-.u-1of2-md.arch-flag:not(.arch-none) > .thumbnail {
-	max-height: 200px;
-}
-
-.u-2of3-md.arch-flag:not(.arch-none) > .thumbnail {
-	max-height: 230px;
-}
-
-.u-1of2-md.arch-flag:not(.arch-none) > .portrait {
-	max-width: 50%;
-	height: calc(141px + 5vw);
-	width: calc(80px + 5vw);
-	-webkit-flex: 1 0 calc(80px + 5vw);
-	-ms-flex: 1 0 calc(80px + 5vw);
-	flex: 1 0 calc(80px + 5vw);
-}
-
-.u-2of3-md.arch-flag:not(.arch-none) > .portrait {
-	width: calc(20px + 5vw);
-	-webkit-flex: 1 0 calc(20px + 5vw);
-	-ms-flex: 1 0 calc(20px + 5vw);
-	flex: 1 0 calc(20px + 5vw);
 }

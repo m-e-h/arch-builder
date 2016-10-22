@@ -1,0 +1,90 @@
+
+.arch-flag,
+.o-flag {
+	display: inline-flex;
+}
+
+/*.arch-flag > .thumbnail {
+max-width: 33.33%;
+width: 100%;
+}*/
+
+.arch-excerpt.arch-flag>.landscape {
+	max-width: 210px;
+	height: calc( 70px + 5vw);
+	width: calc( 80px + 5vw);
+	flex: 1 0 calc( 80px + 5vw);
+	max-height: 200px;
+}
+
+.arch-excerpt.arch-flag>.portrait {
+	max-width: 33%;
+	height: calc( 80px + 5vw);
+	width: calc( 60px + 5vw);
+	flex: 1 0 calc( 60px + 5vw);
+	max-height: 200px;
+	max-width: 150px;
+}
+
+.arch-none.arch-flag>.thumbnail {
+	height: calc( 50px + 5vw);
+	max-width: calc( 50px + 5vw);
+	flex: 1 0 calc( 50px + 5vw);
+}
+
+.flag-body {
+	align-items: flex-start;
+	align-content: flex-start;
+}
+
+/*.u-1of1-md.arch-flag:not(.arch-none) > .thumbnail {
+max-height: 200px;
+}
+
+.u-1of2-md.arch-flag:not(.arch-none) > .thumbnail {
+max-height: 200px;
+}
+
+.u-2of3-md.arch-flag:not(.arch-none) > .thumbnail {
+max-height: 230px;
+}
+
+.u-1of2-md.arch-flag:not(.arch-none) > .portrait {
+max-width: 50%;
+height: calc(141px + 5vw);
+width: calc(80px + 5vw);
+flex: 1 0 calc(80px + 5vw);
+}
+
+.u-2of3-md.arch-flag:not(.arch-none) > .portrait {
+width: calc(20px + 5vw);
+flex: 1 0 calc(20px + 5vw);
+}*/
+
+
+@media (--sm) {
+
+}
+
+@media (--md) {
+
+	.arch-flag:not(.arch-none) > .portrait {
+	    height: calc(150px + 5vw);
+		width: calc(90px + 5vw);
+	}
+}
+
+@media (--lg) {
+
+	.arch-flag:not(.arch-none) > .portrait {
+	    height: calc(140px + 5vw);
+		width: calc(90px + 5vw);
+	}
+}
+
+@media (--xl) {
+
+	.arch-flag:not(.arch-none) > .portrait {
+	    height: calc(92px + 5vw);
+	}
+}
