@@ -93,7 +93,8 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'arch_visibility_fields',
-					'label'       => 'Hide from site search',
+					'label'       => 'Hide from site search results',
+					'description' => 'When searching from this sites search box.',
 				)
 			);
 			$manager->register_setting(
@@ -106,7 +107,8 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'arch_visibility_fields',
-					'label'       => 'Hide from search engines',
+					'label'       => 'Hide from search engine results',
+					'description' => 'When searching from Google, Bing, etc.',
 				)
 			);
 			$manager->register_setting(
@@ -115,17 +117,34 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			);
 
 			$manager->register_control(
-				'low-vis',
+				'low_vis',
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'arch_visibility_fields',
-					'label'       => 'Hide on page',
+					'label'       => 'Hide on parent page',
+					'description' => 'Will still be accessible as a single page.',
 				)
 			);
 			$manager->register_setting(
-				'low-vis',
+				'low_vis',
 				array( 'sanitize_callback' => 'butterbean_validate_boolean' )
 			);
+
+			if (  class_exists( 'Members_Plugin' ) ) {
+				$manager->register_control(
+					'low_vis_members',
+					array(
+						'type'        => 'checkbox',
+						'section'     => 'arch_visibility_fields',
+						'label'       => 'Hide on parent page for unauthorized users',
+						'description' => 'Does not prevent access to the single page.<br>Access is controlled with the "Content Permissions" feature.',
+					)
+				);
+				$manager->register_setting(
+					'low_vis_members',
+					array( 'sanitize_callback' => 'butterbean_validate_boolean' )
+				);
+			}
 
 			$manager->register_control(
 				'_links_to',
@@ -338,24 +357,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			}
 			$arch_primary_c = new Color( $arch_primary_archive );
 			$arch_secondary_c = new Color( $arch_secondary_archive );
-
-			// if ( 'arch' === $post_type ) {
-			//
-			// 	$manager->register_control(
-			// 		'arch_primary_color',
-			// 		array(
-			// 		'type'        => 'color',
-			// 		'section'     => 'arch_modifier_fields',
-			// 		'label'       => 'Background Color',
-			// 		'options' => array( 'palettes' => array( "#{$arch_primary_c->lighten( 10 )}", "#{$arch_primary_c->getHex()}", "#{$arch_primary_c->darken( 10 )}", "#{$arch_secondary_c->lighten( 10 )}", "#{$arch_secondary_c->getHex()}", "#{$arch_secondary_c->darken( 10 )}" ) ),
-			// 		)
-			// 	);
-			// 	$manager->register_setting(
-			// 		'arch_primary_color',
-			// 		array( 'sanitize_callback' => 'sanitize_hex_color_no_hash', 'default' => $arch_primary_default )
-			// 	);
-			//
-			// } else {
 
 				$manager->register_control(
 					'arch_bg_color',

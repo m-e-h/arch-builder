@@ -42,13 +42,26 @@ function arch_templates( $template ) {
 		return $template; }
 
 	// If the post type doesn't support `arch-posts`, bail.
-	if ( ! is_arch_post() || ! members_can_current_user_view_post() || is_search() ) {
+	if ( ! is_arch_post() || is_search() || is_single( get_the_ID() ) ) {
 		return $template;
 	}
 
+	$low_vis = get_post_meta( get_the_ID(), 'low_vis', true );
+
+	if ( $low_vis ) {
+		return;
+	}
+
+	if ( function_exists( 'members_can_current_user_view_post' ) ) {
+		$low_vis_members = get_post_meta( get_the_ID(), 'low_vis_members', true );
+
+		if ( $low_vis_members && ! members_can_current_user_view_post() ) {
+			return;
+		}
+	}
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
-	if ( $arch_component && ! is_single( get_the_ID() ) ) {
+	if ( $arch_component ) {
 
 		$template = trailingslashit( arch_builder_plugin()->dir_path ) . "content/{$arch_component}.php";
 		$has_template    = locate_template( array( "content/{$arch_component}.php" ) );
