@@ -136,7 +136,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					array(
 						'type'        => 'checkbox',
 						'section'     => 'arch_visibility_fields',
-						'label'       => 'Hide on parent page for unauthorized users',
+						'label'       => 'Hide on parent page for unauthorized users only',
 						'description' => 'Does not prevent access to the single page.<br>Access is controlled with the "Content Permissions" feature.',
 					)
 				);
@@ -180,20 +180,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				array( 'sanitize_callback' => 'sanitize_key' )
 			);
 
-			// $manager->register_control(
-			// 	'_searchwp_excluded',
-			// 	array(
-			// 		'type'        => 'checkbox',
-			// 		'section'     => 'arch_visibility_fields',
-			// 		'label'       => 'Exclude from search',
-			// 	)
-			// );
-			//
-			// $manager->register_setting(
-			// 	'_searchwp_excluded',
-			// 	array( 'sanitize_callback' => 'wp_validate_boolean' )
-			// );
-
 			/* === Register Controls === */
 			$uri = arch_builder_plugin()->img_uri;
 
@@ -227,25 +213,15 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						),
 						'tile' => array(
 							'url'   => $uri . 'tile.svg',
-							'label' => __( 'Tile(NOT READY)', 'arch' ),
+							'label' => __( 'Tile', 'arch' ),
 						),
 						'row' => array(
 							'url'   => $uri . 'row.svg',
-							'label' => __( 'Row**(NOT READY)', 'arch' ),
+							'label' => __( 'Row**', 'arch' ),
 						),
 					),
 				)
 			);
-
-			// $manager->register_control(
-			// 	'arch_width',
-			// 	array(
-			// 			'type'        => 'radio',
-			// 			'section'     => 'arch_block_fields',
-			// 			'label'       => 'Component Width',
-			// 			'choices'     => arch_width_options(),
-			// 		)
-			// );
 
 			$manager->register_control(
 				'arch_width',
@@ -401,8 +377,6 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						),
 					)
 				);
-
-				// } //endif
 
 				$manager->register_control(
 					'arch_height',
