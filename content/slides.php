@@ -10,7 +10,7 @@ wp_enqueue_script( 'flickity' ); ?>
 <div <?php hybrid_attr( 'post' ); ?>>
 
 	<div class="frame js_frame arch-u-1of1">
-		<div class="slides js_slides" data-flickity='{ "groupCells": true, "imagesLoaded": true, "wrapAround": true, "percentPosition": false }'>
+		<div class="slides js_slides" data-flickity='{ "groupCells": 3, "imagesLoaded": true, "wrapAround": true, "percentPosition": false }'>
 
 		<?php
 		if ( get_post_gallery() ) :
@@ -18,7 +18,7 @@ wp_enqueue_script( 'flickity' ); ?>
 
 			/* Loop through all the image and output them one by one */
 			foreach ( $gallery['src'] as $src ) : ?>
-				<img src="<?php echo $src; ?>" class="gallery-cell-image u-mr1" alt="Gallery image" />
+				<img src="<?php echo $src; ?>" class="gallery-cell-image u-mr1 u-1of3" alt="Gallery image" />
 				<?php
 			endforeach;
 
