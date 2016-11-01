@@ -168,8 +168,8 @@ final class Arch_Builder_Plugin {
 		/* Register the plugin script. */
 		wp_register_script( 'arch-tabs', trailingslashit( $this->js_uri ) . "arch-tabs{$suffix}.js", false, false, true );
 		wp_register_script( 'arch-toggle', trailingslashit( $this->js_uri ) . "houdini{$suffix}.js", false, false, true );
-		wp_register_script( 'lory', trailingslashit( $this->js_uri ) . 'lory.js', false, false, true );
-		wp_add_inline_script( 'lory', $this->get_lory_script() );
+		wp_register_script( 'flickity', trailingslashit( $this->js_uri ) . 'flickity.pkgd.min.js', false, false, true );
+		//wp_add_inline_script( 'lory', $this->get_lory_script() );
 
 		/* Load the plugin stylesheet if no theme support. */
 		if ( ! current_theme_supports( 'arch-builder' ) ) {
@@ -179,20 +179,17 @@ final class Arch_Builder_Plugin {
 	public function get_lory_script() {
 
 		return "
-	var domReady = function(callback) {
-		document.readyState === 'interactive' ||
-		document.readyState === 'complete' ? callback() : document.addEventListener('DOMContentLoaded', callback);
-	};
 
+		    document.addEventListener('DOMContentLoaded', function () {
+		        var multiSlides = document.querySelector('.js_slider');
 
-	domReady(function () {
-		var slides = document.querySelector('.arch-slides');
-
-		lory(slides, {
-			infinite: 1,
-			enableMouseEvents: true
-		});
-	});";
+		        lory(multiSlides, {
+		            infinite: 1,
+		            slidesToScroll: 3,
+					enableMouseEvents: true,
+					//rewind: true
+		        });
+		    });";
 	}
 
 	/**
