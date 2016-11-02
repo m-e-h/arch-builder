@@ -132,18 +132,18 @@ function arch_do_svg( $icon ) {
 		'class'  => 'arch-icon u-flexed-s0',
 		'inline' => true,
 	);
-	echo croft_get_svg( $args );
+	echo arch_get_svg( $args );
 }
-function croft_get_svg( $args = array() ) {
+function arch_get_svg( $args = array() ) {
 
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
-		return esc_html__( 'Please define default parameters in the form of an array.', 'croft' );
+		return esc_html__( 'Please define default parameters in the form of an array.', 'arch' );
 	}
 
 	// Define an icon.
 	if ( false === array_key_exists( 'icon', $args ) ) {
-		return esc_html__( 'Please define an SVG icon filename.', 'croft' );
+		return esc_html__( 'Please define an SVG icon filename.', 'arch' );
 	}
 
 	// Set defaults.

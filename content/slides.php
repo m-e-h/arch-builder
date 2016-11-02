@@ -10,7 +10,7 @@ wp_enqueue_script( 'flickity' ); ?>
 <div <?php hybrid_attr( 'post' ); ?>>
 
 	<div class="frame js_frame arch-u-1of1">
-		<div class="slides js_slides" data-flickity='{ "groupCells": 3, "imagesLoaded": true, "wrapAround": true, "percentPosition": false }'>
+		<div class="slides js_slides" data-flickity='{ "imagesLoaded": true, "wrapAround": true, "percentPosition": false }'>
 
 		<?php
 		if ( get_post_gallery() ) :
@@ -35,7 +35,7 @@ wp_enqueue_script( 'flickity' ); ?>
 
 		<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-			<div class="js_slide slide-cell u-1of3 arch-grad-overlay">
+			<div class="js_slide slide-cell u-1of1 arch-grad-overlay">
 
 				<?php
 		        get_the_image(array(
