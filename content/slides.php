@@ -9,16 +9,20 @@ wp_enqueue_script( 'flickity' ); ?>
 
 <div <?php hybrid_attr( 'post' ); ?>>
 
-	<div class="frame js_frame arch-u-1of1">
+	<div class="frame js_frame u-1of1">
 		<div class="slides js_slides" data-flickity='{ "imagesLoaded": true, "wrapAround": true, "percentPosition": false }'>
 
 		<?php
 		if ( get_post_gallery() ) :
+
 			$gallery = get_post_gallery( get_the_ID(), false );
+			$columns = isset( $gallery['columns'] ) ? $gallery['columns'] : 3;
 
 			/* Loop through all the image and output them one by one */
 			foreach ( $gallery['src'] as $src ) : ?>
-				<img src="<?php echo $src; ?>" class="gallery-cell-image u-mr1 u-1of3" alt="Gallery image" />
+
+				<img src="<?php echo $src ?>" class="carousel-cell-image u-mr1 u-1of<?php echo $columns ?>-md u-of-cover" alt="Gallery image" />
+
 				<?php
 			endforeach;
 
@@ -40,7 +44,7 @@ wp_enqueue_script( 'flickity' ); ?>
 				<?php
 		        get_the_image(array(
 		            'size'         => 'arch-hd',
-		            'image_class'  => 'gallery-cell-image arch-u-1of1',
+		            'image_class'  => 'gallery-cell-image u-1of1',
 		            'link_to_post' => false,
 		        ));
 				?>

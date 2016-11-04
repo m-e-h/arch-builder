@@ -165,9 +165,9 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 		$classes[] = 'tile-row u-shadow0 u-br0 u-m0 section-row u-relative u-1of1 u-fluid-xp u-pt3 u-pt4-md u-pb2 u-pb3-md is-animating';
 	}
 
-	// if ( 'slides' === get_arch_block( $post_id ) ) {
-	// 	$classes[] = 'u-m0 u-br0';
-	// }
+	if ( 'slides' === get_arch_block( $post_id ) ) {
+		$classes[] = 'u-m0 u-br0';
+	}
 
 	if ( 'tile' === get_arch_block( $post_id ) ) {
 		$classes[] = 'tile u-flex-wrap o-cell u-br u-flex u-flex-col u-shadow1 shadow-hover';
@@ -246,3 +246,18 @@ function arch_home_layout( $layout ) {
 	}
 		return $layout;
 }
+
+
+function arch_gallery_sizes( $sizes ) {
+	   //unset( $sizes['thumbnail'] ); //comment to remove size if needed
+	   unset( $sizes['medium']);// uncomment to remove size if needed
+	   unset( $sizes['large']);// uncomment to restore size if needed
+	   unset( $sizes['full'] ); // comment to remove size if needed
+	   $arch_imgsizes = array(
+			  'arch-hd' => __( 'HD' ),
+			  'arch-sd' => __( 'SD' ),
+	   );
+	   $newimgsizes = array_merge( $arch_imgsizes, $sizes );
+	   return $newimgsizes;
+}
+add_filter( 'image_size_names_choose', 'arch_gallery_sizes' );
