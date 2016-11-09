@@ -5,6 +5,11 @@
 	display: inline-flex;
 }
 
+.arch-flag > .thumbnail,
+.o-flag > .thumbnail {
+	max-width: 50%;
+}
+
 /*.arch-flag > .thumbnail {
 max-width: 33.33%;
 width: 100%;
@@ -32,11 +37,10 @@ width: 100%;
 }
 
 .arch-none.arch-flag > .thumbnail {
-	height: calc(50px + 5vw);
-	max-width: calc(50px + 5vw);
-	-webkit-flex: 1 0 calc(50px + 5vw);
-	-ms-flex: 1 0 calc(50px + 5vw);
-	flex: 1 0 calc(50px + 5vw);
+	width: 6.25rem;
+	height: 6.25rem;
+	max-width: 33.33%;
+	margin: 0;
 }
 
 .flag-body {
@@ -72,12 +76,13 @@ width: calc(20px + 5vw);
 flex: 1 0 calc(20px + 5vw);
 }*/
 
-@media (max-width: 47em) {
-	.arch-flag > .thumbnail {
+/*@media (--sm) {
+
+	.arch-flag>.thumbnail {
 		margin-top: .5rem;
 		margin-left: .5rem;
 	}
-}
+}*/
 
 @media (min-width: 48em) {
 	.arch-flag:not(.arch-none) > .portrait {
