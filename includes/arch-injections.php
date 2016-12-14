@@ -55,8 +55,10 @@ function arch_templates( $template ) {
 	if ( function_exists( 'members_can_current_user_view_post' ) ) {
 		$parent_id = wp_get_post_parent_id( $post_id );
 
-		if ( ! members_can_current_user_view_post( $parent_id ) ) {
-			return;
+		if ( $parent_id ) {
+			if ( ! is_single( get_the_ID() ) && ! members_can_current_user_view_post( $parent_id ) ) {
+				return;
+			}
 		}
 
 		$low_vis_members = get_post_meta( get_the_ID(), 'low_vis_members', true );
