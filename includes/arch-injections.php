@@ -53,6 +53,12 @@ function arch_templates( $template ) {
 	}
 
 	if ( function_exists( 'members_can_current_user_view_post' ) ) {
+		$parent_id = wp_get_post_parent_id( $post_id );
+
+		if ( ! members_can_current_user_view_post( $parent_id ) ) {
+			return;
+		}
+
 		$low_vis_members = get_post_meta( get_the_ID(), 'low_vis_members', true );
 
 		if ( $low_vis_members && ! members_can_current_user_view_post() ) {
