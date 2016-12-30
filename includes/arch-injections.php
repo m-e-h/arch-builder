@@ -53,7 +53,7 @@ function arch_templates( $template ) {
 	}
 
 	if ( function_exists( 'members_can_current_user_view_post' ) ) {
-		$parent_id = wp_get_post_parent_id( $post_id );
+		$parent_id = wp_get_post_parent_id( get_the_ID() );
 
 		if ( $parent_id ) {
 			if ( ! is_single( get_the_ID() ) && ! members_can_current_user_view_post( $parent_id ) ) {
