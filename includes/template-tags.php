@@ -22,8 +22,9 @@ function arch_title() {
 			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' ); ?>
 		</header>
 	<?php } else { ?>
+		<header <?php hybrid_attr( 'entry-header' ); ?>>
 		<h2 <?php hybrid_attr( 'entry-title' ); ?>>
-			<a href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php the_title(); ?><?php arch_do_svg('arrow-right') ?></a>
+			<a class="u-1of1 u-inline-flex u-flex-center u-p u-py1" href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php the_title(); ?><?php arch_do_svg('arrow-right') ?></a>
 		</h2>
 		</header><?php
 }
