@@ -16,18 +16,29 @@ function arch_is_home() {
 function arch_title() {
 	$arch_title = get_post_meta( get_the_ID(), 'arch_title', true );
 	if ( 'no-title' === $arch_title ) {
+
 		return;
+
 	} elseif ( 'no-link-title' === $arch_title ) { ?>
+
 		<header <?php hybrid_attr( 'entry-header' ); ?>>
 			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '>', '</h2>' ); ?>
 		</header>
-	<?php } else { ?>
+
+	<?php
+	} elseif ( locate_template( 'components/entry-header.php' ) ) {
+
+			get_template_part( 'components/entry', 'header' );
+
+	} else { ?>
+
 		<header <?php hybrid_attr( 'entry-header' ); ?>>
-		<h2 <?php hybrid_attr( 'entry-title' ); ?>>
-			<a class="u-1of1 u-inline-flex u-flex-center u-p u-py1" href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php the_title(); ?><?php arch_do_svg('arrow-right') ?></a>
-		</h2>
-		</header><?php
-}
+			<h2 <?php hybrid_attr( 'entry-title' ); ?>>
+				<a class="u-1of1 u-inline-flex u-flex-center u-p u-py1" href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php the_title(); ?><?php arch_do_svg( 'arrow-right' ) ?></a>
+			</h2>
+		</header>
+	<?php
+	}
 }
 
 function arch_excerpt() {
@@ -236,7 +247,7 @@ function arch_get_svg( $args = array() ) {
 
 			$svg .= '</svg>';
 
-	}
+	}// End if().
 
 	return $svg;
 }
