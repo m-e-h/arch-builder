@@ -1,3 +1,39 @@
+.butterbean-manager.butterbean-manager-default .butterbean-nav li a {
+	border-left: 4px solid transparent;
+	transition-duration: .15s;
+}
+
+.butterbean-manager.butterbean-manager-default .butterbean-nav li a:hover, .butterbean-manager.butterbean-manager-default .butterbean-nav li[aria-selected="true"] a {
+	border-left-color: currentColor;
+}
+
+.butterbean-manager.butterbean-manager-default .butterbean-nav li[aria-selected="true"] a {
+	margin-right: -1px;
+	background-color: #fff;
+}
+
+.butterbean-content .chosen-container {
+	min-width: 300px;
+	width: auto!important;
+}
+
+.butterbean-content .chosen-container>.chosen-drop {
+	box-shadow: 0 0 0 1px rgba(30, 45, 55, 0.15), 0 2px 3px rgba(30, 45, 55, 0.2);
+}
+
+.butterbean-manager.butterbean-manager-default {
+	overflow: initial;
+}
+
+.butterbean-manager-default::before, .butterbean-manager-default::after {
+	content: "";
+	display: table;
+}
+
+.butterbean-manager-default::after {
+	clear: both;
+}
+
 .striped>tbody>:nth-child(even) {
 	background-color: #FAFBFC;
 }
