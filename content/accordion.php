@@ -23,10 +23,10 @@ wp_enqueue_script( 'arch-toggle' ); ?>
 
 <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-	<a class="collapse-toggle arch-f-plus arch-px2 arch-py1 arch-1of1 arch-flex arch-flex-justify-between" data-collapse="#toggle<?php the_ID(); ?>" href="#"><?php the_title(); ?> <svg xmlns="http://www.w3.org/2000/svg" class="chevron-toggle" fill="currentcolor" viewBox="0 0 32 32"><path d="M1 12l15 14 15-14-4-4-11 10L5 8z"/></svg>
-	</a>
+	<button type="button" data-a11y-toggle="target<?php the_ID(); ?>" class="toggle-btn arch-f-plus u-1of1 u-flex u-flex-jb"><span><?php the_title(); ?></span><svg xmlns="http://www.w3.org/2000/svg" class="chevron-toggle" fill="currentcolor" viewBox="0 0 32 32"><path d="M1 12l15 14 15-14-4-4-11 10L5 8z"/></svg>
+	</button>
 
-	<div class="collapse arch-p2" id="toggle<?php the_ID(); ?>">
+	<div class="toggle-content" id="target<?php the_ID(); ?>">
 	    	<?php arch_excerpt(); ?>
 	</div>
 

@@ -167,7 +167,7 @@ final class Arch_Builder_Plugin {
 
 		/* Register the plugin script. */
 		wp_register_script( 'arch-tabs', trailingslashit( $this->js_uri ) . "arch-tabs{$suffix}.js", false, false, true );
-		wp_register_script( 'arch-toggle', trailingslashit( $this->js_uri ) . "houdini{$suffix}.js", false, false, true );
+		wp_register_script( 'arch-toggle', trailingslashit( $this->js_uri ) . "a11y-toggle{$suffix}.js", false, false, true );
 		wp_register_script( 'flickity', trailingslashit( $this->js_uri ) . 'flickity.pkgd.min.js', false, false, true );
 		//wp_add_inline_script( 'lory', $this->get_lory_script() );
 

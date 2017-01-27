@@ -540,68 +540,67 @@ ul.tabs {
 
 /*  Toggles */
 
-.collapse-toggle {
-	display: none;
-	visibility: hidden;
-	border-top: 1px solid rgba(0, 0, 0, 0.1);
+.toggle-btn {
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 }
 
-.js-houdini .collapse-toggle {
-	display: inline-block;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	visibility: visible;
-	box-sizing: border-box;
+.toggle-btn > span {
+	border-top: 1px solid transparent;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transform-origin: left;
+	transform-origin: left;
+	transition: -webkit-transform 0.18s cubic-bezier(0, 0, 0.2, 1);
+	transition: transform 0.18s cubic-bezier(0, 0, 0.2, 1);
+	transition: transform 0.18s cubic-bezier(0, 0, 0.2, 1), -webkit-transform 0.18s cubic-bezier(0, 0, 0.2, 1);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.toggle-btn[aria-expanded="true"] > span {
+	-webkit-transform: scale(1.2) translateX(1em);
+	transform: scale(1.2) translateX(1em);
+	-webkit-transform-origin: left;
+	transform-origin: left;
+	transition: -webkit-transform 0.18s cubic-bezier(0, 0, 0.2, 1);
+	transition: transform 0.18s cubic-bezier(0, 0, 0.2, 1);
+	transition: transform 0.18s cubic-bezier(0, 0, 0.2, 1), -webkit-transform 0.18s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.toggle-content {
+	max-height: 800px;
 	opacity: 1;
-	text-decoration: none;
+	overflow-y: auto;
+	padding: 0 5px;
+	margin: 0 -5px;
+	position: relative;
+	box-shadow: inset 0 1px 6px -2px #333;
+	transition: opacity 0.3s ease-in, max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
-.js-houdini .collapse-toggle:hover {
-	text-decoration: none;
+[data-a11y-toggle]:not([aria-controls]),
+.toggle-content[aria-hidden='true'] {
+	max-height: 0;
+	overflow-y: hidden;
+	opacity: 0;
+	transition: opacity 0.18s cubic-bezier(0, 0, 0.2, 1), max-height 0.18s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .chevron-toggle {
 	width: 1em;
 	height: 1em;
-	opacity: 0.5;
 	transition: all 0.3s;
 }
 
-a:hover > .chevron-toggle {
-	opacity: 1;
-}
-
-.collapse-toggle.active > .chevron-toggle {
+.toggle-btn[aria-expanded="true"] > .chevron-toggle {
 	-webkit-transform: rotate(180deg);
 	transform: rotate(180deg);
-}
-
-.js-houdini .collapse {
-	overflow: hidden;
-	height: 100%;
-	max-height: 0;
-	transition: max-height 0.3s ease-out;
-}
-
-.js-houdini .collapse.active {
-	max-height: 500px;
-}
-
-.js-houdini .collapse-wrap {
-	opacity: 0.5;
-	transition: all 0.1s;
-}
-
-.js-houdini .collapse:not(.active) .collapse-wrap {
-	padding-top: 0;
-	padding-bottom: 0;
-	height: 0;
-}
-
-.js-houdini .active > .collapse-wrap {
-	height: auto;
-	opacity: 0.9;
 }
 
 .arch .arch-p2 {
