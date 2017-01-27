@@ -23,7 +23,7 @@ wp_enqueue_script( 'arch-toggle' ); ?>
 
 <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-	<button type="button" data-a11y-toggle="target<?php the_ID(); ?>" class="toggle-btn arch-f-plus u-1of1 u-flex u-flex-jb"><span><?php the_title(); ?></span><svg xmlns="http://www.w3.org/2000/svg" class="chevron-toggle" fill="currentcolor" viewBox="0 0 32 32"><path d="M1 12l15 14 15-14-4-4-11 10L5 8z"/></svg>
+	<button type="button" data-a11y-toggle="target<?php the_ID(); ?>" class="toggle-btn u-b-1 arch-f-plus u-1of1 u-flex u-flex-jb"><span><?php the_title(); ?></span><svg xmlns="http://www.w3.org/2000/svg" class="chevron-toggle" fill="currentcolor" viewBox="0 0 32 32"><path d="M1 12l15 14 15-14-4-4-11 10L5 8z"/></svg>
 	</button>
 
 	<div class="toggle-content" id="target<?php the_ID(); ?>">
