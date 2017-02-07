@@ -162,7 +162,7 @@ final class Arch_Builder_Plugin {
 	 */
 	public function arch_scripts() {
 
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '1.min';
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
 		/* Register the plugin script. */
@@ -173,7 +173,7 @@ final class Arch_Builder_Plugin {
 
 		/* Load the plugin stylesheet if no theme support. */
 		if ( ! current_theme_supports( 'arch-builder' ) ) {
-			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . "arch{$suffix}.css" ); }
+			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . "arch1{$suffix}.css" ); }
 	}
 
 	public function get_lory_script() {
