@@ -162,7 +162,7 @@ final class Arch_Builder_Plugin {
 	 */
 	public function arch_scripts() {
 
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '1.min';
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
 		/* Register the plugin script. */
@@ -205,7 +205,7 @@ final class Arch_Builder_Plugin {
 			return;
 		}
 		wp_enqueue_style( 'arch-admin-styles', trailingslashit( $this->css_uri ) . 'admin.css' );
-		wp_enqueue_script( 'arch-bulk-quick-edit', trailingslashit( $this->js_uri ) . 'admin.js', array( 'jquery', 'inline-edit-post' ), false, true );
+		//wp_enqueue_script( 'arch-bulk-quick-edit', trailingslashit( $this->js_uri ) . 'admin.js', array( 'jquery', 'inline-edit-post' ), false, true );
 	}
 
 	/**

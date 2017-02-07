@@ -378,6 +378,27 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					)
 				);
 
+			if ( 'arch' == $post_type ) {
+				// Color picker setting.
+				$manager->register_setting(
+					'arch_color_picker',
+					array( 'sanitize_callback' => 'sanitize_hex_color_no_hash', 'default' => $arch_primary_default )
+				);
+
+
+				// Color picker control.
+				$manager->register_control(
+					'arch_color_picker',
+					array(
+						'type'        => 'color',
+						'section'     => 'arch_modifier_fields',
+						'label'       => 'Pick a color',
+						'options' 	=> array(
+							'palettes' => array('#125', '#459', '#78b', '#ab0', '#de3', '#f0f')
+						)
+					)
+				);
+			}
 				$manager->register_control(
 					'arch_height',
 					array(

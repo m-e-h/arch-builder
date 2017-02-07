@@ -9,7 +9,12 @@
 <article <?php hybrid_attr( 'post' ); ?>>
 
 	<?php
-	if ( locate_template( 'components/img-thumb.php' ) != '' ) {
+	$arch_svg = get_post_meta( get_the_ID(), 'arch_svg', true );
+	if ( $arch_svg ) {
+
+		echo "<span>$arch_svg</span>";
+
+	} elseif ( locate_template( 'components/img-thumb.php' ) != '' ) {
 
 		get_template_part( 'components/img', 'thumb' );
 

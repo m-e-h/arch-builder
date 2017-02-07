@@ -1,4 +1,5 @@
 <?php
+use Mexitek\PHPColors\Color;
 
 function arch_post_types() {
 	return get_post_types_by_support( 'arch-post' );
@@ -250,4 +251,62 @@ function arch_get_svg( $args = array() ) {
 	}// End if().
 
 	return $svg;
+}
+
+/**
+ * Return style for using in html.
+ *
+ * @param  [type] $post_id [description]
+ * @param  string $alpha   [description]
+ * @return [type]          [description]
+ */
+function arch_color_style( $post_id, $alpha = '1' ) {
+	$post_id = get_the_ID();
+	$style = '';
+	$style .= 'background-color:';
+	$style .= arch_color_rgb( $post_id, $alpha );
+	$style .= ';color:';
+	$style .= arch_color_text( $post_id );
+	$style .= ';';
+	return $style;
+}
+
+/**
+ * [arch_color_hex description]
+ *
+ * @param  [type] $post_id [description]
+ * @return [type]          [description]
+ */
+function arch_color_hex( $post_id ) {
+	$post_id = get_the_ID();
+	$arch_color = get_post_meta( $post_id, 'arch_color_picker', true );
+	$arch_hex = $arch_color ? trim( $arch_color, '#' ) : get_theme_mod( 'primary_color', '' );
+	return "#{$arch_hex}";
+}
+
+/**
+ * [arch_color_rgb description]
+ *
+ * @param  [type] $post_id [description]
+ * @param  [type] $alpha   [description]
+ * @return [type]          [description]
+ */
+function arch_color_rgb( $post_id, $alpha ) {
+	$post_id = get_the_ID();
+	$arch_hex = arch_color_hex( $post_id );
+	$arch_rgb = implode( ',', hybrid_hex_to_rgb( $arch_hex ) );
+	return 'rgba(' . $arch_rgb . ',' . $alpha . ')';
+}
+
+/**
+ * [arch_color_text description]
+ *
+ * @param  [type] $post_id [description]
+ * @return [type]          [description]
+ */
+function arch_color_text( $post_id ) {
+	$post_id = get_the_ID();
+	$arch_color = new Color( arch_color_hex( $post_id ) );
+	$text_color = $arch_color->isDark() ? 'fff':'333';
+	return "#{$text_color}";
 }
