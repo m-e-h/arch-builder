@@ -173,7 +173,7 @@ final class Arch_Builder_Plugin {
 
 		/* Load the plugin stylesheet if no theme support. */
 		if ( ! current_theme_supports( 'arch-builder' ) ) {
-			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . "arch1{$suffix}.css" ); }
+			wp_enqueue_style( 'arch', trailingslashit( $this->css_uri ) . "arch{$suffix}.css" ); }
 	}
 
 	public function get_lory_script() {

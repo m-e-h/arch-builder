@@ -71,7 +71,7 @@ gulp.task('styles', () => {
 		.pipe($.stylefmt())
 		.pipe(gulp.dest('assets/css'))
 		.pipe($.if('*.css', $.cssnano()))
-		.pipe($.concat('arch1.min.css'))
+		.pipe($.concat('arch.min.css'))
 		.pipe($.size({
 			title: 'styles'
 		}))
