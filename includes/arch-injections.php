@@ -149,6 +149,8 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	$arch_height    = get_post_meta( $post_id, 'arch_height', true );
 	$arch_excerpt    = get_post_meta( $post_id, 'arch_excerpt', true );
 
+	$classes[] = 'arch-post';
+
 	if ( $archive_width ) {
 		$classes[] = "{$archive_width}";
 	}
@@ -186,7 +188,7 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	}
 
 	if ( 'u-bg-transparent' === get_arch_bg( $post_id ) ) {
-		$classes[] = 'u-shadow0';
+		$classes[] = 'u-shadow0 u-bg-frost-4';
 	}
 
 	if ( '1' == $arch_height || 'independent' === $arch_height ) {
