@@ -137,7 +137,7 @@ function arch_child_update( $post_id, $post_after, $post_before ) {
 function arch_width_post_classes( $classes, $class, $post_id ) {
 
 	if ( ! post_type_supports( get_post_type( $post_id ), 'arch-post' ) ) {
-		return; }
+		return $classes; }
 
 	if ( is_admin() || is_search() || is_single( $post_id ) ) {
 		return $classes; }
