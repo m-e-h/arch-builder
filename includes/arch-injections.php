@@ -7,7 +7,7 @@ add_filter( 'post_class', 'arch_admin_post_classes', 10, 3 );
 add_action( 'save_post', 'arch_admin_has_children_meta' );
 add_action( 'post_updated', 'arch_child_update', 10, 3 );
 add_filter( 'post_class', 'arch_width_post_classes', 10, 3 );
-add_filter( 'hybrid_attr_content', 'arch_grid' );
+// add_filter( 'hybrid_attr_content', 'arch_grid' );
 add_filter( 'hybrid_attr_entry-title', 'arch_attr_entry_title' );
 add_filter( 'body_class', 'arch_body_classes' );
 add_filter( 'hybrid_get_theme_layout', 'arch_home_layout' );
@@ -103,7 +103,10 @@ function arch_admin_has_children_meta( $post_id ) {
 	if ( ! post_type_supports( get_post_type( $post_id ), 'arch-post' ) ) {
 		return; }
 
-		$children = get_posts( array( 'post_type' => get_post_type( $post_id ), 'post_parent' => $post_id ) );
+		$children = get_posts( array(
+			'post_type' => get_post_type( $post_id ),
+			'post_parent' => $post_id,
+		) );
 		$parent_id = wp_get_post_parent_id( $post_id );
 
 	if ( $children ) {
@@ -123,7 +126,10 @@ function arch_child_update( $post_id, $post_after, $post_before ) {
 
 	if ( $post_after->post_parent !== $post_before->post_parent ) {
 
-		$siblings = get_posts( array( 'post_type' => get_post_type( $post_id ), 'post_parent' => $post_before->post_parent ) );
+		$siblings = get_posts( array(
+			'post_type' => get_post_type( $post_id ),
+			'post_parent' => $post_before->post_parent,
+		) );
 
 		update_post_meta( $post_after->post_parent, 'arch_has_children', 1 );
 
@@ -142,7 +148,7 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	if ( is_admin() || is_search() || is_single( $post_id ) ) {
 		return $classes; }
 
-	//$arch_layout  = get_post_meta( $post_id, 'arch_layout', true );
+	// $arch_layout  = get_post_meta( $post_id, 'arch_layout', true );
 	$archive_width   = get_post_meta( $post_id, 'arch_width', true );
 	$arch_title     = get_post_meta( $post_id, 'arch_title', true );
 	$arch_component = get_post_meta( $post_id, 'arch_component', true );
@@ -176,9 +182,8 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 	}
 
 	// if ( 'slides' === get_arch_block( $post_id ) ) {
-	// 	$classes[] = 'u-m0 u-br0';
+	// $classes[] = 'u-m0 u-br0';
 	// }
-
 	if ( 'tile' === get_arch_block( $post_id ) ) {
 		$classes[] = 'tile u-flex-wrap o-cell u-br u-flex u-flex-col u-shadow1 shadow-hover';
 	}
@@ -223,16 +228,15 @@ function arch_body_classes( $classes ) {
 }
 
 
-function arch_grid( $attr ) {
-	if ( is_admin() ) {
-		return $attr; }
-
-	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
-		$attr['class']   .= ' o-grid';
-	}
-	return $attr;
-}
-
+// function arch_grid( $attr ) {
+// if ( is_admin() ) {
+// return $attr; }
+//
+// if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
+// $attr['class']   = ' o-grid';
+// }
+// return $attr;
+// }
 function arch_attr_entry_title( $attr ) {
 	if ( is_admin() ) {
 		return $attr; }
@@ -259,15 +263,18 @@ function arch_home_layout( $layout ) {
 
 
 function arch_gallery_sizes( $sizes ) {
-	   //unset( $sizes['thumbnail'] ); //comment to remove size if needed
-	   unset( $sizes['medium']);// uncomment to remove size if needed
-	   unset( $sizes['large']);// uncomment to restore size if needed
-	   unset( $sizes['full'] ); // comment to remove size if needed
-	   $arch_imgsizes = array(
-			  'arch-hd' => __( 'HD' ),
-			  'arch-sd' => __( 'SD' ),
-	   );
-	   $newimgsizes = array_merge( $arch_imgsizes, $sizes );
-	   return $newimgsizes;
+	// unset( $sizes['thumbnail'] ); //comment to remove size if needed
+	// unset( $sizes['medium']);// uncomment to remove size if needed
+	unset( $sizes['large'] );// uncomment to restore size if needed
+	unset( $sizes['full'] ); // comment to remove size if needed
+
+	$arch_imgsizes = array(
+		'arch-sd' => __( 'SD' ),
+		'arch-hd' => __( 'HD' ),
+		'full' => __( 'Original Size' ),
+	);
+
+	$newimgsizes = array_merge( $arch_imgsizes, $sizes );
+	return $newimgsizes;
 }
 add_filter( 'image_size_names_choose', 'arch_gallery_sizes' );

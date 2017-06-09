@@ -58,10 +58,10 @@ if ( ! function_exists( 'arch_title_choices' ) ) {
 
 	function arch_title_choices() {
 		return array(
-			'' 				=> ' ',
-			'link-title'   	=> 'Linked Title',
+			''              => ' ',
+			'link-title'    => 'Linked Title',
 			'no-link-title' => 'Title (no link)',
-			'no-title'  	=> 'Hide Title',
+			'no-title'      => 'Hide Title',
 		);
 	}
 }
@@ -71,10 +71,10 @@ if ( ! function_exists( 'arch_excerpt_choices' ) ) {
 
 	function arch_excerpt_choices() {
 		return array(
-			'' 				=> ' ',
-			'excerpt'   	=> 'Excerpt',
-			'content' 		=> 'Content',
-			'none' 			=> 'None',
+			''              => ' ',
+			'excerpt'       => 'Excerpt',
+			'content'       => 'Content',
+			'none'          => 'None',
 		);
 	}
 }
@@ -84,12 +84,12 @@ if ( ! function_exists( 'arch_block_choices' ) ) {
 
 	function arch_block_choices() {
 		return array(
-			'' 			=> ' ',
-			'card'   	=> 'Card',
-			'flag'   	=> 'Flag',
+			''          => ' ',
+			'card'      => 'Card',
+			'flag'      => 'Flag',
 			'tabs'      => 'Tab Group',
 			'accordion' => 'Accordion Group',
-			'slides'  	=> 'Slideshow Group',
+			'slides'    => 'Slideshow Group',
 		);
 	}
 }
@@ -99,13 +99,13 @@ if ( ! function_exists( 'arch_width_options' ) ) {
 
 	function arch_width_options() {
 		return array(
-			'' 				=> ' ',
-			'u-1of1-md'    	=> '1/1',
-			'u-1of4-md'   	=> '1/4',
-			'u-1of3-md'   	=> '1/3',
-			'u-1of2-md'   	=> '1/2',
-			'u-2of3-md'   	=> '2/3',
-			'u-3of4-md'   	=> '3/4',
+			''              => ' ',
+			'u-1of1-md'     => '1/1',
+			'u-1of4-md'     => '1/4',
+			'u-1of3-md'     => '1/3',
+			'u-1of2-md'     => '1/2',
+			'u-2of3-md'     => '2/3',
+			'u-3of4-md'     => '3/4',
 		);
 	}
 }
