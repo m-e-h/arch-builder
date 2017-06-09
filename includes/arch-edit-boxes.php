@@ -1,11 +1,12 @@
 <?php
 add_action( 'do_meta_boxes', 'arch_remove_plugin_metaboxes' );
-add_filter( 'manage_posts_columns', 'arch_add_cpt_columns' );
-add_action( 'manage_pages_custom_column', 'arch_manage_cpt_columns', 10, 2 );
-add_action( 'bulk_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
-add_action( 'quick_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
-add_action( 'wp_ajax_arch_save_bulk_edit', 'arch_save_bulk_edit' );
-add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
+return;
+// add_filter( 'manage_posts_columns', 'arch_add_cpt_columns' );
+// add_action( 'manage_pages_custom_column', 'arch_manage_cpt_columns', 10, 2 );
+// add_action( 'bulk_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
+// add_action( 'quick_edit_custom_box', 'arch_bulk_quick_edit_custom_box', 10, 2 );
+// add_action( 'wp_ajax_arch_save_bulk_edit', 'arch_save_bulk_edit' );
+// add_action( 'save_post', 'arch_be_qe_save_post', 10, 2 );
 
 function arch_remove_plugin_metaboxes() {
 	if ( is_arch_post() ) {
