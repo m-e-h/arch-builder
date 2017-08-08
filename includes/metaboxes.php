@@ -146,6 +146,25 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				);
 			}
 
+			// Jetpack related posts.
+			if ( defined( 'JETPACK__VERSION' ) ) {
+
+				$manager->register_control(
+					'doc_show_related',
+					array(
+						'type'        => 'checkbox',
+						'section'     => 'arch_visibility_fields',
+						'label'       => 'Show related pages at the bottom of this content?',
+					)
+				);
+
+				$manager->register_setting(
+					'doc_show_related',
+					array( 'sanitize_callback' => 'butterbean_validate_boolean' )
+				);
+
+			}
+
 			$manager->register_control(
 				'_links_to',
 				array(
