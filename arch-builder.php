@@ -113,7 +113,7 @@ final class Arch_Builder_Plugin {
 		// Plugin assets URIs.
 		$this->css_uri = trailingslashit( $this->dir_uri . 'assets/css' );
 		$this->js_uri  = trailingslashit( $this->dir_uri . 'assets/js' );
-		$this->img_uri  = trailingslashit( $this->dir_uri . 'assets/images' );
+		$this->img_uri = trailingslashit( $this->dir_uri . 'assets/images' );
 	}
 
 	/**
@@ -162,7 +162,7 @@ final class Arch_Builder_Plugin {
 	 */
 	public function arch_scripts() {
 
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$suffix         = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$arch_component = get_post_meta( get_the_ID(), 'arch_component', true );
 
 		/* Register the plugin script. */

@@ -1,31 +1,40 @@
 .butterbean-manager.butterbean-manager-default .butterbean-nav li a {
 	border-left: 4px solid transparent;
-	transition-duration: .15s;
+	transition-duration: 0.15s;
 }
 
-.butterbean-manager.butterbean-manager-default .butterbean-nav li a:hover, .butterbean-manager.butterbean-manager-default .butterbean-nav li[aria-selected="true"] a {
+.butterbean-manager.butterbean-manager-default .butterbean-nav li a:hover,
+.butterbean-manager.butterbean-manager-default
+	.butterbean-nav
+	li[aria-selected="true"]
+	a {
 	border-left-color: currentColor;
 }
 
-.butterbean-manager.butterbean-manager-default .butterbean-nav li[aria-selected="true"] a {
+.butterbean-manager.butterbean-manager-default
+	.butterbean-nav
+	li[aria-selected="true"]
+	a {
 	margin-right: -1px;
 	background-color: #fff;
 }
 
 .butterbean-content .chosen-container {
 	min-width: 300px;
-	width: auto!important;
+	width: auto !important;
 }
 
-.butterbean-content .chosen-container>.chosen-drop {
-	box-shadow: 0 0 0 1px rgba(30, 45, 55, 0.15), 0 2px 3px rgba(30, 45, 55, 0.2);
+.butterbean-content .chosen-container > .chosen-drop {
+	box-shadow: 0 0 0 1px rgba(30, 45, 55, 0.15),
+		0 2px 3px rgba(30, 45, 55, 0.2);
 }
 
 .butterbean-manager.butterbean-manager-default {
 	overflow: initial;
 }
 
-.butterbean-manager-default::before, .butterbean-manager-default::after {
+.butterbean-manager-default::before,
+.butterbean-manager-default::after {
 	content: "";
 	display: table;
 }
@@ -148,7 +157,7 @@ table.wp-list-table tr * {
 
 .butterbean-manager-default .butterbean-description {
 	margin-bottom: 1rem !important;
-	opacity: .9;
+	opacity: 0.9;
 }
 
 #butterbean-control-arch_bg_color label {
@@ -198,9 +207,12 @@ table.wp-list-table tr * {
 	width: auto !important;
 	height: auto !important;
 	position: static !important;
-	padding-top: .25em !important;
+	padding-top: 0.25em !important;
 	font-style: italic;
 	color: #666666;
+	clip: unset;
+	margin: unset;
+	clip-path: unset;
 }
 
 .butterbean-control-radio-image input:checked + span {
@@ -239,7 +251,6 @@ table.wp-list-table tr * {
 	top: 0;
 	width: 100%;
 }
-
 
 /*
 table.wp-list-table {
