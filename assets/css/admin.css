@@ -1,3 +1,8 @@
+.attachment-abe-icon.size-abe-icon {
+	max-width: 80px;
+	max-height: 80px;
+}
+
 .butterbean-manager.butterbean-manager-default .butterbean-nav li a {
 	border-left: 4px solid transparent;
 	transition-duration: 0.15s;
