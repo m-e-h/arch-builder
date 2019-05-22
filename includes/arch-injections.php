@@ -71,8 +71,8 @@ function arch_templates( $template ) {
 
 	if ( $arch_component ) {
 
-		$template = trailingslashit( arch_builder_plugin()->dir_path ) . "content/{$arch_component}.php";
-		$has_template    = locate_template( array( "content/{$arch_component}.php" ) );
+		$template     = trailingslashit( arch_builder_plugin()->dir_path ) . "content/{$arch_component}.php";
+		$has_template = locate_template( array( "content/{$arch_component}.php" ) );
 
 		if ( $has_template ) {
 			$template = $has_template;
@@ -103,10 +103,12 @@ function arch_admin_has_children_meta( $post_id ) {
 	if ( ! post_type_supports( get_post_type( $post_id ), 'arch-post' ) ) {
 		return; }
 
-		$children = get_posts( array(
-			'post_type' => get_post_type( $post_id ),
-			'post_parent' => $post_id,
-		) );
+		$children  = get_posts(
+			array(
+				'post_type'   => get_post_type( $post_id ),
+				'post_parent' => $post_id,
+			)
+		);
 		$parent_id = wp_get_post_parent_id( $post_id );
 
 	if ( $children ) {
@@ -126,10 +128,12 @@ function arch_child_update( $post_id, $post_after, $post_before ) {
 
 	if ( $post_after->post_parent !== $post_before->post_parent ) {
 
-		$siblings = get_posts( array(
-			'post_type' => get_post_type( $post_id ),
-			'post_parent' => $post_before->post_parent,
-		) );
+		$siblings = get_posts(
+			array(
+				'post_type'   => get_post_type( $post_id ),
+				'post_parent' => $post_before->post_parent,
+			)
+		);
 
 		update_post_meta( $post_after->post_parent, 'arch_has_children', 1 );
 
@@ -149,11 +153,11 @@ function arch_width_post_classes( $classes, $class, $post_id ) {
 		return $classes; }
 
 	// $arch_layout  = get_post_meta( $post_id, 'arch_layout', true );
-	$archive_width   = get_post_meta( $post_id, 'arch_width', true );
+	$archive_width  = get_post_meta( $post_id, 'arch_width', true );
 	$arch_title     = get_post_meta( $post_id, 'arch_title', true );
 	$arch_component = get_post_meta( $post_id, 'arch_component', true );
 	$arch_height    = get_post_meta( $post_id, 'arch_height', true );
-	$arch_excerpt    = get_post_meta( $post_id, 'arch_excerpt', true );
+	$arch_excerpt   = get_post_meta( $post_id, 'arch_excerpt', true );
 
 	$classes[] = 'arch-post';
 
@@ -244,7 +248,7 @@ function arch_attr_entry_title( $attr ) {
 	if ( is_post_type_archive( arch_post_types() ) || arch_is_home() ) {
 
 		if ( 'row' === get_arch_block( get_the_ID() ) ) {
-			$attr['class']   = 'u-text-center';
+			$attr['class'] = 'u-text-center';
 		}
 	}
 	return $attr;
@@ -271,7 +275,7 @@ function arch_gallery_sizes( $sizes ) {
 	$arch_imgsizes = array(
 		'arch-sd' => __( 'SD' ),
 		'arch-hd' => __( 'HD' ),
-		'full' => __( 'Original Size' ),
+		'full'    => __( 'Original Size' ),
 	);
 
 	$newimgsizes = array_merge( $arch_imgsizes, $sizes );

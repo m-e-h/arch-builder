@@ -37,49 +37,55 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 						</select>
 				</label>
 			</div>
-		</fieldset><?php
+		</fieldset>
+		<?php
 
 	}
 
 	if ( 'arch_title' === $column_name ) {
 
-		?><fieldset class="inline-edit-col-center">
+		?>
+		<fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
 				<label class="inline-edit-title alignleft">
 					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M3 19h18v3H3v-3zm12.82-2h3.424L14 3h-4L4.756 17H8.18l1.067-3.5h5.506L15.82 17zm-1.952-6h-3.73l1.868-5.725L13.868 11z"/></svg> Title </span>
-	                    <select name="arch_title" class="arch_title">
+						<select name="arch_title" class="arch_title">
 							<option value=""><?php _e( ' ' ); ?></option>
-	                    	<option value="link-title"><?php _e( 'Linked Title' ); ?></option>
-	                    	<option value="no-link-title"><?php _e( 'Title (no link)' ); ?></option>
-	                    	<option value="no-title"><?php _e( 'Hide Title' ); ?></option>
-	                    </select>
+							<option value="link-title"><?php _e( 'Linked Title' ); ?></option>
+							<option value="no-link-title"><?php _e( 'Title (no link)' ); ?></option>
+							<option value="no-title"><?php _e( 'Hide Title' ); ?></option>
+						</select>
 				</label>
 			</div>
-		</fieldset><?php
+		</fieldset>
+		<?php
 
 	}
 
 	if ( 'arch_excerpt' === $column_name ) {
 
-		?><fieldset class="inline-edit-col-center">
+		?>
+		<fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
 				<label class="inline-edit-excerpt alignleft">
 					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M16 19H3v-2h13v2zm5-10H3v2h18V9zM3 5v2h11V5H3zm14 0v2h4V5h-4zm-6 8v2h10v-2H11zm-8 0v2h5v-2H3z"/></svg> Excerpt </span>
-	                    <select name="arch_excerpt" class="arch_excerpt">
+						<select name="arch_excerpt" class="arch_excerpt">
 							<option value=""><?php _e( ' ' ); ?></option>
-	                    	<option value="excerpt"><?php _e( 'Excerpt' ); ?></option>
-	                    	<option value="content"><?php _e( 'Content' ); ?></option>
-	                    	<option value="none"><?php _e( 'None' ); ?></option>
-	                    </select>
+							<option value="excerpt"><?php _e( 'Excerpt' ); ?></option>
+							<option value="content"><?php _e( 'Content' ); ?></option>
+							<option value="none"><?php _e( 'None' ); ?></option>
+						</select>
 				</label>
 			</div>
-		</fieldset><?php
+		</fieldset>
+		<?php
 
 	}
 
 	if ( 'arch_width' === $column_name ) {
 
-		?><fieldset class="inline-edit-col-center">
+		?>
+		<fieldset class="inline-edit-col-center">
 			<div class="inline-edit-col">
 				<label class="inline-edit-width alignleft">
 					<span class="title"><svg class="arch-quick-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentcolor"><path d="M16 13H5.828l2.086 2.086L6.5 16.5 2 12l4.5-4.5 1.414 1.414L5.828 11H16zm-8-2h10.172l-2.086-2.086L17.5 7.5 22 12l-4.5 4.5-1.414-1.414L18.172 13H8z"/></svg> Width </span>
@@ -94,11 +100,13 @@ function arch_bulk_quick_edit_custom_box( $column_name, $post_type ) {
 						</select>
 				</label>
 			</div>
-		</fieldset><?php
+		</fieldset>
+		<?php
 
 	}
 
-	if ( 'arch_height' === $column_name ) { ?>
+	if ( 'arch_height' === $column_name ) {
+		?>
 
 		<fieldset class="inline-edit-col-left inline-edit-categories">
 			<div class="inline-edit-col">
@@ -152,12 +160,12 @@ function arch_be_qe_save_post( $post_id, $post ) {
 			 * this post meta on your "Quick Edit" but didn't have it on the "Edit Post" screen.
 			 */
 			 // Sanitize user input.
-	 		$height = isset( $_POST['arch_height'] ) ? '1' : '';
+			$height = isset( $_POST['arch_height'] ) ? '1' : '';
 
-	 		// Update the meta field in the database.
-	 		update_post_meta( $post_id, 'arch_height', $height );
+			// Update the meta field in the database.
+			update_post_meta( $post_id, 'arch_height', $height );
 
-			$custom_fields = array( 'arch_component','arch_title','arch_excerpt','arch_width' );
+			$custom_fields = array( 'arch_component', 'arch_title', 'arch_excerpt', 'arch_width' );
 
 		foreach ( $custom_fields as $field ) {
 
@@ -181,7 +189,7 @@ function arch_save_bulk_edit() {
 	if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
 
 		// get the custom fields
-		$custom_fields = array( 'arch_component','arch_title','arch_excerpt','arch_width','arch_height' );
+		$custom_fields = array( 'arch_component', 'arch_title', 'arch_excerpt', 'arch_width', 'arch_height' );
 
 		foreach ( $custom_fields as $field ) {
 
@@ -203,13 +211,14 @@ function arch_add_cpt_columns( $columns ) {
 	if ( ! is_arch_post() ) {
 		return $columns; }
 
-	return array_merge($columns,
+	return array_merge(
+		$columns,
 		array(
-			'arch_component'      => __( 'Type' ),
-		    'arch_title'       => __( 'Title Display' ),
-		    'arch_excerpt'     => __( 'Content' ),
-			'arch_width'          => __( 'Width' ),
-			'arch_height'         => __( 'Equal height' ),
+			'arch_component' => __( 'Type' ),
+			'arch_title'     => __( 'Title Display' ),
+			'arch_excerpt'   => __( 'Content' ),
+			'arch_width'     => __( 'Width' ),
+			'arch_height'    => __( 'Equal height' ),
 		)
 	);
 }
@@ -225,54 +234,54 @@ function arch_manage_cpt_columns( $column, $post_id ) {
 
 	switch ( $column ) {
 
-		case 'arch_component' :
-
+		case 'arch_component':
 			$arch_component = get_post_meta( $post_id, 'arch_component', true );
 
 			if ( empty( $arch_component ) ) {
 				echo __( '_' );
-			} else { 				echo esc_html( $arch_component ); }
+			} else {
+				echo esc_html( $arch_component ); }
 
 			break;
 
-		case 'arch_title' :
-
+		case 'arch_title':
 			$arch_title = get_post_meta( $post_id, 'arch_title', true );
 
 			if ( empty( $arch_title ) ) {
 				echo __( '_' );
-			} else { 				echo esc_html( $arch_title ); }
+			} else {
+				echo esc_html( $arch_title ); }
 			break;
 
-		case 'arch_excerpt' :
-
+		case 'arch_excerpt':
 			$arch_excerpt = get_post_meta( $post_id, 'arch_excerpt', true );
 
 			if ( empty( $arch_excerpt ) ) {
 				echo __( '_' );
-			} else { 				echo esc_html( $arch_excerpt ); }
+			} else {
+				echo esc_html( $arch_excerpt ); }
 			break;
 
-		case 'arch_width' :
-
+		case 'arch_width':
 			$arch_width = get_post_meta( $post_id, 'arch_width', true );
 
 			if ( empty( $arch_width ) ) {
 				echo __( '_' );
-			} else { 				echo esc_html( $arch_width ); }
+			} else {
+				echo esc_html( $arch_width ); }
 
 			break;
 
-		case 'arch_height' :
-
+		case 'arch_height':
 			$arch_height = get_post_meta( $post_id, 'arch_height', true );
 
 			if ( empty( $arch_height ) ) {
 				echo __( '_' );
-			} else { 				echo esc_html( $arch_height ); }
+			} else {
+				echo esc_html( $arch_height ); }
 			break;
 
-		default :
+		default:
 			break;
 	}
 }

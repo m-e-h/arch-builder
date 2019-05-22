@@ -82,8 +82,8 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_section(
 				'arch_visibility_fields',
 				array(
-					'label' => 'Visibility',
-					'icon'  => 'dashicons-welcome-view-site',
+					'label'      => 'Visibility',
+					'icon'       => 'dashicons-welcome-view-site',
 					'capability' => 'manage_options',
 				)
 			);
@@ -130,7 +130,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				array( 'sanitize_callback' => 'butterbean_validate_boolean' )
 			);
 
-			if (  class_exists( 'Members_Plugin' ) ) {
+			if ( class_exists( 'Members_Plugin' ) ) {
 				$manager->register_control(
 					'low_vis_members',
 					array(
@@ -152,9 +152,9 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				$manager->register_control(
 					'doc_show_related',
 					array(
-						'type'        => 'checkbox',
-						'section'     => 'arch_visibility_fields',
-						'label'       => 'Show related pages at the bottom of this content?',
+						'type'    => 'checkbox',
+						'section' => 'arch_visibility_fields',
+						'label'   => 'Show related pages at the bottom of this content?',
 					)
 				);
 
@@ -168,9 +168,9 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_control(
 				'_links_to',
 				array(
-					'type'    => 'text',
-					'section' => 'arch_visibility_fields',
-					'label'   => 'Custom URL',
+					'type'        => 'text',
+					'section'     => 'arch_visibility_fields',
+					'label'       => 'Custom URL',
 					'attr'        => array( 'class' => 'widefat' ),
 					'description' => '(e.g., https://www.google.com/)',
 				)
@@ -184,11 +184,11 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_control(
 				'_links_to_target',
 				array(
-					'type'        => 'radio',
-					'section'     => 'arch_visibility_fields',
-					'label'       => 'Open this link in a new tab',
-					'choices'     => array(
-						''        => 'Same Tab',
+					'type'    => 'radio',
+					'section' => 'arch_visibility_fields',
+					'label'   => 'Open this link in a new tab',
+					'choices' => array(
+						''       => 'Same Tab',
 						'_blank' => 'New Tab',
 					),
 				)
@@ -209,16 +209,16 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					'section'     => 'arch_block_fields',
 					'label'       => 'Component Type',
 					'description' => '** Select on the parent post. Child posts will be used as the content.<br>*** In the above editor, add an image gallery from the media library',
-					'choices' => array(
-						'card' => array(
+					'choices'     => array(
+						'card'      => array(
 							'url'   => $uri . 'card.svg',
 							'label' => __( 'Card (default)', 'arch' ),
 						),
-						'flag' => array(
+						'flag'      => array(
 							'url'   => $uri . 'flag.svg',
 							'label' => __( 'Flag', 'arch' ),
 						),
-						'tabs' => array(
+						'tabs'      => array(
 							'url'   => $uri . 'tabs.svg',
 							'label' => __( 'Tabs**', 'arch' ),
 						),
@@ -226,15 +226,15 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 							'url'   => $uri . 'accordion.svg',
 							'label' => __( 'Accordion**', 'arch' ),
 						),
-						'slides' => array(
+						'slides'    => array(
 							'url'   => $uri . 'slide.svg',
 							'label' => __( 'Slides***', 'arch' ),
 						),
-						'tile' => array(
+						'tile'      => array(
 							'url'   => $uri . 'tile.svg',
 							'label' => __( 'Tile', 'arch' ),
 						),
-						'row' => array(
+						'row'       => array(
 							'url'   => $uri . 'row.svg',
 							'label' => __( 'Row**', 'arch' ),
 						),
@@ -245,9 +245,9 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_control(
 				'arch_width',
 				array(
-					'type'        => 'radio-image',
-					'section'     => 'arch_block_fields',
-					'label'       => 'Component Width',
+					'type'    => 'radio-image',
+					'section' => 'arch_block_fields',
+					'label'   => 'Component Width',
 					'choices' => array(
 						'u-1of1-md' => array(
 							'url'   => $uri . '1of1.svg',
@@ -280,11 +280,11 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 			$manager->register_control(
 				'arch_title',
 				array(
-					'type'        => 'radio-image',
-					'section'     => 'arch_element_fields',
-					'label'       => 'Title Display',
+					'type'    => 'radio-image',
+					'section' => 'arch_element_fields',
+					'label'   => 'Title Display',
 					'choices' => array(
-						'link-title' => array(
+						'link-title'    => array(
 							'url'   => $uri . 'link.svg',
 							'label' => __( 'Linked Title', 'arch' ),
 						),
@@ -292,7 +292,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 							'url'   => $uri . 'no-link.svg',
 							'label' => __( 'Title (no link)', 'arch' ),
 						),
-						'no-title' => array(
+						'no-title'      => array(
 							'url'   => $uri . 'none.svg',
 							'label' => __( 'Hide Title', 'arch' ),
 						),
@@ -307,7 +307,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 					'section'     => 'arch_element_fields',
 					'label'       => 'Body Display',
 					'description' => 'Show the whole page(content), a teaser without formatting(excerpt) or show only the title and(or) image.',
-					'choices' => array(
+					'choices'     => array(
 						'excerpt' => array(
 							'url'   => $uri . 'excerpt.svg',
 							'label' => __( 'Excerpt', 'arch' ),
@@ -316,7 +316,7 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 							'url'   => $uri . 'content.svg',
 							'label' => __( 'Content', 'arch' ),
 						),
-						'none' => array(
+						'none'    => array(
 							'url'   => $uri . 'none.svg',
 							'label' => __( 'None', 'arch' ),
 						),
@@ -341,16 +341,16 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				);
 			}
 
-			$arch_primary_default = apply_filters( 'theme_mod_primary_color', '' );
-			$arch_primary_archive = $arch_primary_default;
+			$arch_primary_default   = apply_filters( 'theme_mod_primary_color', '' );
+			$arch_primary_archive   = $arch_primary_default;
 			$arch_secondary_default = apply_filters( 'theme_mod_secondary_color', '' );
 			$arch_secondary_archive = $arch_secondary_default;
 			global $cptarchives;
 			if ( $GLOBALS['cptarchives'] ) {
-				$arch_primary_archive = $cptarchives->get_archive_meta( 'doc_page_primary_color', true, $arch_primary_default, $post_type );
+				$arch_primary_archive   = $cptarchives->get_archive_meta( 'doc_page_primary_color', true, $arch_primary_default, $post_type );
 				$arch_secondary_archive = $cptarchives->get_archive_meta( 'doc_page_secondary_color', true, $arch_secondary_default, $post_type );
 			}
-			$arch_primary_c = new Color( $arch_primary_archive );
+			$arch_primary_c   = new Color( $arch_primary_archive );
 			$arch_secondary_c = new Color( $arch_secondary_archive );
 
 				$manager->register_control(
@@ -361,37 +361,37 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 						'label'       => 'Background Color',
 						'description' => 'The default colors can be designated from your Landing Page.',
 						'choices'     => array(
-							'u-bg-1' => array(
-								'label' => __( 'Primary', 'arch' ),
+							'u-bg-1'           => array(
+								'label'  => __( 'Primary', 'arch' ),
 								'colors' => array( $arch_primary_c->getHex() ),
 							),
-							'u-bg-1-light' => array(
-								'label' => __( 'Primary Light', 'arch' ),
+							'u-bg-1-light'     => array(
+								'label'  => __( 'Primary Light', 'arch' ),
 								'colors' => array( $arch_primary_c->lighten( 10 ) ),
 							),
-							'u-bg-1-dark' => array(
-								'label' => __( 'Primary Dark', 'arch' ),
+							'u-bg-1-dark'      => array(
+								'label'  => __( 'Primary Dark', 'arch' ),
 								'colors' => array( $arch_primary_c->darken( 10 ) ),
 							),
-							'u-bg-white' => array(
-								'label' => __( 'White (default)', 'arch' ),
+							'u-bg-white'       => array(
+								'label'  => __( 'White (default)', 'arch' ),
 								'colors' => array( '#ffffff' ),
 							),
-							'u-bg-2' => array(
-								'label' => __( 'Secondary', 'arch' ),
+							'u-bg-2'           => array(
+								'label'  => __( 'Secondary', 'arch' ),
 								'colors' => array( $arch_secondary_c->getHex() ),
 							),
-							'u-bg-2-light' => array(
-								'label' => __( 'Secondary Light', 'arch' ),
+							'u-bg-2-light'     => array(
+								'label'  => __( 'Secondary Light', 'arch' ),
 								'colors' => array( $arch_secondary_c->lighten( 10 ) ),
 							),
-							'u-bg-2-dark' => array(
-								'label' => __( 'Secondary Dark', 'arch' ),
+							'u-bg-2-dark'      => array(
+								'label'  => __( 'Secondary Dark', 'arch' ),
 								'colors' => array( $arch_secondary_c->darken( 10 ) ),
 							),
 							'u-bg-transparent' => array(
-								'label' => __( 'Transparent', 'arch' ),
-								'colors' => array( '#ddd','#f5f5f5','#ddd','#f5f5f5','#ddd','#f5f5f5' ),
+								'label'  => __( 'Transparent', 'arch' ),
+								'colors' => array( '#ddd', '#f5f5f5', '#ddd', '#f5f5f5', '#ddd', '#f5f5f5' ),
 							),
 						),
 					)
@@ -401,48 +401,50 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 				// Color picker setting.
 				$manager->register_setting(
 					'arch_color_picker',
-					array( 'sanitize_callback' => 'sanitize_hex_color_no_hash', 'default' => $arch_primary_default )
+					array(
+						'sanitize_callback' => 'sanitize_hex_color_no_hash',
+						'default'           => $arch_primary_default,
+					)
 				);
-
 
 				// Color picker control.
 				$manager->register_control(
 					'arch_color_picker',
 					array(
-						'type'        => 'color',
-						'section'     => 'arch_modifier_fields',
-						'label'       => 'Pick a color',
-						'options' 	=> array(
-							'palettes' => array('#125', '#459', '#78b', '#ab0', '#de3', '#f0f')
-						)
+						'type'    => 'color',
+						'section' => 'arch_modifier_fields',
+						'label'   => 'Pick a color',
+						'options' => array(
+							'palettes' => array( '#125', '#459', '#78b', '#ab0', '#de3', '#f0f' ),
+						),
 					)
 				);
 			}
 				$manager->register_control(
 					'arch_height',
 					array(
-					'type'        => 'radio-image',
-					'section'     => 'arch_modifier_fields',
-					'label'       => 'Alignment in row',
-					'description' => 'Should this component stretch to the height of others, regardless of content size?',
-					'choices' => array(
-						'stretch' => array(
-							'url'   => $uri . 'equal-height.svg',
-							'label' => __( 'Stretch (default)', 'arch' ),
+						'type'        => 'radio-image',
+						'section'     => 'arch_modifier_fields',
+						'label'       => 'Alignment in row',
+						'description' => 'Should this component stretch to the height of others, regardless of content size?',
+						'choices'     => array(
+							'stretch'            => array(
+								'url'   => $uri . 'equal-height.svg',
+								'label' => __( 'Stretch (default)', 'arch' ),
+							),
+							'independent'        => array(
+								'url'   => $uri . 'not-equal.svg',
+								'label' => _x( 'Float (top)', 'arch' ),
+							),
+							'independent-middle' => array(
+								'url'   => $uri . 'not-equal-center.svg',
+								'label' => __( 'Float (middle)', 'arch' ),
+							),
+							'independent-bottom' => array(
+								'url'   => $uri . 'not-equal-bottom.svg',
+								'label' => __( 'Float (bottom)', 'arch' ),
+							),
 						),
-						'independent' => array(
-							'url'   => $uri . 'not-equal.svg',
-							'label' => _x( 'Float (top)', 'arch' ),
-						),
-						'independent-middle' => array(
-							'url'   => $uri . 'not-equal-center.svg',
-							'label' => __( 'Float (middle)', 'arch' ),
-						),
-						'independent-bottom' => array(
-							'url'   => $uri . 'not-equal-bottom.svg',
-							'label' => __( 'Float (bottom)', 'arch' ),
-						),
-					),
 					)
 				);
 
@@ -450,17 +452,26 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 
 				$manager->register_setting(
 					'arch_component',
-					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'card' )
+					array(
+						'sanitize_callback' => 'sanitize_key',
+						'default'           => 'card',
+					)
 				);
 
 				$manager->register_setting(
 					'arch_title',
-					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'link-title' )
+					array(
+						'sanitize_callback' => 'sanitize_key',
+						'default'           => 'link-title',
+					)
 				);
 
 				$manager->register_setting(
 					'arch_excerpt',
-					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'excerpt' )
+					array(
+						'sanitize_callback' => 'sanitize_key',
+						'default'           => 'excerpt',
+					)
 				);
 
 				$manager->register_setting(
@@ -470,12 +481,18 @@ if ( ! class_exists( 'ButterBean_Arch' ) ) {
 
 				$manager->register_setting(
 					'arch_bg_color',
-					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'u-bg-white' )
+					array(
+						'sanitize_callback' => 'sanitize_key',
+						'default'           => 'u-bg-white',
+					)
 				);
 
 				$manager->register_setting(
 					'arch_height',
-					array( 'sanitize_callback' => 'sanitize_key', 'default' => 'stretch' )
+					array(
+						'sanitize_callback' => 'sanitize_key',
+						'default'           => 'stretch',
+					)
 				);
 		}
 

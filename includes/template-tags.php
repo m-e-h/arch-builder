@@ -121,19 +121,19 @@ function get_arch_bg( $post_id ) {
 
 
 
-function my_searchwp_exclude( $ids, $engine, $terms ) {
-	$entries_to_exclude = get_posts(
-		array(
-			'post_type' => 'any',
-			'key' => 'arch_title',
-			'value' => 'no-link-title',
-			'compare' => '=',
-		)
-	);
-	$ids = array_unique( array_merge( $ids, array_map( 'absint', $entries_to_exclude ) ) );
-	return $ids;
-}
-add_filter( 'searchwp_exclude', 'my_searchwp_exclude', 10, 3 );
+// function my_searchwp_exclude( $ids, $engine, $terms ) {
+// 	$entries_to_exclude = get_posts(
+// 		array(
+// 			'post_type' => 'any',
+// 			'key' => 'arch_title',
+// 			'value' => 'no-link-title',
+// 			'compare' => '=',
+// 		)
+// 	);
+// 	$ids = array_unique( array_merge( $ids, array_map( 'absint', $entries_to_exclude ) ) );
+// 	return $ids;
+// }
+// add_filter( 'searchwp_exclude', 'my_searchwp_exclude', 10, 3 );
 
 
 function arch_do_svg( $icon ) {
